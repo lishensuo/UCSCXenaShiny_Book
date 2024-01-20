@@ -1,5 +1,5 @@
 # (PART) Shiny App {-}
 # Visit
 
-Basic introduction
+Basic introduction;
 How to visit;
