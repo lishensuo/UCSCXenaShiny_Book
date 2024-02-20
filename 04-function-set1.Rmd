@@ -1,7 +1,0 @@
-# Functions for Pan-data
-
-## Query data
-
-
-## Analysis and visualization
-

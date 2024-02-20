@@ -1,0 +1,22 @@
+# Query molecular data
+
+## Pre-introduction
+
+
+
+```{r query-functions, echo = FALSE}
+data = readxl::read_excel("images/table_01.xlsx")
+knitr::kable(
+  data, caption = 'Specilized functions to query TPC molecular data',
+  align = "l",
+  booktabs = TRUE
+)
+```
+
+
+
+
+## Query data
+
+
+## Analysis and visualization

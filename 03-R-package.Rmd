@@ -1,6 +1,0 @@
-# (PART) R package {-}
-# Install
-
-How to install and use this package
-
-

@@ -1,0 +1,155 @@
+# Built-in datasets
+
+
+
+```{r builtin-datasets, fig.cap='UCSCXenaShiny built-in datasets', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE}
+knitr::include_graphics('images/p001.png')
+```
+
+Non-omics supplementary tumor data for extensive analysis.
+
+## TCGA
+
+- `TCGA.organ`: Detailed information of  33 TCGA projects
+```{r}
+head(TCGA.organ)
+```
+
+- `tcga_gtex`: Merged information of TCGA and GTEx samples
+```{r}
+head(tcga_gtex)
+```
+
+- `tcga_clinical`: Common phenotypes of TCGA samples
+- `tcga_clinical_fine`: Basic phenotypes of TCGA samples
+```{r}
+head(tcga_clinical_fine)
+```
+
+- `tcga_surv`: Survival data of TCGA samples
+```{r}
+head(tcga_surv)
+```
+
+- `tcga_subtypes`: Subtype information of TCGA samples
+```{r}
+head(tcga_subtypes)
+```
+
+- `tcga_purity`: tumor purity related  information of TCGA samples
+```{r}
+head(tcga_purity)
+```
+
+- `tcga_genome_instability`: tumor genome instability related  information of TCGA samples
+```{r}
+head(tcga_genome_instability)
+```
+
+
+## PCAWG
+
+- `pcawg_info`: Common phenotypes of TCGA samples
+- `pcawg_info_fine`: Basic phenotypes of TCGA samples
+```{r}
+head(pcawg_info_fine)
+```
+-  `pcawg_purity`:  tumor purity related  information of PCAWG samples
+
+```{R}
+head(pcawg_purity)
+```
+
+
+
+## CCLE
+- `ccle_info`: Common phenotypes of CCLE samples
+- `ccle_info_fine`: Basic phenotypes of CCLE samples
+```{r}
+head(ccle_info_fine)
+```
+- `ccle_absolute`: supplementary information of CCLE samples
+```{R}
+head(ccle_absolute)
+```
+
+
+## Zenodo
+
+Files with large amounts of data are uploaded to Zenodo. They can be loaded via `load_data()` function.
+
+### tumor infiltration estimations
+```{r, eval = FALSE}
+# TCGA samples
+dat1 = load_data("tcga_TIL")
+# PCAWG samples
+dat2 = load_data("pcawg_TIL")
+
+dat1[1:4,1:4]
+```
+```{r,echo = FALSE}
+load_data("tcga_TIL")[1:4,1:4]
+```
+### ssGSEA pathway activities
+```{r, eval = FALSE}
+# TCGA samples
+dat1 = load_data("tcga_PW")
+# PCAWG samples
+dat2 = load_data("pcawg_PW")
+
+dat1[1:4,1:4]
+```
+```{R,echo = FALSE}
+load_data("tcga_PW")[1:4,1:4]
+```
+
+### other TCGA annotations
+- "tcga_stemness": tumor stemness of TCGA samples
+
+```{R}
+head(load_data("tcga_stemness"))
+```
+
+- "tcga_tmb": tumor mutation burden of TCGA samples
+
+```{R}
+head(load_data("tcga_tmb"))
+```
+
+### identifier repository
+
+Compile available identifiers of data for each of TPC databases.
+
+- "pancan_identifier_help": TCGA samples
+```{r tcga-ids, fig.cap='TCGA related identifiers', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE}
+knitr::include_graphics('images/p002.png')
+```
+
+```{r, eval = FALSE}
+tcga_ids = load_data("pancan_identifier_help")
+names(tcga_ids)
+# [1] "id_molecule"    "id_tumor_index" "id_TIL"         "id_PW" 
+head(tcga_ids$id_molecule$id_gene)
+# the key identifier is ususally under "Level3" column
+```
+```{r, echo = FALSE}
+head(load_data("pancan_identifier_help")$id_molecule$id_gene)
+```
+
+- "pcawg_identifier": PCAWG samples
+- "ccle_identifier": CCLE samples
+
+```{r pc-ids, fig.cap='PCAWG/CCLE molecular identifiers', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE}
+knitr::include_graphics('images/p003.png')
+```
+
+```{r, eval = FALSE}
+pcawg_ids = load_data("pcawg_identifier")
+names(pcawg_ids)
+# [1] "id_gene"   "id_pro"    "id_fusion" "id_mi"     "id_maf" 
+head(pcawg_ids$id_pro)
+# the key identifier is ususally under "Level3" column
+```
+```{r, echo = FALSE}
+head(load_data("pcawg_identifier")$id_pro)
+```

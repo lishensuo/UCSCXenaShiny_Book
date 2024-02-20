@@ -1,0 +1,10 @@
+# (PART) R package {-}
+# Install
+
+How to install and use this package
+
+
+
+```{r, message = FALSE, warning = FALSE}
+library(UCSCXenaShiny)
+```
