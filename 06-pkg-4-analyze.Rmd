@@ -1,0 +1,432 @@
+# Molecular data analysis
+
+1. For each function, we introduce its basic use and example output. Users can check all analysis or visualization parameters available by clicking the corresponding title link.
+
+2. Among most functions, their first parameter is molecular identifier of one data type. Users can also design a molecular signature comprised of multiple molecules (e.g. `TP53 + 2 * KRAS - 1.3 * PTEN`).
+
+3. During TPC related analysis, users can modified alternative datasets for one molecular type through the `opt_pancan` parameter. (see more via `str(.opt_pancan)`)
+
+
+
+## TCGA analysis
+```{r analyze-tcga-func, echo = FALSE}
+data = readxl::read_excel("images/table_02.xlsx")
+data = subset(data, Database == "TCGA")
+data = subset(data, Function !="vis_pancan_anatomy()")
+knitr::kable(
+  data, caption = 'Specilized functions to analyze TCGA molecular data',
+  align = "l",
+  booktabs = TRUE
+)
+```
+
+### Comparison analysis
+
+#### [vis_toil_TvsN()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_toil_TvsN.html)
+Compare molecular value between tumor and normal samples across pan-cancer.
+
+- Basic use: `vis_toil_TvsN(Gene=, data_type=)`
+
+```{r vis-toil-TvsN, message=FALSE, fig.cap='The difference of mRNA TP53 across pan-cancer', out.width='80%',  fig.align='center', fig.height=6, fig.width=10}
+vis_toil_TvsN(Gene="TP53", data_type = "mRNA")
+```
+> **Tips**: For parameter `data_type`, one of 4 molelcuar types c("mRNA", "transcript", "methylation", "miRNA") are supported.
+
+#### [vis_toil_TvsN_cancer()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_toil_TvsN_cancer.html)
+Compare molecular value between tumor and normal samples in one cancer.
+
+- Basic use: `vis_toil_TvsN_cancer(Gene=, data_type=, Cancer=)`
+
+```{r vis-toil-TvsN-cancer, message=FALSE, fig.cap='The difference of mRNA TP53 in ACC cancer', out.width='80%', fig.align='center', fig.height=6, fig.width=6}
+vis_toil_TvsN_cancer(Gene="TP53", data_type = "mRNA", Cancer = "BRCA")
+```
+> **Tips**: For parameter `data_type`, all molelcuar types supported in function `query_pancan_value()` are applicable.
+
+
+#### [vis_toil_Mut()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_toil_Mut.html)
+Compare molecular value between mutation and wild tumor samples across pan-cancer.
+
+- Basic use: `vis_toil_Mut(mut_Gene=, Gene=, data_type=)`
+
+```{r vis-toil-Mut, message=FALSE, fig.cap='The difference of mRNA TNF between TP53-mut and TP53-wild tumor samples across pan-cancer', out.width='80%', fig.align='center', fig.height=6, fig.width=10}
+vis_toil_Mut(mut_Gene = "TP53", Gene = "TNF", data_type = "mRNA")
+```
+> **Tips**: For parameter `data_type`, one of 4 molelcuar types c("mRNA", "transcript", "methylation", "miRNA") are supported.
+
+#### [vis_toil_Mut_cancer()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_toil_Mut_cancer.html)
+Compare molecular value between mutation and wild tumor samples in one cancer.
+
+- Basic use: `vis_toil_Mut_cancer(Gene=, data_type=, Cancer=)`
+
+```{r vis-toil-Mut-cancer, message=FALSE, fig.cap='The difference of mRNA TNF between TP53-mut and TP53-wild tumor samples in BRCA cancer', out.width='80%', fig.align='center', fig.height=6, fig.width=6}
+vis_toil_Mut_cancer(mut_Gene = "TP53", Gene = "TNF", data_type = "mRNA", Cancer = "BRCA")
+```
+> **Tips**: For parameter `data_type`, all molelcuar types supported in function `query_pancan_value()` are applicable.
+
+
+### Correlation analysis
+#### [vis_gene_cor()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_gene_cor.html)
+Calculate the correlation between two molecules value in tumor samples of pan-cancers.
+
+- Basic use: `vis_gene_cor(Gene1=, data_type1=, Gene2=, data_type2=)`
+
+```{r vis-gene-cor, message=FALSE, fig.cap='The correlation between mRNA CSF1R and mRNA JAK3 in tumor samples of pan-cancers', out.width='80%', fig.align='center'}
+vis_gene_cor(Gene1 = "CSF1R", data_type1 = "mRNA", Gene2 = "JAK3", data_type2 = "mRNA")
+```
+
+#### [vis_gene_cor_cancer()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_gene_cor_cancer.html)
+Calculate the correlation between two molecules value in tumor samples of one cancer.
+
+- Basic use: `vis_gene_cor_cancer(Gene1=, data_type1=, Gene2=, data_type2=, cancer_choose=)`
+
+```{r vis-gene-cor-cancer, message=FALSE, fig.cap='The correlation between mRNA CSF1R and mRNA JAK3 in tumor samples of ACC cancer', out.width='80%', fig.align='center'}
+vis_gene_cor_cancer(Gene1 = "CSF1R", data_type1 = "mRNA", 
+                    Gene2 = "JAK3", data_type2 = "mRNA", 
+                    cancer_choose = "ACC")
+```
+
+
+#### [vis_gene_TIL_cor()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_gene_TIL_cor.html)
+Calculate the correlation between one molecule and one type of TIL in tumor samples across pan-cancers.
+
+- Basic use: `vis_gene_TIL_cor(Gene= ,data_type= ,sig=)`
+
+```{r cache=TRUE}
+tcga_ids = load_data("pancan_identifier_help")
+names(tcga_ids$id_TIL)
+```
+
+
+```{r vis-gene-TIL-cor, message=FALSE, fig.cap='The correlation between mRNA TP53 and TIMER TIL in tumor samples across pan-cancers', fig.align='center',fig.height=3, fig.width=12}
+sig = paste(tcga_ids$id_TIL$TIMER$Level3,
+            tcga_ids$id_TIL$TIMER$Level2, sep = "_")
+vis_gene_TIL_cor(Gene = "TP53", data_type = "mRNA",
+                 sig = sig)
+```
+
+
+#### [vis_gene_immune_cor()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_gene_immune_cor.html)
+Calculate the correlation between one molecule and one type of Immune signature in tumor samples across pan-cancers.
+
+- Basic use: `vis_gene_immune_cor(Gene= ,data_type= ,sig=)`
+
+```{r cache=TRUE}
+tcga_pan_immune_signature <- load_data("tcga_pan_immune_signature")
+table(tcga_pan_immune_signature$Source)
+```
+
+
+```{r vis-gene-immune-cor, message=FALSE,warning=FALSE, fig.cap='The correlation between mRNA TP53 and Cibersort signature in tumor samples across pan-cancers', fig.align='center',fig.height=6, fig.width=12}
+vis_gene_immune_cor(Gene = "TP53", data_type = "mRNA",
+                    Immune_sig_type = "Cibersort")
+```
+
+
+#### [vis_gene_tmb_cor()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_gene_tmb_cor.html)
+Calculate the correlation between one molecule and TMB score in tumor samples across pan-cancers.
+
+- Basic use: `vis_gene_tmb_cor(Gene= , data_type= )`
+
+```{r vis-gene-tmb-cor, message=FALSE, fig.cap='The correlation between mRNA TP53 and TMB score in tumor samples across pan-cancers', fig.align='center',fig.height=2, fig.width=12}
+vis_gene_tmb_cor(Gene = "TP53", data_type = "mRNA")
+```
+
+#### [vis_gene_msi_cor()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_gene_msi_cor.html)
+Calculate the correlation between one molecule and MSI score in tumor samples across pan-cancers.
+
+- Basic use: `vis_gene_msi_cor(Gene= , data_type= )`
+
+```{r vis-gene-msi-cor, message=FALSE, fig.cap='The correlation between mRNA TP53 and MSI score in tumor samples across pan-cancers', fig.align='center',fig.height=2, fig.width=12}
+vis_gene_msi_cor(Gene = "TP53", data_type = "mRNA")
+```
+
+
+
+#### [vis_gene_stemness_cor()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_gene_stemness_cor.html)
+Calculate the correlation between one molecule and stemness score in tumor samples across pan-cancers.
+
+- Basic use: `vis_gene_stemness_cor(Gene= , data_type= )`
+
+```{r vis-gene-stemness-cor, message=FALSE, fig.cap='The correlation between mRNA TP53 and stemness score in tumor samples across pan-cancers', fig.align='center',fig.height=2, fig.width=12}
+vis_gene_stemness_cor(Gene = "TP53", data_type = "mRNA")
+```
+
+
+#### [vis_gene_pw_cor()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_gene_pw_cor.html)
+Calculate the correlation between one molecule and pathway score in tumor samples of one cancer.
+
+- Basic use: `vis_gene_pw_cor(Gene= , data_type= )`
+
+```{r vis-gene-pw-cor, message=FALSE, fig.cap='The correlation between mRNA TP53 and pathway score in tumor samples in ACC cancer', fig.align='center',fig.height=6, fig.width=6}
+vis_gene_pw_cor(Gene = "TP53", data_type = "mRNA", 
+                pw_name = "HALLMARK_ADIPOGENESIS",
+                cancer_choose = "ACC")
+```
+
+### Survival analysis
+#### [tcga_surv_plot()](https://openbiox.github.io/UCSCXenaShiny/reference/tcga_surv_plot.html)
+Perform the log-rank test of one molecule for one cancer.
+
+- Basic use: `tcga_surv_plot(data=, time= , status= )`
+
+```{r message=FALSE}
+# Firstly, prepare the molecular value as well as survival data
+data <- tcga_surv_get(item = "TP53",profile = "mRNA",
+                      TCGA_cohort = "LUAD")
+head(data)
+```
+
+
+```{r tcga-surv-plot, message=FALSE, fig.align='center', fig.cap='The log-rank test (DSS) of mRNA TP53 for LUAD cancer', fig.height=7, fig.width=6, message=FALSE}
+tcga_surv_plot(data, time = "DSS.time", status = "DSS") # OS/DSS/DFI/PFI
+```
+
+> By default, the median data of molecular data is used to divided into two groups for log-rank test. It can be modified in corresponding paramters.
+
+
+#### [vis_unicox_tree()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_unicox_tree.html)
+Perform the Cox regression analysis of one molecule across pan-cancers.
+
+- Basic use: `vis_unicox_tree(Gene= , data_type= , measure=)`
+
+```{r vis-unicox-tree, message=FALSE, fig.cap='The Cox regression analysis (OS) of mRNA PTEN across pan-cancers', fig.align='center',fig.height=6, fig.width=6}
+vis_unicox_tree(Gene = "PTEN", data_type = "mRNA", measure = "OS")
+```
+
+> By default, the median data of molecular data is used to divided into two groups for Cox regression analysis. It can be modified in corresponding paramters.
+
+### Dimension reduction
+#### [vis_dim_dist()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_dim_dist.html)
+Perform dimension reduction analysis of multiple molecules for samples in groups.
+
+- Basic use: `vis_dim_dist(ids=, data_type= ,group_info= )`
+
+```{r}
+# Firstly, prepare the grouping information of samples 
+group_info = tcga_clinical_fine %>% 
+  dplyr::filter(Cancer=="BRCA") %>% 
+  dplyr::select(Sample, Code) %>% 
+  dplyr::rename(Group=Code)
+head(group_info)
+```
+
+```{r vis-dim-dist, message=FALSE, fig.cap='The dimension reduction analysis (PCA) of 5 mRNA molcules in BRCA cancer samples grouped by tissue codes', fig.align='center',fig.height=6, fig.width=6, cache=TRUE}
+ids = c("TP53", "KRAS", "PTEN", "MDM2", "CDKN1A")
+vis_dim_dist(ids = ids, data_type = "mRNA", 
+             group_info= group_info)
+```
+
+
+
+## PCAWG analysis
+```{r analyze-pcawg-func, echo = FALSE}
+data = readxl::read_excel("images/table_02.xlsx")
+data = subset(data, Database == "PCAWG")
+knitr::kable(
+  data, caption = 'Specilized functions to analyze PCAWG molecular data',
+  align = "l",
+  booktabs = TRUE
+)
+```
+
+### Comparsion analysis
+#### [vis_pcawg_dist()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_pcawg_dist.html)
+Compare molecular value between tumor and normal samples across pan-cancer.
+
+- Basic use: `vis_pcawg_dist(Gene= ,data_type= )`
+
+```{r vis-pcawg-dist, message=FALSE, fig.capfig.cap='The difference of mRNA TP53 across pan-cancer', fig.align='center',fig.height=6, fig.width=12}
+vis_pcawg_dist(Gene = "TP53", data_type = "mRNA")
+```
+
+### Correlation analysis
+#### [vis_pcawg_gene_cor()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_pcawg_gene_cor.html)
+Calculate the correlation between two molecules value in tumor samples of one cancer.
+
+- Basic use: `vis_pcawg_gene_cor(Gene1= ,data_type1 = ,Gene2 = ,data_type2 = ,dcc_project_code_choose=)`
+
+```{r vis-pcawg-gene_cor, message=FALSE, fig.capfig.cap='The correlation between mRNA CSF1R and mRNA JAK3 in tumor samples of BLCA-US cancer', fig.align='center',out.width='80%'}
+vis_pcawg_gene_cor(Gene1 = "CSF1R", data_type1 = "mRNA",
+                   Gene2 = "JAK3", data_type2 = "mRNA",
+                   dcc_project_code_choose = "BLCA-US")
+```
+
+### Survival analysis
+#### [vis_pcawg_unicox_tree()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_pcawg_unicox_tree.html)
+Perform the Cox regression analysis (OS) of one molecule across pan-cancers.
+
+- Basic use: `vis_pcawg_unicox_tree(Gene= , data_type= )`
+
+```{r vis-pcawg-unicox-tree, warning=FALSE, message=FALSE, fig.cap='The Cox regression analysis (OS) of mRNA TP53 across pan-cancers', fig.align='center',fig.height=6, fig.width=6}
+vis_pcawg_unicox_tree(Gene = "TP53", data_type = "mRNA")
+```
+> By default, the median data of molecular data is used to divided into two groups for Cox regression analysis. It can be modified in corresponding paramters.
+
+
+## CCLE analysis
+```{r analyze-ccle-func, echo = FALSE}
+data = readxl::read_excel("images/table_02.xlsx")
+data = subset(data, Database == "CCLE")
+knitr::kable(
+  data, caption = 'Specilized functions to analyze CCLE molecular data',
+  align = "l",
+  booktabs = TRUE
+)
+```
+
+### Comparsion analysis
+#### [vis_ccle_tpm()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_ccle_tpm.html)
+Compare molecular value among different tissues of cancer cell lines.
+
+- Basic use: `vis_ccle_tpm(Gene= ,data_type= )`
+
+```{r vis-ccle-tpm, message=FALSE, fig.capfig.cap='The difference of mRNA TP53 among different tissues of cancer cell lines', fig.align='center',fig.height=6, fig.width=12}
+vis_ccle_tpm(Gene = "TP53", data_type = "mRNA")
+```
+
+
+
+
+
+
+### Correlation analysis
+#### [vis_ccle_gene_cor()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_ccle_gene_cor.html)
+Calculate the correlation between two molecules value in one tissue type of cancer cell lines.
+
+- Basic use: `vis_ccle_gene_cor(Gene1= ,data_type1= ,Gene2= ,data_type2= ,SitePrimary= )`
+
+```{r vis-ccle-gene_cor, message=FALSE, fig.capfig.cap='The correlation between mRNA CSF1R and mRNA JAK3 in prostate-related cancer cell lines', fig.align='center',fig.height=6, fig.width=6}
+vis_ccle_gene_cor(Gene1 = "CSF1R", data_type1 = "mRNA", 
+                  Gene2 = "JAK3", data_type2 = "mRNA", 
+                  SitePrimary = "prostate")
+```
+
+
+> `vis_gene_drug_response_diff()` and `vis_gene_drug_response_asso()` are initially designed for drug pharmacogenomics analysis. In the updated shiny application, we have provided more comprehensive pharmacogenomics analysis.
+
+
+## General analysis
+```{r analyze-general-func, echo = FALSE}
+data = readxl::read_excel("images/table_02.xlsx")
+data = subset(data, Database == "General")
+knitr::kable(
+  data, caption = 'Specilized functions to analyze General molecular data',
+  align = "l",
+  booktabs = TRUE
+)
+```
+
+### Comparison analysis
+#### [vis_identifier_grp_comparison()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_identifier_grp_comparison.html)
+Compare molecular value between custom groups based on one genomics matrix UCSC Xena dataset.
+
+- Basic use: `vis_identifier_grp_comparison(dataset= , id= ,grp_df= )`
+
+
+```{r message=FALSE, cache=TRUE}
+# Firstly, prepare custom groups of samples
+library(UCSCXenaTools)
+cli_df <- XenaGenerate(
+  subset = XenaDatasets == "TCGA.LUAD.sampleMap/LUAD_clinicalMatrix"
+) %>%
+  XenaQuery() %>%
+  XenaDownload() %>%
+  XenaPrepare()
+grp_df = cli_df[, c("sampleID", "pathologic_M")] %>%
+  dplyr::filter(pathologic_M %in% c("M0", "M1", "MX"))
+head(grp_df) # col-1: sample; col-2: grouping info
+```
+
+```{r vis-identifier-grp-comparison, message=FALSE, fig.capfig.cap="The difference of mRNA TP53 among three pathologic_M groups for samples in TCGA.LUAD dataset", fig.align='center',fig.height=6, fig.width=8}
+mol_dataset <- "TCGA.LUAD.sampleMap/HiSeqV2_percentile"
+vis_identifier_grp_comparison(dataset = mol_dataset, id = "TP53", 
+                              grp_df = grp_df)
+```
+
+
+### Correlation analysis
+#### [vis_identifier_cor()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_identifier_cor.html)
+
+Calculate the correlation between two molecules value from genomics matrix UCSC Xena datasets.
+
+- Basic use: `vis_identifier_cor(dataset= ,id1= ,dataset= ,id2= )`
+```{r vis-identifier-cor, message=FALSE, fig.capfig.cap='The correlation between mRNA TP53 and mRNA KRAS in samples of one specific dataset', fig.align='center',fig.height=6, fig.width=6}
+dataset <- "TcgaTargetGtex_rsem_isoform_tpm"
+vis_identifier_cor(dataset1 = dataset, id1 = "TP53",
+                   dataset2 = dataset, id2 = "KRAS")
+```
+
+
+
+#### [vis_identifier_multi_cor()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_identifier_multi_cor.html)
+
+Calculate the pairwise correlation among multiple molecules value from one genomics matrix UCSC Xena dataset.
+
+- Basic use: `vis_identifier_multi_cor(dataset= ,ids= )`
+```{r vis-identifier-multi-cor, message=FALSE, fig.capfig.cap='The pairwise correlation among 3 mRNA molecules in samples of one specific dataset', fig.align='center',fig.height=6, fig.width=6}
+dataset <- "TcgaTargetGtex_rsem_isoform_tpm"
+vis_identifier_multi_cor(dataset = dataset,
+                         ids = c("TP53", "KRAS", "PTEN"))
+```
+
+### Survival analysis
+
+
+#### [vis_identifier_grp_surv()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_identifier_grp_surv.html)
+
+Perform the log-rank test of one molecule for one genomics matrix UCSC Xena dataset.
+
+- Basic use: `vis_identifier_grp_surv(dataset= , id= , surv_df= )`
+
+```{r message=FALSE, cache=TRUE}
+# Firstly, prepare survival data of samples
+library(UCSCXenaTools)
+cli_df <- XenaGenerate(
+  subset = XenaDatasets == "TCGA.LUAD.sampleMap/LUAD_clinicalMatrix"
+) %>%
+  XenaQuery() %>%
+  XenaDownload() %>%
+  XenaPrepare()
+surv_df <- cli_df[, c("sampleID", "days_to_death", "vital_status")]
+surv_df$vital_status <- ifelse(surv_df$vital_status == "DECEASED", 1, 0)
+surv_df = na.omit(surv_df)
+head(surv_df)  # col-1: sample; col-2: survival time; col-3: survival status
+```
+
+
+```{r vis-identifier-grp-surv, message=FALSE, fig.align='center', fig.cap='The log-rank test (DSS) of mRNA KRAS for ne specific dataset', fig.height=7, fig.width=6, message=FALSE}
+mol_dataset <- "TCGA.LUAD.sampleMap/HiSeqV2_percentile"
+vis_identifier_grp_surv(dataset = mol_dataset, id = "KRAS", 
+                        surv_df = surv_df)
+```
+
+> By default, the best cutoff is decided. User can change it through the `cutoff_mode` parameter.
+
+### Dimension reduction
+#### [vis_identifier_dim_dist()](https://openbiox.github.io/UCSCXenaShiny/reference/vis_identifier_dim_dist.html)
+Perform dimension reduction analysis of multiple molecules for samples in groups.
+
+- Basic use: `vis_identifier_dim_dist(dataset= ,ids= , grp_df= )`
+
+```{r message=FALSE, cache=TRUE}
+# Firstly, prepare the grouping information of samples 
+library(UCSCXenaTools)
+cli_dataset <- "TCGA.LUAD.sampleMap/LUAD_clinicalMatrix"
+cli_df <- XenaGenerate(
+  subset = XenaDatasets == cli_dataset
+) %>%
+  XenaQuery() %>%
+  XenaDownload() %>%
+  XenaPrepare()
+grp_df = cli_df[, c("sampleID", "gender")]
+head(grp_df) # col-1: sample; col-2: grouping info
+```
+
+```{r vis-identifier-dim-dist, message=FALSE, fig.cap='The dimension reduction analysis (PCA) of 5 mRNA molcules in BRCA cancer samples grouped by tissue codes', fig.align='center',fig.height=6, fig.width=6, cache=TRUE}
+mol_dataset <- "TCGA.LUAD.sampleMap/HiSeqV2_percentile"
+ids = c("TP53", "KRAS", "PTEN", "MDM2", "CDKN1A")
+vis_identifier_dim_dist(dataset = mol_dataset,
+                        ids = ids, 
+                        grp_df = grp_df)
+```
+
