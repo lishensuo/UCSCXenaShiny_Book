@@ -1,3 +1,0 @@
-# Page: Repository
-
-the layout and usage of Repository Shiny  Page

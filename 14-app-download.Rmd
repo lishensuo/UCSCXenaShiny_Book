@@ -1,0 +1,50 @@
+# Download modules
+
+- Although users can download the full datasets of UCSC Xena in the repository
+- Here, two download modules are designed for the precise acquisition of raw data from  TCGA/PCAWG/CCLE analysis and UCSC Xena repository datasets.
+- Actually the molecular data of TPC analysis is also curated from UCSC Xena in previous chapters. The main differences of the two modules are described below.
+  - If you want to quickly query and obtain omics values of TPC samples, the download  module 1 is more suitable. In addition, non-omics annotation data of TPC is also available (e.g. tumor immune infiltration estimation).
+  - If you want to search one specific UCSC Xena dataset, especially for other hubs (e.g. TCGA GDC), the download module is more suitable.
+
+```{r p1401, fig.cap='Two custom download modules',  fig.align='center', echo = FALSE, out.width="100%"}
+knitr::include_graphics('images/p1401.png')
+```
+
+
+## Download TPC datasets
+
+There are two parts for omics and non-omics data, respectively.
+
+### Omics molecular data fetch
+
+1. Select one database and set the candidate datasets (refer chapter 11);
+2. Select further samples through the quick or exact filters (refer chapter 12);
+3. Select one specific molecular type and its multiple identifiers in three ways;
+4. Click the "Query" button to fetch the eligible data and display in the right panel;
+5. Download the queried data into local CSV or RDA file.
+
+```{r p1402, fig.cap='The steps of TPC omics molecular data fetch',  fig.align='center', echo = FALSE, out.width="100%"}
+knitr::include_graphics('images/p1402.png')
+```
+
+### Non-omics annotation data fetch
+
+- For each of TPC databases, there are various non-omics annotation data for extensive molecular analysis;
+- In the most right panel, users can easily download one specific data via corresponding buttons;
+
+```{r p1403, fig.cap='TPC non-omics annotation data',  fig.align='center', echo = FALSE, out.width="100%"}
+knitr::include_graphics('images/p1403.png')
+```
+
+## Download UCSC Xena datasets
+
+1. Select one data hub in UCSC Xena;
+2. Select one of candidate datasets by limiting the data format type and profile type;
+3. Load all available identifiers of the selected dataset. The Primary ID indicates the row names of dataset and the ProbeMap ID is more usable. For instance, among most mRNA dataset, their Primary IDs are usually *Ensembl* names and ProbeMap IDs are *Symbol* names;
+4. Select multiple identifiers or directly upload an id file;
+5. Click the "Query" button to fetch the eligible data and display in the right panel;
+6. Download the queried data into local CSV or RDA file.
+
+```{r p1404, fig.cap='The steps of UCSC Xena dataset fetch',  fig.align='center', echo = FALSE, out.width="100%"}
+knitr::include_graphics('images/p1404.png')
+```

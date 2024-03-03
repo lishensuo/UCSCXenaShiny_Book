@@ -1,0 +1,48 @@
+# Repository
+
+Explore the metadata information of most UCSC Xena datasets in the repository page.
+
+1. Firstly, users can query datasets according to the conditions of data hub (or further cohort) and data type (or further data subtype). By default, it will select the GDC hub and all data types.
+2. Then, the basic information of eligible datasets will be display in the right panel. 
+3. Next, users can select one or multiple rows of datasets and their external links to download or browse original data are available in the bottom. Furtherly, three buttons are designed to provide specific functions.
+
+```{r repo-page, fig.cap='Repoistory page demonstration',  fig.align='center', echo = FALSE,out.width="80%"}
+knitr::include_graphics('images/p0901.png')
+```
+
+
+## Show Metadata
+
+- The "Show Metadata" button will give more detailed information of selected datasets.
+
+```{r show-meta, fig.cap='The interface when clicking "Show Metadata" button',  fig.align='center', echo = FALSE,out.width="80%"}
+knitr::include_graphics('images/p0902.png')
+```
+
+
+## Request Data
+
+Through this button, three ways of downloading raw datasets are provided.
+
+1. "Download data directly": Enable to directly download the data into the local device.
+2. "Download data directly": Generate the `.sh` script file to download in Linux environment.
+3. "Download data directly": Generate the R code to download especially for R users.
+
+```{r requ-data, fig.cap='The interface when clicking "Request Data" button',  fig.align='center', echo = FALSE,out.width="80%"}
+knitr::include_graphics('images/p0903.png')
+```
+
+
+
+
+## Analyze Data
+
+- This button is the initial step for **General Dataset Analysis**, which will be mainly introduced in next chapter (link).
+- As the figure shows, users need to firstly select one or more datasets for the `Pre-selected Datasets for Analysis` space. 
+- If one genomics matrix dataset (e.g. RNA-seq) is selected, its related clinical metadata (e.g. phenotype or survival data) will be automatically added.
+
+
+```{r anal-data, fig.cap='The initial step of General Dataset Analysis', fig.align='center', echo = FALSE,out.width="80%"}
+knitr::include_graphics('images/p0904.png')
+```
+

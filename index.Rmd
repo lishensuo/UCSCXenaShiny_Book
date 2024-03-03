@@ -1,10 +1,12 @@
---- 
+---
 title: "UCSCXenaShiny v2 Book"
-author: "Shixiang Wang, Shensuo Li"
+author: "Shensuo Li, Shixiang Wang"
 date: "`r Sys.Date()`"
+
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
+
 # url: your book url like https://bookdown.org/yihui/bookdown
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
@@ -19,6 +21,7 @@ github-repo: rstudio/bookdown-demo
 
 
 
-Here is the summary introduction for UCSCXenaShiny (Maybe the abstract of publication paper)
+- We are still preparing the tutorial book. Please wait for some time :)
+- If  you have any question, please report to the [Github issues page](https://github.com/openbiox/UCSCXenaShiny/issues) or email to lishensuo@163.com
 
 

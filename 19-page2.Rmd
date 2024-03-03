@@ -1,3 +1,0 @@
-# Page: General Dataset Analysis
-
-the layout and usage of General Dataset Analysis Shiny Page

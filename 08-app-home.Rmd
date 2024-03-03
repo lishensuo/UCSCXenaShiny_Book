@@ -4,7 +4,7 @@
 
 - Dynamically display all application interfaces and their functional descriptions
 
-```{r slick-gallery, fig.cap='Shiny Slick Gallery',  fig.align='center', echo = FALSE}
+```{r slick-gallery, fig.cap='Shiny Slick Gallery',  fig.align='center', echo = FALSE,out.width="100%"}
 knitr::include_graphics('images/p0801.png')
 ```
 
@@ -15,11 +15,11 @@ knitr::include_graphics('images/p0801.png')
 - Based on UCSC Xena datasets, we have designed versatile analyses for TCGA as well as other databases, like PCAWG and CCLE.
 - In the homepage, two series of TCGA analyses, including 12 custom modules (Figure) and 3 personalized pipelines, are displayed for users.
 
-```{r tcga-modules, fig.cap='12 TCGA analytical modules',  fig.align='center', echo = FALSE}
+```{r tcga-modules, fig.cap='12 TCGA analytical modules',  fig.align='center', echo = FALSE,out.width="100%"}
 knitr::include_graphics('images/p0802.png')
 ```
 
-```{r tcga-pipelines, fig.cap='3 TCGA analytical pipelines',  fig.align='center', echo = FALSE}
+```{r tcga-pipelines, fig.cap='3 TCGA analytical pipelines',  fig.align='center', echo = FALSE,out.width="100%"}
 knitr::include_graphics('images/p0803.png')
 ```
 
@@ -80,7 +80,7 @@ knitr::include_graphics(c('images/p0809.png'))
 
 
 
-4. Here is an example report for mRNA TP53. 
+4. Here is an [example report](https://lishensuo.github.io/UCSCXenaShiny_Book/example_report.html) for mRNA TP53. 
 
 
 ```{r demo-report, fig.cap='Head part of demo report',  fig.align='center', echo = FALSE}

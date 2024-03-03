@@ -1,3 +1,0 @@
-# Page: Help
-
-the layout and usage of Help Shiny Page
