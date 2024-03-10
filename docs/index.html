@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Shensuo Li, Shixiang Wang" />
 
 
-<meta name="date" content="2024-03-03" />
+<meta name="date" content="2024-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -348,15 +348,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">UCSCXenaShiny v2 Book</h1>
 <p class="author"><em>Shensuo Li, Shixiang Wang</em></p>
-<p class="date"><em>2024-03-03</em></p>
+<p class="date"><em>2024-03-10</em></p>
 </div>
 <div id="about" class="section level1 unnumbered hasAnchor">
 <h1>About<a href="index.html#about" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>UCSCXenaShiny</strong> is an R package for interactively exploring UCSC Xena datasets. It is mainly designed to provide a web app (built on the top of <a href="https://shiny.rstudio.com/"><code>{shiny}</code></a> framework and <a href="https://github.com/ropensci/UCSCXenaTools/"><code>{UCSCXenaTools}</code></a> package) for downloading, analyzing and visualizing datasets from <a href="https://xenabrowser.net/datapages/">UCSC Xena</a>. In the latest version, the application can support both general and personalized tumor molecular analysis with versatile functional modules and user-friendly interface layouts. Overall, our tool aims to make best use of public omics data from UCSC Xena and bridge the gap between precision oncology research and broad user community.</p>
+<p><img src="images/p0000.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Here, we have prepared the tutorial book to introduce the detailed usage of UCSCXenaShiny. Firstly, we will start with the basic knowledge of UCSC Xena repository, as well as TPC projects (<strong>T</strong>CGA, <strong>P</strong>CAWG, <strong>C</strong>CLE) in <strong>chapter 1</strong>. Then, the following chapters can be generally divided into two parts for the usage of R package and Shiny App:</p>
+<div id="part-ⅰ" class="section level4 unnumbered hasAnchor">
+<h4>Part Ⅰ<a href="index.html#part-ⅰ" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
-<li>We are still preparing the tutorial book. Please wait for some time :)</li>
-<li>If you have any question, please report to the <a href="https://github.com/openbiox/UCSCXenaShiny/issues">Github issues page</a> or email to <a href="mailto:lishensuo@163.com" class="email">lishensuo@163.com</a></li>
+<li><strong>Chapter 2</strong>：The ways to install UCSCXenaShiny package.</li>
+<li><strong>Chapter 3</strong>：Avalilable built-in datasets of package, e.g. clinical or survival data.</li>
+<li><strong>Chapter 4</strong>：The functions to query molecular data of TPC datasets.</li>
+<li><strong>Chapter 5</strong>：The functions to perform various analyses based on TPC datasets.</li>
 </ul>
+</div>
+<div id="part-ⅱ" class="section level4 unnumbered hasAnchor">
+<h4>Part Ⅱ<a href="index.html#part-ⅱ" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><strong>Chapter 6</strong>：The ways to visit UCSCXenaShiny application.</li>
+<li><strong>Chapter 7</strong>：The intuitive widgets and quick exploration modules in homepage.</li>
+<li><strong>Chapter 8</strong>：The query for all datasets of UCSC Xena repository.</li>
+<li><strong>Chapter 9</strong>：General analysis modules for any matrix datasets.</li>
+<li><strong>Chapter 10</strong>：Custom analysis modules for TPC datasets.</li>
+<li><strong>Chapter 11</strong>：The key preprocesses of personalized TPC pipelines.</li>
+<li><strong>Chapter 12</strong>：The versatile analyses of personalized TPC pipelines.</li>
+<li><strong>Chapter 13</strong>：Two download modules for the custom data subset.</li>
+</ul>
+<hr />
+<p>Welcome to cite the following articles when <strong>UCSCXenaShiny</strong> has facilitated your study:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>UCSCXenaTools</strong> —</p>
+<p>Wang S and Liu X. The UCSCXenaTools R package: a toolkit for accessing genomics data from UCSC Xena platform, from cancer multi-omics to single-cell RNA-seq. Journal of Open Source Software. 2019;4 40:1627.</p></li>
+<li><p><strong>UCSCXenaShiny</strong> <strong>v1</strong> —</p>
+<p>Wang S, Xiong Y, Zhao L, Gu K, Li Y, Zhao F, et al. UCSCXenaShiny: an R/CRAN package for interactive analysis of UCSC Xena data. Bioinformatics. 2022;38 2:527-9. <a href="doi:10.1093/bioinformatics/btab561" class="uri">doi:10.1093/bioinformatics/btab561</a>.</p></li>
+<li><p><strong>UCSCXenaShiny</strong> <strong>v2</strong> —</p>
+<p>Li S, et al. UCSCXenaShiny v2: Facilitating Integrative and Personalized Oncology Omics Analysis. 2024 (In preparation)</p></li>
+</ol>
+<blockquote>
+<p>If you have any question, please report to the <a href="https://github.com/openbiox/UCSCXenaShiny/issues">Github issues page</a> or email to <a href="mailto:lishensuo@163.com" class="email">lishensuo@163.com</a></p>
+</blockquote>
 
+</div>
 </div>
             </section>
 
