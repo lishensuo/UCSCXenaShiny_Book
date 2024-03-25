@@ -53,18 +53,18 @@ ___
 
  Welcome to cite the following articles when **UCSCXenaShiny** has facilitated your study:
 
-1. **UCSCXenaTools** —
+1. **UCSCXenaShiny** **v2** —
 
-   Wang S and Liu X. The UCSCXenaTools R package: a toolkit for accessing genomics data from UCSC Xena platform, from cancer multi-omics to single-cell RNA-seq. Journal of Open Source Software. 2019;4 40:1627.
+   Li S, et al. UCSCXenaShiny v2: Facilitating Integrative and Personalized Oncology Omics Analysis. 2024 (In preparation)
 
 2. **UCSCXenaShiny** **v1** —
 
    Wang S, Xiong Y, Zhao L, Gu K, Li Y, Zhao F, et al. UCSCXenaShiny: an R/CRAN package for interactive analysis of UCSC Xena data. Bioinformatics. 2022;38 2:527-9. doi:10.1093/bioinformatics/btab561.
 
-3. **UCSCXenaShiny** **v2** —
+3. **UCSCXenaTools** —
 
-   Li S, et al. UCSCXenaShiny v2: Facilitating Integrative and Personalized Oncology Omics Analysis. 2024 (In preparation)
-   
-   
+   Wang S and Liu X. The UCSCXenaTools R package: a toolkit for accessing genomics data from UCSC Xena platform, from cancer multi-omics to single-cell RNA-seq. Journal of Open Source Software. 2019;4 40:1627.
+
+
 
 > If  you have any question, please report to the [Github issues page](https://github.com/openbiox/UCSCXenaShiny/issues) or email to lishensuo@163.com

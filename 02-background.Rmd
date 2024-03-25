@@ -3,7 +3,7 @@
 
 ## UCSC Xena Datasets
 
-UCSC Xena platform is developed by the UC Santa Cruz Genomics Institute and serves as a comprehensive repository to provide thousands of processed omics datasets from large cancer research projects (e.g. TCGA, PCAWG and CCLE) or individual research groups and enable unprecedented research opportunities. 
+[UCSC Xena platform](https://xenabrowser.net/datapages/) is developed by the UC Santa Cruz Genomics Institute and serves as a comprehensive repository to provide thousands of processed omics datasets from large cancer research projects (e.g. TCGA, PCAWG and CCLE) or individual research groups and enable unprecedented research opportunities. 
 
 The hierarchy for storing and querying datasets is as follows:
 
@@ -145,7 +145,6 @@ knitr::kable(
   booktabs = TRUE
 )
 ```
-
 
 
 

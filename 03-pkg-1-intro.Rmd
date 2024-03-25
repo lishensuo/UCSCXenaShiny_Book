@@ -2,8 +2,15 @@
 
 # Install {#install}
 
+
+
+Here, we have provided several ways to install UCSCXenaShiny R package. You can see the detailed instruction and troubleshooting information from the README file of our [Github project](https://github.com/openbiox/UCSCXenaShiny).  
+
+
+
 ## CRAN 
-- https://cran.r-project.org/web/packages/UCSCXenaShiny/index.html
+
+- https://cran.r-project.org/package=UCSCXenaShiny
 
 ```{r, eval=FALSE}
 # Online
@@ -15,7 +22,7 @@ install.packages("UCSCXenaShiny", repos = c("https://openbiox.r-universe.dev", "
 install.packages("UCSCXenaShiny_2.0.0.tar.gz", repos = NULL, type="source")
 ```
 
-- Once the package has been installed successfully, your can check its version:
+- Once the package has been installed successfully, your can load it and check its version:
 
 ```{r}
 library(UCSCXenaShiny)
@@ -45,12 +52,11 @@ conda install -c conda-forge r-ucscxenashiny
 conda search r-ucscxenashiny --channel conda-forge
 ```
 
+## Docker
+```{bash, eval=FALSE}
+# install image
+docker pull shixiangwang/ucscxenashiny
 
-> Note: See other ways of other installations (e.g. Docker, Linux system) from the README interface of [Github project](https://github.com/openbiox/UCSCXenaShiny).  
-
-
-
-
-
-
-
+# run image
+docker run -d --name xenashiny -p 3838:3838 shixiangwang/ucscxenashiny
+```
