@@ -25,7 +25,7 @@ github-repo: rstudio/bookdown-demo
 knitr::include_graphics('images/p0000.png')
 ```
 
-Here, we have prepared the tutorial book to introduce the detailed usage of UCSCXenaShiny. Firstly, we will start with the basic knowledge of UCSC Xena repository and its data hubs in **Chapter \@ref(intro)**. Then, the following chapters can be generally divided into two parts for the usage of R package and Shiny App:
+Here, we have prepared the tutorial book to introduce the detailed usage of UCSCXenaShiny based on R Markdown and [bookdown](https://github.com/rstudio/bookdown). Firstly, we will start with the basic knowledge of UCSC Xena repository and its data hubs in **Chapter \@ref(intro)**. Then, the following chapters can be generally divided into two parts for the usage of R package and Shiny App:
 
 #### Part Ⅰ {-} 
 
