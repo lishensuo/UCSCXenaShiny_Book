@@ -1,4 +1,4 @@
-# Personalized TPC pipelines-Upstream
+# Personalized TPC pipelines(1) {#per-tpc-1}
 
 ## Extensive tumor data
 
@@ -23,8 +23,8 @@ knitr::include_graphics('images/p1202.png')
 
 ###  Reference of full identifiers
 
-- In the "**Help→ID query**" page,  all specific identifiers for "*Molecular profile*", "*Tumor index*", "*Immune Infiltration*", "*Pathway activity*", "*Phenotype data*" types of TPC samples are compiling.
-- For example, valid identifiers under the *TCGA mRNA Expression* subtype are shown in the figure.
+- In the "**Help→ID query**" page,  all identifiers for "*Molecular profile*", "*Tumor index*", "*Immune Infiltration*", "*Pathway activity*", "*Phenotype data*" types of TPC samples are compiling for easy query before analysis.
+- For example, valid identifiers under the *TCGA mRNA Expression* subtype are shown in the following figure.
 
 ```{r p1203, fig.cap='TPC Identifiers Query Page',  fig.align='center', echo = FALSE, out.width="100%"}
 knitr::include_graphics('images/p1203.png')
@@ -38,8 +38,7 @@ knitr::include_graphics('images/p1203.png')
 1. Users are enabled to upload random identifiers for joint analysis in the "**Upload metadata**" part of **S1** step.
 2. The example file can be downloaded via the right button to see the format requirements.
    - .CSV file;
-   - The first column names "Sample" with sample ids. (e.g. "TCGA-OR-A5J1-01" for TCGA samples);
-   - Note only the intersected samples between this column and all TPC samples are considered;
+   - The first column names "Sample" with sample ids (e.g. "TCGA-OR-A5J1-01" for TCGA samples). Only the intersected samples between this column and all TPC samples are considered;
    - The other columns are random identifiers with continuous or categorical values.
 3. Upon successful identifiers upload, they will be added into the "Custom metadata" subtype of "Phenotype data".
 
@@ -49,21 +48,21 @@ knitr::include_graphics('images/p1204.png')
 
 #### Design of custom signature
 
-1. Users can also design custom signature score based on user-defined molecular formula in the "**Add signature**" part of **S1** step.
+1. Users can also design custom signature score based on self-defined molecular formula in the "**Add signature**" part of **S1** step.
 2. Upon successful signature design and score calculation, they will also be added into the "Custom metadata" subtype of "Phenotype data".
 
 ```{r p1205, fig.cap='Design of custom signature',  fig.align='center', echo = FALSE, out.width="80%"}
 knitr::include_graphics('images/p1205.png')
 ```
 
-3. As shown in the figure, the signature can be set as following steps after clicking Edit button.
+3. As shown in the figure below, the signature can be set as following steps after clicking Edit button.
 
 - Firstly, modify the name and select the molecular type;
 - Then, design the molecular formula comprised of multiple molecules with respective coefficients;
   - The  coefficient of each molecule is divided into two parts (Directions and Absolute Coef).
-  - The "**Del**" button will cancel the last set molecule and the "**Reset**" button will undo all set molecules.
+  - The "**Del**" button will cancel the last set molecule and the "**Reset**" button will undo all selected molecules.
   - The real-time formula is shown in the bottom.
-- Finally, click the "Query data" button to calculate the signature scores and then click the right button to add the signature into the "Custom metadata" subtype of "Phenotype data". In addition, user can obtain the score locally via the bottom button.
+- Finally, click the "Query data" button to calculate the signature scores and click the right button to add the signature into the "Custom metadata" subtype of "Phenotype data". In addition, user can obtain the result locally via the bottom button.
 
 ```{r p1206, fig.cap='3 steps of signature design',  fig.align='center', echo = FALSE, out.width="100%"}
 knitr::include_graphics('images/p1206.png')
@@ -76,9 +75,9 @@ knitr::include_graphics('images/p1206.png')
 knitr::include_graphics('images/p1207.png')
 ```
 
-### Sample filtering
+### Sample filtering {#sample-filtering}
 
-After selecting one tumor, the all samples will be selected by default. Here, we provide two methods to obtain specific subpopulation  in the "**Filter samples**" part of **S1** step.
+After selecting one tumor, all its samples will be selected by default. Here, we provide two methods to obtain specific subpopulation  in the "**Filter samples**" part of **S1** step.
 
 ```{r p1208, fig.cap='Sample filtering module',  fig.align='center', echo = FALSE, out.width="80%"}
 knitr::include_graphics('images/p1208.png')
@@ -86,7 +85,7 @@ knitr::include_graphics('images/p1208.png')
 
 #### Quick filter
 
-Users can directly make quick selections based on the code(pathological ) types of samples. Based on the [14th to 15th characters](https://gdc.cancer.gov/resources-tcga-users/tcga-code-tables/sample-type-codes) of the TCGA sample ID (e.g., TCGA-19-1787-01), samples can be categorized into different group types. The common code types involved in UCSCXenaShiny analysis are shown in the following table.
+Users can directly make quick selections based on tissue code (pathological) types of samples. Based on the [14th to 15th characters](https://gdc.cancer.gov/resources-tcga-users/tcga-code-tables/sample-type-codes) of the TCGA sample ID (e.g., TCGA-19-1787-01), samples can be categorized into different types. The common code types involved in UCSCXenaShiny analysis are shown in the following table.
 
 | Code | Definition                                      | Short Letter Code |
 | :--- | :---------------------------------------------- | :---------------- |
@@ -104,15 +103,15 @@ Users can directly make quick selections based on the code(pathological ) types 
 
 Through this module, users are enabled to perform personalized sample filtering. This followings are operational steps:
 
-1. Set the candidate conditions from comprehensive identifiers. Each addition will rename the selected identifier as "Condition_X". 
+1. Set the candidate conditions from comprehensive identifiers. Each addition will rename the selected identifier as "Condition_Num". 
    - When selecting molecular identifier as condition, it may take some time to download from the USCS Xena, depending on the network.
    - For TPC samples, some basic clinical variables have been selected into the candidate pool. For TCGA samples, they include *Age, Code, Gender, Stage_ajcc, Stage_clinical, Grade*.
 2. Get an overview of the distribution of each candidate condition for clear filtering .
-   - For continuous variables,  the mean and the distribution of multiple percentiles are display.
-   - For categorical variables, the frequency of each category is display.
+   - For continuous variables,  the mean and the distribution of multiple percentiles are displayed.
+   - For categorical variables, the frequency of each category is displayed.
 3. Perform filtering operation based on one or multiple conditions from the above candidate list. Total 6 operators are devised for versatile filtering give the type of each condition.
-   - For categorical variable, "+" and "-" are used for retain or discard specific categories of samples.
-   - For continuous variable, ">" and "<" are used to set absolute cutoff, while "%>" and "%<" are used to set percentile cutoff.
+   - For categorical variable, "**+**" and "**-**" are used for retain or discard specific categories of samples.
+   - For continuous variable, "**>**" and "**<**" are used to set absolute cutoff, while "**%>**" and "**%<**" are used to set percentile cutoff.
    
 ```{r p1209, fig.cap='3 steps of sample filtering',  fig.align='center', echo = FALSE, out.width="100%"}
 knitr::include_graphics('images/p1209.png')
@@ -130,7 +129,7 @@ knitr::include_graphics('images/p1209.png')
 
 For binary comparison or survival analysis, it is necessary to divide the samples into two groups based on one specific condition. Here, we also provide a personalized grouping module to flexibly set two ranges of sample populations. 
 
-Generally, it have two steps: 
+Generally, it has the two main steps: 
 
 1. Select one condition and observe its distribution. Similar to the filtering module, it can bring a clear pre-knowledge by observing the distribution of one continuous or categorical condition.
 
@@ -138,8 +137,8 @@ Generally, it have two steps:
 
 - For categorical variable, assign one or more classifications for both groups (**Left figure**)
 - For continuous variable, set the minimum and max thresholds for both group. 
-  - By default, the first group (Group1) has lower value with **left close** and **right open** range, e.g. [0, 1). If its left range is blank, it represent the minimum value of the condition. 
-  - And, the second group (Group2) has larger value with **left close** and **right close** range, e.g. [0, 1]. If its right range is blank, it represent the maximum value of the condition. 
+  - By default, the first group (Group1) has lower value with **left close** and **right open** range, e.g. [0, 1). If its left range is blank, it will represent the minimum value of the condition. 
+  - And, the second group (Group2) has larger value with **left close** and **right close** range, e.g. [0, 1]. If its right range is blank, it will represent the maximum value of the condition. 
   - The thresholds can be percentile values (**Middle figure**) or absolute values (**Right figure**) depending on purposes.
 
 ```{r p1210, fig.cap='Sample grouping module',  fig.align='center', echo = FALSE, out.width="100%"}
@@ -152,40 +151,40 @@ knitr::include_graphics('images/p1210.png')
 
 ## Data fetch
 
-After sample selection and processing, it usually need to fetch data for downstream analysis. 
+After sample selection and processing, we usually need to fetch data for downstream analysis. 
 
 ### Single data
 
-Most of time, we just need  to select one identifier and fetch its values. According to the hierarchical organization (**Data type → Data subtype → Identifier**), select one interesting identifier and then click the "Query button" to fetch data. It's worth noting that, for *Molecular profile* data types, it may take some time to download from the UCSC Xena, depending on the network.
+Most of time, we just need to select one identifier and fetch its values. According to the hierarchical organization (**Data type → Data subtype → Identifier**), select one interesting identifier and then click the "Query button" to fetch data. It's worth noting that, for *Molecular profile* data types, it may take some time to download from the UCSC Xena, depending on the network.
 
 
 ```{r p1211, fig.cap='Fetch single data',  fig.align='center', echo = FALSE, out.width="80%"}
 knitr::include_graphics('images/p1211.png')
 ```
 
-### Multiple data
+### Multiple data {#multiple-data}
 
 For batch analysis, we can select multiple identifiers based on one of three ways.
 
-1. In the first way (**Left figure**), user can select batch identifiers of one specific subtype one by one;
-2. In the second way (**Middle figure**), user can select all identifiers of one specific subtype. Notably, for some molecular types with vast identifiers, all the identifiers (gene/transcript) belong to one MSigDB signature can be selected.
+1. In the first way (**Left figure**), user can select batch identifiers of one specific subtype one by one.
+2. In the second way (**Middle figure**), user can select all identifiers of one specific subtype. Notably, for some molecular types with much identifiers, all the identifiers (gene/transcript) belong to one MSigDB signature can be selected.
 
 - These molecular types are "mRNA Expression", "DNA Methylation", "Mutation status", "Copy Number Variation", "Transcript Expression".
-- The MSigDB gene signatures are obtained via `msigdbr` package, which can be 9 main categories. 
+- The MSigDB gene signatures are obtained via [`msigdbr` package](https://igordot.github.io/msigdbr/), which can be 9 main categories (bottom table). 
 - Two links are available for detailed information of selected signature and MSigDB database.
-
 
 
 3. In the third way (**Right figure**), user can directly upload an identifier file with following requirements:
 
 - TXT format; 
-- One column without name;
+- One column without colname;
 - Only the valid identifiers that overlapped with the selected data subtype are retained
 
 ```{r p1212, fig.cap='Fetch multiple data',  fig.align='center', echo = FALSE, out.width="100%"}
 knitr::include_graphics('images/p1212.png')
 ```
 
+---
 
 | Category |              Notes              | Subcategory                                                  |
 | :------: | :-----------------------------: | ------------------------------------------------------------ |

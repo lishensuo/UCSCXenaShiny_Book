@@ -19,33 +19,31 @@ github-repo: rstudio/bookdown-demo
 
 # About {-}
 
-
-
-**UCSCXenaShiny** is an R package for interactively exploring UCSC Xena datasets. It is mainly designed to provide a web app (built on the top of [`{shiny}`](https://shiny.rstudio.com/) framework and [`{UCSCXenaTools}`](https://github.com/ropensci/UCSCXenaTools/) package) for downloading, analyzing and visualizing datasets from [UCSC Xena](https://xenabrowser.net/datapages/). In the latest version, the application can support both general and personalized  tumor molecular analysis with versatile functional modules and user-friendly interface layouts. Overall, our tool aims to make best use of public omics data from UCSC Xena and bridge the gap between precision oncology research and broad user community.  
+**UCSCXenaShiny** is an R package for interactively exploring UCSC Xena datasets. It is mainly designed to provide a web app (built on the top of [`{shiny}`](https://shiny.rstudio.com/) framework and [`{UCSCXenaTools}`](https://github.com/ropensci/UCSCXenaTools/) package) for downloading, analyzing and visualizing datasets from [UCSC Xena](https://xenabrowser.net/datapages/). In the latest version, the application can support both general and personalized  tumor molecular analysis with versatile functional modules and user-friendly interface layouts. Overall, our tool aims to make best use of public omics data from UCSC Xena and assist broad user community with precision oncology research.  
 
 ```{r p0000,  fig.align='center', echo = FALSE, out.width="80%"}
 knitr::include_graphics('images/p0000.png')
 ```
 
-Here, we have prepared the tutorial book to introduce the detailed usage of UCSCXenaShiny. Firstly, we will start with the basic knowledge of UCSC Xena repository, as well as TPC projects (**T**CGA, **P**CAWG, **C**CLE)  in **chapter 1**. Then, the following chapters can be generally divided into two parts for the usage of R package and Shiny App:
+Here, we have prepared the tutorial book to introduce the detailed usage of UCSCXenaShiny. Firstly, we will start with the basic knowledge of UCSC Xena repository and its data hubs in **Chapter \@ref(intro)**. Then, the following chapters can be generally divided into two parts for the usage of R package and Shiny App:
 
 #### Part Ⅰ {-} 
 
-- **Chapter 2**：The ways to install UCSCXenaShiny package.
-- **Chapter 3**：Avalilable built-in datasets of package, e.g. clinical or survival data.
-- **Chapter 4**：The functions to query molecular data of TPC datasets.
-- **Chapter 5**：The functions to perform various analyses based on TPC datasets.
+- **Chapter \@ref(install)**：The ways to install UCSCXenaShiny package.
+- **Chapter \@ref(build-in)**：Avalilable built-in datasets of package, e.g. clinical or survival data.
+- **Chapter \@ref(data-query)**：The functions to query molecular data of TPC datasets.
+- **Chapter \@ref(data-analysis)**：The functions to perform various analyses based on TPC datasets.
 
 #### Part Ⅱ  {-} 
 
-- **Chapter 6**：The ways to visit UCSCXenaShiny application.
-- **Chapter 7**：The intuitive widgets and quick exploration modules in homepage.
-- **Chapter 8**：The query for all datasets of UCSC Xena repository.
-- **Chapter 9**：General analysis modules for any matrix datasets.
-- **Chapter 10**：Custom analysis modules for TPC datasets.
-- **Chapter 11**：The key preprocesses of personalized TPC pipelines. 
-- **Chapter 12**：The versatile analyses of personalized TPC pipelines. 
-- **Chapter 13**：Two download modules for the custom data subset. 
+- **Chapter \@ref(visit)**：The ways to visit UCSCXenaShiny application.
+- **Chapter \@ref(home)**：The intuitive widgets and quick exploration modules in homepage.
+- **Chapter \@ref(repo)**：The query for all datasets of UCSC Xena repository.
+- **Chapter \@ref(general-da)**：General analysis modules for any matrix datasets.
+- **Chapter \@ref(custom-tpc)**：Custom analysis modules for TPC datasets.
+- **Chapter \@ref(per-tpc-1)**：The key preprocesses of personalized TPC pipelines. 
+- **Chapter \@ref(per-tpc-2)**：The versatile analyses of personalized TPC pipelines. 
+- **Chapter \@ref(download)**：Two download modules for the custom data subset. 
 
 
 

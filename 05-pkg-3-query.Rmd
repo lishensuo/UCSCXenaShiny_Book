@@ -1,7 +1,7 @@
-# Molecular data query
+# Molecular data query {#data-query}
 
 ## TCGA query
-- Search molecular identifiers for TCGA samples: Figure \@ref(fig:tcga-ids)
+- Search molecular identifiers for TCGA samples via list `pancan_identifier_help` referring to Figure \@ref(fig:tcga-ids)
 
 ```{r query-tcga-func, echo = FALSE}
 data = readxl::read_excel("images/table_01.xlsx")
@@ -16,7 +16,7 @@ knitr::kable(
 ### get_pancan_gene_value()
 - `get_pancan_gene_value(identifier, norm = c("tpm", "fpkm", "nc"))`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_pancan_gene_value("TP53", norm = "tpm")
 data = data.list$expression
 head(data.frame(value=data))
@@ -34,7 +34,7 @@ Information of available datasets:
 ### get_pancan_transcript_value()
 - `get_pancan_transcript_value(identifier, norm = c("tpm", "fpkm", "nc"))`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_pancan_transcript_value("ENST00000456328", norm = "tpm")
 data = data.list$expression
 head(data.frame(value=data))
@@ -52,7 +52,7 @@ Information of available datasets:
 ### get_pancan_protein_value()
 - `get_pancan_protein_value(identifier)`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_pancan_protein_value("ACC_pS79")
 data = data.list$expression
 head(data.frame(value=data))
@@ -67,7 +67,7 @@ Information of available datasets:
 ### get_pancan_mutation_status()
 - `get_pancan_mutation_status(identifier)`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data = get_pancan_mutation_status("TP53")
 head(data.frame(value=data))
 ```
@@ -80,7 +80,7 @@ Information of available datasets:
 ### get_pancan_cn_value()
 - `get_pancan_cn_value(identifier, gistic2 = TRUE, use_thresholded_data = FALSE)`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_pancan_cn_value("TP53")
 data = data.list$data
 head(data.frame(value=data))
@@ -94,7 +94,7 @@ Information of available datasets:
 | [pancanAtlasHub](https://pancanatlas.xenahubs.net) | [..._SNP_6_whitelisted.gene.xena](https://xenabrowser.net/datapages/?dataset=broad.mit.edu_PANCAN_Genome_Wide_SNP_6_whitelisted.gene.xena&host=https://pancanatlas.xenahubs.net) |    10873    |                      log(tumor/normal)                       |
 
 ### get_pancan_methylation_value()
-```{r eval=FALSE}
+```{r eval=FALSE, cache=TRUE}
 get_pancan_methylation_value(
   identifier,
   type = c("450K", "27K"),
@@ -102,8 +102,10 @@ get_pancan_methylation_value(
   aggr = c("NA", "mean", "Q0", "Q25", "Q50", "Q75", "Q100")
 )
 ```
+- `rule_out`: exclude some CpG site(s) under one gene;
+- `aggr`: select one aggregation method to calculate gene-level methylation (Default: "NA"(mean)).
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_pancan_methylation_value("TP53")
 data = data.list$data
 head(data.frame(value=data))
@@ -120,7 +122,7 @@ Information of available datasets:
 ### get_pancan_miRNA_value()
 - `get_pancan_miRNA_value(identifier, gistic2 = TRUE, use_thresholded_data = FALSE)`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_pancan_miRNA_value("hsa-let-7a-2-3p")
 data = data.list$expression
 head(data.frame(value=data))
@@ -133,7 +135,7 @@ Information of available datasets:
 
 
 ## PCAWG query
-- Search molecular identifiers for TCGA samples: Figure \@ref(fig:pc-ids)
+- Search molecular identifiers for TCGA samples via list `pcawg_identifier` referring to Figure \@ref(fig:pc-ids)
 
 ```{r query-pcawg-func, echo = FALSE}
 data = readxl::read_excel("images/table_01.xlsx")
@@ -147,7 +149,7 @@ knitr::kable(
 ### get_pcawg_gene_value()
 - `get_pcawg_gene_value(identifier)`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_pcawg_gene_value("TP53")
 data = data.list$data
 head(data.frame(value=data))
@@ -161,7 +163,7 @@ Information of available datasets:
 ### get_pcawg_fusion_value()
 - `get_pcawg_fusion_value(identifier)`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_pcawg_fusion_value("SAMD11")
 data = data.list$data
 head(data.frame(value=data))
@@ -176,7 +178,7 @@ Information of available datasets:
 ### get_pcawg_miRNA_value()
 - `get_pcawg_miRNA_value(identifier, norm = c("TMM", "UQ"))`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_pcawg_miRNA_value("hsa-let-7a-2-3p")
 data = data.list$data
 head(data.frame(value=data))
@@ -191,7 +193,7 @@ Information of available datasets:
 ### get_pcawg_promoter_value()
 - `get_pcawg_promoter_value(identifier, type = c("raw", "relative", "outlier"))`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_pcawg_promoter_value("prmtr.1")
 data = data.list$data
 head(data.frame(value=data))
@@ -207,7 +209,7 @@ Information of available datasets:
 ### get_pcawg_APOBEC_mutagenesis_value()
 - `get_pcawg_APOBEC_mutagenesis_value(identifier)`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_pcawg_APOBEC_mutagenesis_value("A3A_or_A3B")
 data = data.list$data
 head(data.frame(value=data))
@@ -220,7 +222,7 @@ Information of available datasets:
 
 
 ## CCLE query
-- Search molecular identifiers for TCGA samples: Figure \@ref(fig:pc-ids)
+- Search molecular identifiers for TCGA samples via list `ccle_identifier` referring to Figure \@ref(fig:pc-ids)
 
 ```{r query-ccle-func, echo = FALSE}
 data = readxl::read_excel("images/table_01.xlsx")
@@ -234,7 +236,7 @@ knitr::kable(
 ### get_ccle_gene_value()
 - `get_ccle_gene_value(identifier, norm = c("rpkm", "nc"))`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_ccle_gene_value("TP53", norm = "rpkm")
 data = data.list$expression
 head(data.frame(value=data))
@@ -249,7 +251,7 @@ Information of available datasets:
 ### get_ccle_gene_value()
 - `get_ccle_protein_value(identifier)`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_ccle_protein_value("14-3-3_beta")
 data = data.list$expression
 head(data.frame(value=data))
@@ -263,7 +265,7 @@ Information of available datasets:
 ### get_ccle_mutation_status()
 - `get_ccle_mutation_status(identifier)`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data = get_ccle_mutation_status("TP53")
 data = data[data$genes=="TP53",c("sampleID", "genes")]
 head(na.omit(data))
@@ -277,7 +279,7 @@ Information of available datasets:
 ### get_ccle_cn_value()
 - `get_ccle_cn_value(identifier)`
 
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 data.list = get_ccle_cn_value("TP53")
 data = data.list$data
 head(data.frame(value=data))
@@ -291,7 +293,7 @@ Information of available datasets:
 ## General query
 
 ### query_pancan_value()
-General TPC query
+A function that integrates all above functions for quick query of TPC molecular data
 ```{r eval=FALSE}
 query_pancan_value(
   molecule,
@@ -308,7 +310,7 @@ query_pancan_value(
 ```
 
 - Single molecule query with modified opt_pancan
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 opt_pancan = .opt_pancan
 opt_pancan$toil_mRNA$norm = "nc"
 data.list = query_pancan_value(
@@ -322,7 +324,7 @@ head(data.frame(value=data))
 ```
 
 - Molecular signature query
-```{r message=FALSE}
+```{r message=FALSE, cache=TRUE}
 # a space must exist in the signature string
 signature <- "TP53 + 2*KRAS - 1.3*PTEN" 
 data.list = query_pancan_value(
@@ -338,7 +340,7 @@ head(data.frame(value=data))
 
 
 ### query_molecule_value()
-General UCSCXena Matrix dataset
+A function to query general molecular data of most matrix datasets of UCSC Xena repository
 
 - Genomic matrix repository
 ```{r}

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Built-in datasets | UCSCXenaShiny v2 Book</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Built-in datasets | UCSCXenaShiny v2 Book" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Built-in datasets | UCSCXenaShiny v2 Book" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Shensuo Li, Shixiang Wang" />
+
+
+<meta name="date" content="2024-03-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="install.html"/>
+<link rel="next" href="data-query.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#ucsc-xena-datasets"><i class="fa fa-check"></i><b>1.1</b> UCSC Xena Datasets</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#tcga-abbreviations"><i class="fa fa-check"></i><b>1.2</b> TCGA abbreviations</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#pcawg-abbreviations"><i class="fa fa-check"></i><b>1.3</b> PCAWG abbreviations</a></li>
+</ul></li>
+<li class="part"><span><b>I R package</b></span></li>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Install</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#cran"><i class="fa fa-check"></i><b>2.1</b> CRAN</a></li>
+<li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#github"><i class="fa fa-check"></i><b>2.2</b> Github</a></li>
+<li class="chapter" data-level="2.3" data-path="install.html"><a href="install.html#conda"><i class="fa fa-check"></i><b>2.3</b> Conda</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="build-in.html"><a href="build-in.html"><i class="fa fa-check"></i><b>3</b> Built-in datasets</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="build-in.html"><a href="build-in.html#tcga"><i class="fa fa-check"></i><b>3.1</b> TCGA</a></li>
+<li class="chapter" data-level="3.2" data-path="build-in.html"><a href="build-in.html#pcawg"><i class="fa fa-check"></i><b>3.2</b> PCAWG</a></li>
+<li class="chapter" data-level="3.3" data-path="build-in.html"><a href="build-in.html#ccle"><i class="fa fa-check"></i><b>3.3</b> CCLE</a></li>
+<li class="chapter" data-level="3.4" data-path="build-in.html"><a href="build-in.html#zenodo"><i class="fa fa-check"></i><b>3.4</b> Zenodo</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="build-in.html"><a href="build-in.html#tumor-infiltration-estimations"><i class="fa fa-check"></i><b>3.4.1</b> tumor infiltration estimations</a></li>
+<li class="chapter" data-level="3.4.2" data-path="build-in.html"><a href="build-in.html#ssgsea-pathway-activities"><i class="fa fa-check"></i><b>3.4.2</b> ssGSEA pathway activities</a></li>
+<li class="chapter" data-level="3.4.3" data-path="build-in.html"><a href="build-in.html#other-tcga-annotations"><i class="fa fa-check"></i><b>3.4.3</b> other TCGA annotations</a></li>
+<li class="chapter" data-level="3.4.4" data-path="build-in.html"><a href="build-in.html#identifier-repository"><i class="fa fa-check"></i><b>3.4.4</b> identifier repository</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-query.html"><a href="data-query.html"><i class="fa fa-check"></i><b>4</b> Molecular data query</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-query.html"><a href="data-query.html#tcga-query"><i class="fa fa-check"></i><b>4.1</b> TCGA query</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="data-query.html"><a href="data-query.html#get_pancan_gene_value"><i class="fa fa-check"></i><b>4.1.1</b> get_pancan_gene_value()</a></li>
+<li class="chapter" data-level="4.1.2" data-path="data-query.html"><a href="data-query.html#get_pancan_transcript_value"><i class="fa fa-check"></i><b>4.1.2</b> get_pancan_transcript_value()</a></li>
+<li class="chapter" data-level="4.1.3" data-path="data-query.html"><a href="data-query.html#get_pancan_protein_value"><i class="fa fa-check"></i><b>4.1.3</b> get_pancan_protein_value()</a></li>
+<li class="chapter" data-level="4.1.4" data-path="data-query.html"><a href="data-query.html#get_pancan_mutation_status"><i class="fa fa-check"></i><b>4.1.4</b> get_pancan_mutation_status()</a></li>
+<li class="chapter" data-level="4.1.5" data-path="data-query.html"><a href="data-query.html#get_pancan_cn_value"><i class="fa fa-check"></i><b>4.1.5</b> get_pancan_cn_value()</a></li>
+<li class="chapter" data-level="4.1.6" data-path="data-query.html"><a href="data-query.html#get_pancan_methylation_value"><i class="fa fa-check"></i><b>4.1.6</b> get_pancan_methylation_value()</a></li>
+<li class="chapter" data-level="4.1.7" data-path="data-query.html"><a href="data-query.html#get_pancan_mirna_value"><i class="fa fa-check"></i><b>4.1.7</b> get_pancan_miRNA_value()</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-query.html"><a href="data-query.html#pcawg-query"><i class="fa fa-check"></i><b>4.2</b> PCAWG query</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="data-query.html"><a href="data-query.html#get_pcawg_gene_value"><i class="fa fa-check"></i><b>4.2.1</b> get_pcawg_gene_value()</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-query.html"><a href="data-query.html#get_pcawg_fusion_value"><i class="fa fa-check"></i><b>4.2.2</b> get_pcawg_fusion_value()</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data-query.html"><a href="data-query.html#get_pcawg_mirna_value"><i class="fa fa-check"></i><b>4.2.3</b> get_pcawg_miRNA_value()</a></li>
+<li class="chapter" data-level="4.2.4" data-path="data-query.html"><a href="data-query.html#get_pcawg_promoter_value"><i class="fa fa-check"></i><b>4.2.4</b> get_pcawg_promoter_value()</a></li>
+<li class="chapter" data-level="4.2.5" data-path="data-query.html"><a href="data-query.html#get_pcawg_apobec_mutagenesis_value"><i class="fa fa-check"></i><b>4.2.5</b> get_pcawg_APOBEC_mutagenesis_value()</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-query.html"><a href="data-query.html#ccle-query"><i class="fa fa-check"></i><b>4.3</b> CCLE query</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value"><i class="fa fa-check"></i><b>4.3.1</b> get_ccle_gene_value()</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value-1"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_gene_value()</a></li>
+<li class="chapter" data-level="4.3.3" data-path="data-query.html"><a href="data-query.html#get_ccle_mutation_status"><i class="fa fa-check"></i><b>4.3.3</b> get_ccle_mutation_status()</a></li>
+<li class="chapter" data-level="4.3.4" data-path="data-query.html"><a href="data-query.html#get_ccle_cn_value"><i class="fa fa-check"></i><b>4.3.4</b> get_ccle_cn_value()</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-query.html"><a href="data-query.html#general-query"><i class="fa fa-check"></i><b>4.4</b> General query</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="data-query.html"><a href="data-query.html#query_pancan_value"><i class="fa fa-check"></i><b>4.4.1</b> query_pancan_value()</a></li>
+<li class="chapter" data-level="4.4.2" data-path="data-query.html"><a href="data-query.html#query_molecule_value"><i class="fa fa-check"></i><b>4.4.2</b> query_molecule_value()</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-analysis.html"><a href="data-analysis.html"><i class="fa fa-check"></i><b>5</b> Molecular data analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-analysis.html"><a href="data-analysis.html#tcga-analysis"><i class="fa fa-check"></i><b>5.1</b> TCGA analysis</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="data-analysis.html"><a href="data-analysis.html#comparison-analysis"><i class="fa fa-check"></i><b>5.1.1</b> Comparison analysis</a></li>
+<li class="chapter" data-level="5.1.2" data-path="data-analysis.html"><a href="data-analysis.html#correlation-analysis"><i class="fa fa-check"></i><b>5.1.2</b> Correlation analysis</a></li>
+<li class="chapter" data-level="5.1.3" data-path="data-analysis.html"><a href="data-analysis.html#survival-analysis"><i class="fa fa-check"></i><b>5.1.3</b> Survival analysis</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-analysis.html"><a href="data-analysis.html#dimension-reduction"><i class="fa fa-check"></i><b>5.1.4</b> Dimension reduction</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="data-analysis.html"><a href="data-analysis.html#pcawg-analysis"><i class="fa fa-check"></i><b>5.2</b> PCAWG analysis</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="data-analysis.html"><a href="data-analysis.html#comparsion-analysis"><i class="fa fa-check"></i><b>5.2.1</b> Comparsion analysis</a></li>
+<li class="chapter" data-level="5.2.2" data-path="data-analysis.html"><a href="data-analysis.html#correlation-analysis-1"><i class="fa fa-check"></i><b>5.2.2</b> Correlation analysis</a></li>
+<li class="chapter" data-level="5.2.3" data-path="data-analysis.html"><a href="data-analysis.html#survival-analysis-1"><i class="fa fa-check"></i><b>5.2.3</b> Survival analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="data-analysis.html"><a href="data-analysis.html#ccle-analysis"><i class="fa fa-check"></i><b>5.3</b> CCLE analysis</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="data-analysis.html"><a href="data-analysis.html#comparsion-analysis-1"><i class="fa fa-check"></i><b>5.3.1</b> Comparsion analysis</a></li>
+<li class="chapter" data-level="5.3.2" data-path="data-analysis.html"><a href="data-analysis.html#correlation-analysis-2"><i class="fa fa-check"></i><b>5.3.2</b> Correlation analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="data-analysis.html"><a href="data-analysis.html#general-analysis"><i class="fa fa-check"></i><b>5.4</b> General analysis</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="data-analysis.html"><a href="data-analysis.html#comparison-analysis-1"><i class="fa fa-check"></i><b>5.4.1</b> Comparison analysis</a></li>
+<li class="chapter" data-level="5.4.2" data-path="data-analysis.html"><a href="data-analysis.html#correlation-analysis-3"><i class="fa fa-check"></i><b>5.4.2</b> Correlation analysis</a></li>
+<li class="chapter" data-level="5.4.3" data-path="data-analysis.html"><a href="data-analysis.html#survival-analysis-2"><i class="fa fa-check"></i><b>5.4.3</b> Survival analysis</a></li>
+<li class="chapter" data-level="5.4.4" data-path="data-analysis.html"><a href="data-analysis.html#dimension-reduction-1"><i class="fa fa-check"></i><b>5.4.4</b> Dimension reduction</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Shiny App</b></span></li>
+<li class="chapter" data-level="6" data-path="visit.html"><a href="visit.html"><i class="fa fa-check"></i><b>6</b> Visit</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="visit.html"><a href="visit.html#server-deployments"><i class="fa fa-check"></i><b>6.1</b> Server deployments</a></li>
+<li class="chapter" data-level="6.2" data-path="visit.html"><a href="visit.html#local-deployment"><i class="fa fa-check"></i><b>6.2</b> Local deployment</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="home.html"><a href="home.html"><i class="fa fa-check"></i><b>7</b> Homepage</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="home.html"><a href="home.html#quick-molecule-exploration"><i class="fa fa-check"></i><b>7.1</b> Quick Molecule Exploration</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="home.html"><a href="home.html#daily-gene"><i class="fa fa-check"></i><b>7.1.1</b> Daily Gene</a></li>
+<li class="chapter" data-level="7.1.2" data-path="home.html"><a href="home.html#pan-cancer-query"><i class="fa fa-check"></i><b>7.1.2</b> Pan-cancer Query</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="home.html"><a href="home.html#slick-gallery"><i class="fa fa-check"></i><b>7.2</b> Slick Gallery</a></li>
+<li class="chapter" data-level="7.3" data-path="home.html"><a href="home.html#tcga-analysis-guide"><i class="fa fa-check"></i><b>7.3</b> TCGA Analysis Guide</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="repo.html"><a href="repo.html"><i class="fa fa-check"></i><b>8</b> Repository</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="repo.html"><a href="repo.html#show-metadata"><i class="fa fa-check"></i><b>8.1</b> Show Metadata</a></li>
+<li class="chapter" data-level="8.2" data-path="repo.html"><a href="repo.html#request-data"><i class="fa fa-check"></i><b>8.2</b> Request Data</a></li>
+<li class="chapter" data-level="8.3" data-path="repo.html"><a href="repo.html#analyze-data"><i class="fa fa-check"></i><b>8.3</b> Analyze Data</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="general-da.html"><a href="general-da.html"><i class="fa fa-check"></i><b>9</b> General Dataset Analysis</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="general-da.html"><a href="general-da.html#m-vis-identifier-cor"><i class="fa fa-check"></i><b>9.1</b> Scatter-Correlation</a></li>
+<li class="chapter" data-level="9.2" data-path="general-da.html"><a href="general-da.html#m-vis-identifier-multi-cor"><i class="fa fa-check"></i><b>9.2</b> Matrix-Correlation</a></li>
+<li class="chapter" data-level="9.3" data-path="general-da.html"><a href="general-da.html#m-vis-identifier-grp-comparison"><i class="fa fa-check"></i><b>9.3</b> Group-Comparison</a></li>
+<li class="chapter" data-level="9.4" data-path="general-da.html"><a href="general-da.html#m-vis-identifier-grp-surv"><i class="fa fa-check"></i><b>9.4</b> Survival-Analysis</a></li>
+<li class="chapter" data-level="9.5" data-path="general-da.html"><a href="general-da.html#m-vis-identifier-dim-dist"><i class="fa fa-check"></i><b>9.5</b> Dimension-Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="custom-tpc.html"><a href="custom-tpc.html"><i class="fa fa-check"></i><b>10</b> Custom TPC modules</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="custom-tpc.html"><a href="custom-tpc.html#tcga-1"><i class="fa fa-check"></i><b>10.1</b> TCGA</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="custom-tpc.html"><a href="custom-tpc.html#comparison"><i class="fa fa-check"></i><b>10.1.1</b> Comparison</a></li>
+<li class="chapter" data-level="10.1.2" data-path="custom-tpc.html"><a href="custom-tpc.html#correlation"><i class="fa fa-check"></i><b>10.1.2</b> Correlation</a></li>
+<li class="chapter" data-level="10.1.3" data-path="custom-tpc.html"><a href="custom-tpc.html#survival-analysis-3"><i class="fa fa-check"></i><b>10.1.3</b> Survival analysis</a></li>
+<li class="chapter" data-level="10.1.4" data-path="custom-tpc.html"><a href="custom-tpc.html#dimension-reduction-2"><i class="fa fa-check"></i><b>10.1.4</b> Dimension Reduction</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="custom-tpc.html"><a href="custom-tpc.html#pcawg-1"><i class="fa fa-check"></i><b>10.2</b> PCAWG</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="custom-tpc.html"><a href="custom-tpc.html#comparison-analysis-2"><i class="fa fa-check"></i><b>10.2.1</b> Comparison analysis</a></li>
+<li class="chapter" data-level="10.2.2" data-path="custom-tpc.html"><a href="custom-tpc.html#correlation-analysis-4"><i class="fa fa-check"></i><b>10.2.2</b> Correlation analysis</a></li>
+<li class="chapter" data-level="10.2.3" data-path="custom-tpc.html"><a href="custom-tpc.html#survival-analysis-4"><i class="fa fa-check"></i><b>10.2.3</b> Survival analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="custom-tpc.html"><a href="custom-tpc.html#ccle-1"><i class="fa fa-check"></i><b>10.3</b> CCLE</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="custom-tpc.html"><a href="custom-tpc.html#comparison-analysis-3"><i class="fa fa-check"></i><b>10.3.1</b> Comparison analysis</a></li>
+<li class="chapter" data-level="10.3.2" data-path="custom-tpc.html"><a href="custom-tpc.html#correlation-analysis-5"><i class="fa fa-check"></i><b>10.3.2</b> Correlation analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="per-tpc-1.html"><a href="per-tpc-1.html"><i class="fa fa-check"></i><b>11</b> Personalized TPC pipelines(1)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="per-tpc-1.html"><a href="per-tpc-1.html#extensive-tumor-data"><i class="fa fa-check"></i><b>11.1</b> Extensive tumor data</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="per-tpc-1.html"><a href="per-tpc-1.html#compiling-types-of-identifiers"><i class="fa fa-check"></i><b>11.1.1</b> Compiling types of identifiers</a></li>
+<li class="chapter" data-level="11.1.2" data-path="per-tpc-1.html"><a href="per-tpc-1.html#reference-of-full-identifiers"><i class="fa fa-check"></i><b>11.1.2</b> Reference of full identifiers</a></li>
+<li class="chapter" data-level="11.1.3" data-path="per-tpc-1.html"><a href="per-tpc-1.html#user-defined-identifiers"><i class="fa fa-check"></i><b>11.1.3</b> User-defined identifiers</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="per-tpc-1.html"><a href="per-tpc-1.html#sample-processing"><i class="fa fa-check"></i><b>11.2</b> Sample processing</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="per-tpc-1.html"><a href="per-tpc-1.html#sample-filtering"><i class="fa fa-check"></i><b>11.2.1</b> Sample filtering</a></li>
+<li class="chapter" data-level="11.2.2" data-path="per-tpc-1.html"><a href="per-tpc-1.html#sample-grouping"><i class="fa fa-check"></i><b>11.2.2</b> Sample grouping</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="per-tpc-1.html"><a href="per-tpc-1.html#data-fetch"><i class="fa fa-check"></i><b>11.3</b> Data fetch</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="per-tpc-1.html"><a href="per-tpc-1.html#single-data"><i class="fa fa-check"></i><b>11.3.1</b> Single data</a></li>
+<li class="chapter" data-level="11.3.2" data-path="per-tpc-1.html"><a href="per-tpc-1.html#multiple-data"><i class="fa fa-check"></i><b>11.3.2</b> Multiple data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="per-tpc-2.html"><a href="per-tpc-2.html"><i class="fa fa-check"></i><b>12</b> Personalized TPC pipelines(2)</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="per-tpc-2.html"><a href="per-tpc-2.html#general-steps"><i class="fa fa-check"></i><b>12.1</b> General steps</a></li>
+<li class="chapter" data-level="12.2" data-path="per-tpc-2.html"><a href="per-tpc-2.html#correlation-analysis-6"><i class="fa fa-check"></i><b>12.2</b> Correlation analysis</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="per-tpc-2.html"><a href="per-tpc-2.html#individual-mode"><i class="fa fa-check"></i><b>12.2.1</b> Individual Mode</a></li>
+<li class="chapter" data-level="12.2.2" data-path="per-tpc-2.html"><a href="per-tpc-2.html#pan-cancer-mode"><i class="fa fa-check"></i><b>12.2.2</b> Pan-cancer Mode</a></li>
+<li class="chapter" data-level="12.2.3" data-path="per-tpc-2.html"><a href="per-tpc-2.html#batch-screen-mode"><i class="fa fa-check"></i><b>12.2.3</b> Batch Screen Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="per-tpc-2.html"><a href="per-tpc-2.html#comparison-analysis-4"><i class="fa fa-check"></i><b>12.3</b> Comparison analysis</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="per-tpc-2.html"><a href="per-tpc-2.html#individual-mode-1"><i class="fa fa-check"></i><b>12.3.1</b> Individual Mode</a></li>
+<li class="chapter" data-level="12.3.2" data-path="per-tpc-2.html"><a href="per-tpc-2.html#pan-cancer-mode-1"><i class="fa fa-check"></i><b>12.3.2</b> Pan-cancer Mode</a></li>
+<li class="chapter" data-level="12.3.3" data-path="per-tpc-2.html"><a href="per-tpc-2.html#batch-screen-mode-1"><i class="fa fa-check"></i><b>12.3.3</b> Batch Screen Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="per-tpc-2.html"><a href="per-tpc-2.html#survival-analysis-5"><i class="fa fa-check"></i><b>12.4</b> Survival analysis</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="per-tpc-2.html"><a href="per-tpc-2.html#individual-mode-2"><i class="fa fa-check"></i><b>12.4.1</b> Individual Mode</a></li>
+<li class="chapter" data-level="12.4.2" data-path="per-tpc-2.html"><a href="per-tpc-2.html#pan-cancer-mode-2"><i class="fa fa-check"></i><b>12.4.2</b> Pan-cancer Mode</a></li>
+<li class="chapter" data-level="12.4.3" data-path="per-tpc-2.html"><a href="per-tpc-2.html#batch-screen-mode-2"><i class="fa fa-check"></i><b>12.4.3</b> Batch Screen Mode</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="download.html"><a href="download.html"><i class="fa fa-check"></i><b>13</b> Download modules</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="download.html"><a href="download.html#download-tpc-datasets"><i class="fa fa-check"></i><b>13.1</b> Download TPC datasets</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="download.html"><a href="download.html#omics-molecular-data"><i class="fa fa-check"></i><b>13.1.1</b> Omics molecular data</a></li>
+<li class="chapter" data-level="13.1.2" data-path="download.html"><a href="download.html#non-omics-annotation-data"><i class="fa fa-check"></i><b>13.1.2</b> Non-omics annotation data</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="download.html"><a href="download.html#download-ucsc-xena-datasets"><i class="fa fa-check"></i><b>13.2</b> Download UCSC Xena datasets</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/openbiox/UCSCXenaShiny" target="blank">UCSCXenaShiny Github</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">UCSCXenaShiny v2 Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="build-in" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Built-in datasets<a href="build-in.html#build-in" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>We also have curated tens of tumor non-omics annotation datasets with supplementary features from UCSC Xena repository or other resources for extensive analysis. Notably, datasets with large amounts of data are uploaded to Zenodo. They can be loaded via <code>load_data()</code> function.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:builtin-datasets"></span>
+<img src="images/p001.png" alt="UCSCXenaShiny built-in datasets" width="80%" />
+<p class="caption">
+Figure 3.1: UCSCXenaShiny built-in datasets
+</p>
+</div>
+<div id="tcga" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> TCGA<a href="build-in.html#tcga" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><code>TCGA.organ</code>: Detailed information of 33 TCGA projects</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="build-in.html#cb9-1" tabindex="-1"></a><span class="fu">head</span>(TCGA.organ)</span></code></pre></div>
+<pre><code>##   TCGA                              Detail    organ
+## 1 BRCA           breast invasive carcinoma   breast
+## 2 PRAD             prostate adenocarcinoma prostate
+## 3   OV   ovarian serous cystadenocarcinoma    ovary
+## 4 PCPG    pheochromocytoma &amp; paraganglioma         
+## 5  GBM             glioblastoma multiforme    brain
+## 6 HNSC head &amp; neck squamous cell carcinoma</code></pre>
+<ul>
+<li><code>tcga_gtex</code>: Merged information of TCGA and GTEx samples</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="build-in.html#cb11-1" tabindex="-1"></a><span class="fu">head</span>(tcga_gtex)</span></code></pre></div>
+<pre><code>##            sample tissue            type type2
+## 1 TCGA-D3-A1QA-07   SKCM SKCM_tumor_TCGA tumor
+## 2 TCGA-DE-A4MD-06   THCA THCA_tumor_TCGA tumor
+## 3 TCGA-J8-A3O2-06   THCA THCA_tumor_TCGA tumor
+## 4 TCGA-J8-A3YH-06   THCA THCA_tumor_TCGA tumor
+## 5 TCGA-EM-A2P1-06   THCA THCA_tumor_TCGA tumor
+## 6 TCGA-J8-A4HW-06   THCA THCA_tumor_TCGA tumor</code></pre>
+<ul>
+<li><code>tcga_clinical</code>: Common phenotypes of TCGA samples from Table S1 of <a href="https://www.cell.com/cell/fulltext/S0092-8674(18)30229-0?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867418302290%3Fshowall%3Dtrue#supplementaryMaterial">the paper</a>.</li>
+<li><code>tcga_clinical_fine</code>: Basic phenotypes of TCGA samples</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="build-in.html#cb13-1" tabindex="-1"></a><span class="fu">head</span>(tcga_clinical_fine)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 8
+##   Sample          Cancer   Age Code  Gender Stage_ajcc Stage_clinical Grade
+##   &lt;chr&gt;           &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;
+## 1 TCGA-OR-A5J1-01 ACC       58 TP    MALE   Stage II   &lt;NA&gt;           &lt;NA&gt; 
+## 2 TCGA-OR-A5J2-01 ACC       44 TP    FEMALE Stage IV   &lt;NA&gt;           &lt;NA&gt; 
+## 3 TCGA-OR-A5J3-01 ACC       23 TP    FEMALE Stage III  &lt;NA&gt;           &lt;NA&gt; 
+## 4 TCGA-OR-A5J4-01 ACC       23 TP    FEMALE Stage IV   &lt;NA&gt;           &lt;NA&gt; 
+## 5 TCGA-OR-A5J5-01 ACC       30 TP    MALE   Stage III  &lt;NA&gt;           &lt;NA&gt; 
+## 6 TCGA-OR-A5J6-01 ACC       29 TP    FEMALE Stage II   &lt;NA&gt;           &lt;NA&gt;</code></pre>
+<ul>
+<li><code>tcga_surv</code>: Survival data of TCGA samples from Table S1 of <a href="https://www.cell.com/cell/fulltext/S0092-8674(18)30229-0?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867418302290%3Fshowall%3Dtrue#supplementaryMaterial">the paper</a>.</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="build-in.html#cb15-1" tabindex="-1"></a><span class="fu">head</span>(tcga_surv)</span></code></pre></div>
+<pre><code>##            sample OS OS.time DSS DSS.time DFI DFI.time PFI PFI.time
+## 1 TCGA-OR-A5J1-01  1    1355   1     1355   1      754   1      754
+## 2 TCGA-OR-A5J2-01  1    1677   1     1677  NA       NA   1      289
+## 3 TCGA-OR-A5J3-01  0    2091   0     2091   1       53   1       53
+## 4 TCGA-OR-A5J5-01  1     365   1      365  NA       NA   1       50
+## 5 TCGA-OR-A5J6-01  0    2703   0     2703   0     2703   0     2703
+## 6 TCGA-OR-A5J7-01  1     490   1      490  NA       NA   1      162</code></pre>
+<ul>
+<li><code>tcga_subtypes</code>: Subtype information of TCGA samples from <a href="https://xenabrowser.net/datapages/?host=https%3A%2F%2Fpancanatlas.xenahubs.net&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443">Pan-Cancer Atlas Hub</a></li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="build-in.html#cb17-1" tabindex="-1"></a><span class="fu">head</span>(tcga_subtypes)</span></code></pre></div>
+<pre><code>##          sampleID Subtype_mRNA Subtype_DNAmeth Subtype_protein Subtype_miRNA
+## 1 TCGA-02-0001-01         LGr4            LGm5            &lt;NA&gt;          &lt;NA&gt;
+## 2 TCGA-02-0003-01         LGr4            LGm5              K1          &lt;NA&gt;
+## 3 TCGA-02-0004-01         LGr4            &lt;NA&gt;              K1          &lt;NA&gt;
+## 4 TCGA-02-0006-01         &lt;NA&gt;            LGm5            &lt;NA&gt;          &lt;NA&gt;
+## 5 TCGA-02-0007-01 unclassified            LGm4            &lt;NA&gt;          &lt;NA&gt;
+## 6 TCGA-02-0009-01         LGr4            LGm4            &lt;NA&gt;          &lt;NA&gt;
+##   Subtype_CNA Subtype_Integrative    Subtype_other         Subtype_Selected
+## 1        &lt;NA&gt;                &lt;NA&gt; Mesenchymal-like GBM_LGG.Mesenchymal-like
+## 2        &lt;NA&gt;                &lt;NA&gt; Mesenchymal-like GBM_LGG.Mesenchymal-like
+## 3        &lt;NA&gt;                &lt;NA&gt;             &lt;NA&gt;               GBM_LGG.NA
+## 4        &lt;NA&gt;                &lt;NA&gt; Mesenchymal-like GBM_LGG.Mesenchymal-like
+## 5        &lt;NA&gt;                &lt;NA&gt;     Classic-like     GBM_LGG.Classic-like
+## 6        &lt;NA&gt;                &lt;NA&gt;     Classic-like     GBM_LGG.Classic-like
+##   Subtype_Immune_Model_Based
+## 1                       &lt;NA&gt;
+## 2                       &lt;NA&gt;
+## 3                       &lt;NA&gt;
+## 4                       &lt;NA&gt;
+## 5                       &lt;NA&gt;
+## 6                       &lt;NA&gt;</code></pre>
+<ul>
+<li><code>tcga_purity</code>: tumor purity related information of TCGA samples from Supplementary Data 1 of <a href="https://doi.org/10.1038/ncomms9971">the paper</a>.</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="build-in.html#cb19-1" tabindex="-1"></a><span class="fu">head</span>(tcga_purity)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 7
+##   sample          cancer_type ESTIMATE ABSOLUTE  LUMP   IHC   CPE
+##   &lt;chr&gt;           &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 TCGA-OR-A5J1-01 ACC            0.937      NaN 0.977  0.8  0.925
+## 2 TCGA-OR-A5J2-01 ACC            0.918      NaN 0.617  0.95 0.898
+## 3 TCGA-OR-A5J3-01 ACC            0.967      NaN 0.925  0.8  0.947
+## 4 TCGA-OR-A5J4-01 ACC          NaN          NaN 0.920  0.8  0.866
+## 5 TCGA-OR-A5J5-01 ACC            0.976      NaN 1      0.8  0.978
+## 6 TCGA-OR-A5J6-01 ACC            0.874      NaN 0.744  0.88 0.840</code></pre>
+<ul>
+<li><code>tcga_genome_instability</code>: tumor genome instability related information of TCGA samples from <a href="https://gdc.cancer.gov/about-data/publications/PanCanStemness-2018">here</a></li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="build-in.html#cb21-1" tabindex="-1"></a><span class="fu">head</span>(tcga_genome_instability)</span></code></pre></div>
+<pre><code>##            sample purity ploidy Genome_doublings Cancer_DNA_fraction
+## 1 TCGA-OR-A5J1-01   0.90   2.00                0                0.90
+## 2 TCGA-OR-A5J2-01   0.89   1.30                0                0.84
+## 3 TCGA-OR-A5J3-01   0.93   1.27                0                0.89
+## 4 TCGA-OR-A5J4-01   0.87   2.60                1                0.89
+## 5 TCGA-OR-A5J5-01   0.93   2.79                1                0.95
+## 6 TCGA-OR-A5J6-01   0.69   3.34                1                0.79
+##   Subclonal_genome_fraction
+## 1                      0.02
+## 2                      0.16
+## 3                      0.11
+## 4                      0.08
+## 5                      0.15
+## 6                      0.06</code></pre>
+</div>
+<div id="pcawg" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> PCAWG<a href="build-in.html#pcawg" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><code>pcawg_info</code>: Common phenotypes of TCGA samples from <a href="https://xenabrowser.net/datapages/?cohort=PCAWG%20(specimen%20centric)&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443">PCAWG Xena Hub</a></li>
+<li><code>pcawg_info_fine</code>: Basic phenotypes of TCGA samples</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="build-in.html#cb23-1" tabindex="-1"></a><span class="fu">head</span>(pcawg_info_fine)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##   Sample   Project   Age Gender Type  
+##   &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; 
+## 1 SP1003   BLCA-US    53 female tumor 
+## 2 SP1007   BLCA-US    53 female normal
+## 3 SP10084  BRCA-US    64 female tumor 
+## 4 SP1009   BLCA-US    84 male   tumor 
+## 5 SP10150  BRCA-US    48 female tumor 
+## 6 SP101515 OV-AU      54 female tumor</code></pre>
+<ul>
+<li><code>pcawg_purity</code>: tumor purity related information of PCAWG samples from <a href="https://xenabrowser.net/datapages/?cohort=PCAWG%20(specimen%20centric)&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443">PCAWG Xena Hub</a></li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="build-in.html#cb25-1" tabindex="-1"></a><span class="fu">head</span>(pcawg_purity)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 6
+##   icgc_specimen_id purity ploidy purity_conf_mad wgd_status wgd_uncertain
+##   &lt;chr&gt;             &lt;dbl&gt;  &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;      &lt;lgl&gt;        
+## 1 SP101724          0.885   3.36           0.039 wgd        FALSE        
+## 2 SP79365           0.774   2.00           0.022 no_wgd     FALSE        
+## 3 SP98853           0.8     2.43           0.011 no_wgd     FALSE        
+## 4 SP47708           0.837   1.83           0.03  no_wgd     FALSE        
+## 5 SP106808          0.92    1.64           0.003 no_wgd     FALSE        
+## 6 SP102816          0.596   1.97           0.006 no_wgd     FALSE</code></pre>
+</div>
+<div id="ccle" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> CCLE<a href="build-in.html#ccle" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><code>ccle_info</code>: Common phenotypes of CCLE samples from <a href="https://data.broadinstitute.org/ccle_legacy_data/cell_line_annotations/">Broad Institute</a></li>
+<li><code>ccle_info_fine</code>: Basic phenotypes of CCLE samples</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="build-in.html#cb27-1" tabindex="-1"></a><span class="fu">head</span>(ccle_info_fine)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##   Sample                        Site_Primary           Gender Histology    Type 
+##   &lt;chr&gt;                         &lt;chr&gt;                  &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;
+## 1 1321N1_CENTRAL_NERVOUS_SYSTEM central_nervous_system &quot;M&quot;    glioma       astr…
+## 2 143B_BONE                     bone                   &quot;F&quot;    osteosarcoma oste…
+## 3 22RV1_PROSTATE                prostate               &quot;M&quot;    carcinoma    carc…
+## 4 2313287_STOMACH               stomach                &quot;M&quot;    carcinoma    aden…
+## 5 253JBV_URINARY_TRACT          urinary_tract          &quot;U&quot;    carcinoma    tran…
+## 6 253J_URINARY_TRACT            urinary_tract          &quot;&quot;     carcinoma    tran…</code></pre>
+<ul>
+<li><code>ccle_absolute</code>: supplementary information of CCLE samples from Table S2 of <a href="https://www.nature.com/articles/s41586-020-03133-3#Sec34">the paper</a></li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="build-in.html#cb29-1" tabindex="-1"></a><span class="fu">head</span>(ccle_absolute)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##   `Cell Line`                Lineage   Purity Ploidy `Genome Doublings`
+##   &lt;chr&gt;                      &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;              &lt;dbl&gt;
+## 1 SKNSH_AUTONOMIC_GANGLIA    AUTONOMIC   0.99   2.08                  0
+## 2 KPNRTBM1_AUTONOMIC_GANGLIA AUTONOMIC   1      1.99                  0
+## 3 MHHNB11_AUTONOMIC_GANGLIA  AUTONOMIC   1      2.16                  0
+## 4 NH6_AUTONOMIC_GANGLIA      AUTONOMIC   1      2.02                  0
+## 5 IMR32_AUTONOMIC_GANGLIA    AUTONOMIC   0.99   2.21                  0
+## 6 KPNYN_AUTONOMIC_GANGLIA    AUTONOMIC   1      1.97                  0</code></pre>
+</div>
+<div id="zenodo" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Zenodo<a href="build-in.html#zenodo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>The immune infiltrations are estimated by <a href="https://github.com/omnideconv/immunedeconv">immunedeconv</a> package, where 7 types of algorithms (CIBERSORT, CIBERSORT-ABS, EPIC, MCPCOUNTER, QUANTISEQ, TIMER, XCELL) are adopted.</p></li>
+<li><p>The expression scores for 3 type of gene pathway/signature sets (<a href="https://pubmed.ncbi.nlm.nih.gov/26771021/">HALLMARK</a>, KEGG, <a href="https://github.com/IOBR/IOBR">IOBR</a>) is calculated through ssGSEA method.</p></li>
+</ol>
+<div id="tumor-infiltration-estimations" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> tumor infiltration estimations<a href="build-in.html#tumor-infiltration-estimations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="build-in.html#cb31-1" tabindex="-1"></a><span class="co"># TCGA samples</span></span>
+<span id="cb31-2"><a href="build-in.html#cb31-2" tabindex="-1"></a>dat1 <span class="ot">=</span> <span class="fu">load_data</span>(<span class="st">&quot;tcga_TIL&quot;</span>)</span>
+<span id="cb31-3"><a href="build-in.html#cb31-3" tabindex="-1"></a><span class="co"># PCAWG samples</span></span>
+<span id="cb31-4"><a href="build-in.html#cb31-4" tabindex="-1"></a>dat2 <span class="ot">=</span> <span class="fu">load_data</span>(<span class="st">&quot;pcawg_TIL&quot;</span>)</span>
+<span id="cb31-5"><a href="build-in.html#cb31-5" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="build-in.html#cb31-6" tabindex="-1"></a>dat1[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 4
+##   cell_type       `B cell_TIMER` `T cell CD4+_TIMER` `T cell CD8+_TIMER`
+##   &lt;chr&gt;                    &lt;dbl&gt;               &lt;dbl&gt;               &lt;dbl&gt;
+## 1 TCGA-OR-A5J1-01          0.108               0.117               0.201
+## 2 TCGA-OR-A5J2-01          0.114               0.107               0.213
+## 3 TCGA-OR-A5J3-01          0.102               0.106               0.203
+## 4 TCGA-OR-A5J5-01          0.102               0.111               0.196</code></pre>
+<ul>
+<li>In addition, we also collected expression scores of 160 immune gene signatures across TCGA samples from <a href="https://gdc.cancer.gov/about-data/publications/panimmune">here</a>.</li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="build-in.html#cb33-1" tabindex="-1"></a>dat1 <span class="ot">=</span> <span class="fu">load_data</span>(<span class="st">&quot;tcga_pan_immune_signature&quot;</span>)</span>
+<span id="cb33-2"><a href="build-in.html#cb33-2" tabindex="-1"></a>dat1[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<pre><code>##              Source      SetName TCGA-02-0047-01A-01R-1849-01
+## Angiogenesis  Yasin Angiogenesis                    0.1925055
+## APM1          Yasin         APM1                    0.4492857
+## APM2          Yasin         APM2                    0.2437349
+## ICS5_score     Wolf   ICS5_score                   -1.5192000
+##              TCGA-02-0055-01A-01R-1849-01
+## Angiogenesis                   0.09855802
+## APM1                           0.46742753
+## APM2                           0.29939846
+## ICS5_score                     0.61780000</code></pre>
+</div>
+<div id="ssgsea-pathway-activities" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> ssGSEA pathway activities<a href="build-in.html#ssgsea-pathway-activities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="build-in.html#cb35-1" tabindex="-1"></a><span class="co"># TCGA samples</span></span>
+<span id="cb35-2"><a href="build-in.html#cb35-2" tabindex="-1"></a>dat1 <span class="ot">=</span> <span class="fu">load_data</span>(<span class="st">&quot;tcga_PW&quot;</span>)</span>
+<span id="cb35-3"><a href="build-in.html#cb35-3" tabindex="-1"></a><span class="co"># PCAWG samples</span></span>
+<span id="cb35-4"><a href="build-in.html#cb35-4" tabindex="-1"></a>dat2 <span class="ot">=</span> <span class="fu">load_data</span>(<span class="st">&quot;pcawg_PW&quot;</span>)</span>
+<span id="cb35-5"><a href="build-in.html#cb35-5" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="build-in.html#cb35-6" tabindex="-1"></a>dat1[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<pre><code>##                 HALLMARK_ADIPOGENESIS HALLMARK_ALLOGRAFT_REJECTION
+## TCGA-19-1787-01             0.2857295                   0.14104371
+## TCGA-S9-A7J2-01             0.2591440                   0.03655175
+## TCGA-G3-A3CH-11             0.3303460                   0.18602627
+## TCGA-B5-A5OE-01             0.2692051                   0.11716217
+##                 HALLMARK_ANDROGEN_RESPONSE HALLMARK_ANGIOGENESIS
+## TCGA-19-1787-01                  0.2178818            0.16112190
+## TCGA-S9-A7J2-01                  0.1826316            0.08244577
+## TCGA-G3-A3CH-11                  0.2563853            0.15919124
+## TCGA-B5-A5OE-01                  0.1832165            0.15148992</code></pre>
+</div>
+<div id="other-tcga-annotations" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> other TCGA annotations<a href="build-in.html#other-tcga-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>“tcga_stemness”: tumor stemness of TCGA samples from <a href="https://xenabrowser.net/datapages/?host=https%3A%2F%2Fpancanatlas.xenahubs.net&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443">Pan-Cancer Atlas Hub</a></li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="build-in.html#cb37-1" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">load_data</span>(<span class="st">&quot;tcga_stemness&quot;</span>))</span></code></pre></div>
+<pre><code>##            sample     RNAss EREG.EXPss DNAss EREG-METHss DMPss ENHss
+## 1 TCGA-02-0047-01 0.2398426  0.5585645    NA          NA    NA    NA
+## 2 TCGA-02-0055-01 0.1878304  0.5743873    NA          NA    NA    NA
+## 3 TCGA-02-2483-01 0.4087490  0.7067001    NA          NA    NA    NA
+## 4 TCGA-02-2485-01 0.3491451  0.5659132    NA          NA    NA    NA
+## 5 TCGA-02-2486-01 0.2498411  0.4618031    NA          NA    NA    NA
+## 6 TCGA-04-1348-01 0.5741474  0.4998114    NA          NA    NA    NA</code></pre>
+<ul>
+<li>“tcga_tmb”: tumor mutation burden of TCGA samples from Table S1 of <a href="https://doi.org/10.1016/j.immuni.2018.03.023">the paper</a></li>
+</ul>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="build-in.html#cb39-1" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">load_data</span>(<span class="st">&quot;tcga_tmb&quot;</span>))</span></code></pre></div>
+<pre><code>##   Cohort   Patient_ID Tumor_Sample_ID Silent_per_Mb Non_silent_per_Mb
+## 1    ACC TCGA-OR-A5JR TCGA-OR-A5JR-01    0.05168695        0.05168695
+## 2    ACC TCGA-OR-A5JH TCGA-OR-A5JH-01    0.10244018        0.15366028
+## 3    ACC TCGA-OR-A5JQ TCGA-OR-A5JQ-01    0.08117102        0.16234204
+## 4    ACC TCGA-OR-A5L9 TCGA-OR-A5L9-01    0.05354531        0.16063592
+## 5    ACC TCGA-OR-A5LA TCGA-OR-A5LA-01    0.05456403        0.19097410
+## 6    ACC TCGA-OR-A5LH TCGA-OR-A5LH-01    0.02618618        0.20948946</code></pre>
+<ul>
+<li>“tcga_MSI”: tumor microsatellite instability of TCGA samples from Supplementary Data 1 of <a href="https://www.nature.com/articles/ncomms15180#Sec22">the paper</a></li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="build-in.html#cb41-1" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">load_data</span>(<span class="st">&quot;tcga_MSI&quot;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 22
+##   Cancer_type Barcode      Total_nb_MSI_events MSI_3utr MSI_5utr MSI_exonic
+##   &lt;chr&gt;       &lt;chr&gt;                      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;
+## 1 READ        TCGA-DC-4745                  10        3        1          6
+## 2 READ        TCGA-DC-6155                   2        0        1          1
+## 3 READ        TCGA-DC-6681                   1        0        0          1
+## 4 READ        TCGA-EI-6506                   0        0        0          0
+## 5 READ        TCGA-DC-6683                   3        0        3          0
+## 6 READ        TCGA-EI-6885                   4        1        1          2
+## # ℹ 16 more variables: MSI_noncoding &lt;dbl&gt;, MSI_intronic &lt;dbl&gt;, MSI_mono &lt;dbl&gt;,
+## #   MSI_di &lt;dbl&gt;, MSI_tri &lt;dbl&gt;, MSI_tetra &lt;dbl&gt;, MSI_3utr_profiled &lt;dbl&gt;,
+## #   MSI_5utr_profiled &lt;dbl&gt;, MSI_exonic_profiled &lt;dbl&gt;,
+## #   MSI_noncoding_profiled &lt;dbl&gt;, MSI_intronic_profiled &lt;dbl&gt;,
+## #   MSI_mono_profiled &lt;dbl&gt;, MSI_di_profiled &lt;dbl&gt;, MSI_tri_profiled &lt;dbl&gt;,
+## #   MSI_tetra_profiled &lt;dbl&gt;, MSI_category_nb_from_TCGA_consortium &lt;chr&gt;</code></pre>
+</div>
+<div id="identifier-repository" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> identifier repository<a href="build-in.html#identifier-repository" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Compile available identifiers of data for each of TPC databases.</p>
+<ul>
+<li>“pancan_identifier_help”: TCGA samples
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tcga-ids"></span>
+<img src="images/p002.png" alt="TCGA related identifiers" width="80%" />
+<p class="caption">
+Figure 3.2: TCGA related identifiers
+</p>
+</div></li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="build-in.html#cb43-1" tabindex="-1"></a>tcga_ids <span class="ot">=</span> <span class="fu">load_data</span>(<span class="st">&quot;pancan_identifier_help&quot;</span>)</span>
+<span id="cb43-2"><a href="build-in.html#cb43-2" tabindex="-1"></a><span class="fu">names</span>(tcga_ids)</span>
+<span id="cb43-3"><a href="build-in.html#cb43-3" tabindex="-1"></a><span class="co"># [1] &quot;id_molecule&quot;    &quot;id_tumor_index&quot; &quot;id_TIL&quot;         &quot;id_PW&quot; </span></span>
+<span id="cb43-4"><a href="build-in.html#cb43-4" tabindex="-1"></a><span class="fu">head</span>(tcga_ids<span class="sc">$</span>id_molecule<span class="sc">$</span>id_gene)</span>
+<span id="cb43-5"><a href="build-in.html#cb43-5" tabindex="-1"></a><span class="co"># the key identifier is ususally under &quot;Level3&quot; column</span></span></code></pre></div>
+<pre><code>##            Level2       Level3           Ensembl chrom chromStart chromEnd
+## 1 mRNA Expression      DDX11L1 ENSG00000223972.5  chr1      11869    14409
+## 2 mRNA Expression       WASH7P ENSG00000227232.5  chr1      14404    29570
+## 3 mRNA Expression    MIR6859-1 ENSG00000278267.1  chr1      17369    17436
+## 4 mRNA Expression RP11-34P13.3 ENSG00000243485.3  chr1      29554    31109
+## 5 mRNA Expression    MIR1302-2 ENSG00000274890.1  chr1      30366    30503
+## 6 mRNA Expression      FAM138A ENSG00000237613.2  chr1      34554    36081
+##   strand
+## 1      +
+## 2      -
+## 3      -
+## 4      +
+## 5      +
+## 6      -</code></pre>
+<ul>
+<li>“pcawg_identifier”: PCAWG samples</li>
+<li>“ccle_identifier”: CCLE samples</li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pc-ids"></span>
+<img src="images/p003.png" alt="PCAWG/CCLE molecular identifiers" width="80%" />
+<p class="caption">
+Figure 3.3: PCAWG/CCLE molecular identifiers
+</p>
+</div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="build-in.html#cb45-1" tabindex="-1"></a>pcawg_ids <span class="ot">=</span> <span class="fu">load_data</span>(<span class="st">&quot;pcawg_identifier&quot;</span>)</span>
+<span id="cb45-2"><a href="build-in.html#cb45-2" tabindex="-1"></a><span class="fu">names</span>(pcawg_ids)</span>
+<span id="cb45-3"><a href="build-in.html#cb45-3" tabindex="-1"></a><span class="co"># [1] &quot;id_gene&quot;   &quot;id_pro&quot;    &quot;id_fusion&quot; &quot;id_mi&quot;     &quot;id_maf&quot; </span></span>
+<span id="cb45-4"><a href="build-in.html#cb45-4" tabindex="-1"></a><span class="fu">head</span>(pcawg_ids<span class="sc">$</span>id_pro)</span>
+<span id="cb45-5"><a href="build-in.html#cb45-5" tabindex="-1"></a><span class="co"># the key identifier is ususally under &quot;Level3&quot; column</span></span></code></pre></div>
+<pre><code>##              Level2  Level3   gene chrom chromStart  chromEnd strand
+## 1 Promoter activity prmtr.1 TSPAN6  chrX   99891803  99891803      -
+## 2 Promoter activity prmtr.3   TNMD  chrX   99839799  99839799      +
+## 3 Promoter activity prmtr.6   DPM1 chr20   49575087  49575087      -
+## 4 Promoter activity prmtr.7  SCYL3  chr1  169858029 169858029      -
+## 5 Promoter activity prmtr.8  SCYL3  chr1  169863093 169863093      -
+## 6 Promoter activity prmtr.9  SCYL3  chr1  169863408 169863408      -</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="install.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-query.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-pkg-2-data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

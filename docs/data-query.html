@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Molecular data query | UCSCXenaShiny v2 Book</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Molecular data query | UCSCXenaShiny v2 Book" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Molecular data query | UCSCXenaShiny v2 Book" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Shensuo Li, Shixiang Wang" />
+
+
+<meta name="date" content="2024-03-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="build-in.html"/>
+<link rel="next" href="data-analysis.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#ucsc-xena-datasets"><i class="fa fa-check"></i><b>1.1</b> UCSC Xena Datasets</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#tcga-abbreviations"><i class="fa fa-check"></i><b>1.2</b> TCGA abbreviations</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#pcawg-abbreviations"><i class="fa fa-check"></i><b>1.3</b> PCAWG abbreviations</a></li>
+</ul></li>
+<li class="part"><span><b>I R package</b></span></li>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Install</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#cran"><i class="fa fa-check"></i><b>2.1</b> CRAN</a></li>
+<li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#github"><i class="fa fa-check"></i><b>2.2</b> Github</a></li>
+<li class="chapter" data-level="2.3" data-path="install.html"><a href="install.html#conda"><i class="fa fa-check"></i><b>2.3</b> Conda</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="build-in.html"><a href="build-in.html"><i class="fa fa-check"></i><b>3</b> Built-in datasets</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="build-in.html"><a href="build-in.html#tcga"><i class="fa fa-check"></i><b>3.1</b> TCGA</a></li>
+<li class="chapter" data-level="3.2" data-path="build-in.html"><a href="build-in.html#pcawg"><i class="fa fa-check"></i><b>3.2</b> PCAWG</a></li>
+<li class="chapter" data-level="3.3" data-path="build-in.html"><a href="build-in.html#ccle"><i class="fa fa-check"></i><b>3.3</b> CCLE</a></li>
+<li class="chapter" data-level="3.4" data-path="build-in.html"><a href="build-in.html#zenodo"><i class="fa fa-check"></i><b>3.4</b> Zenodo</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="build-in.html"><a href="build-in.html#tumor-infiltration-estimations"><i class="fa fa-check"></i><b>3.4.1</b> tumor infiltration estimations</a></li>
+<li class="chapter" data-level="3.4.2" data-path="build-in.html"><a href="build-in.html#ssgsea-pathway-activities"><i class="fa fa-check"></i><b>3.4.2</b> ssGSEA pathway activities</a></li>
+<li class="chapter" data-level="3.4.3" data-path="build-in.html"><a href="build-in.html#other-tcga-annotations"><i class="fa fa-check"></i><b>3.4.3</b> other TCGA annotations</a></li>
+<li class="chapter" data-level="3.4.4" data-path="build-in.html"><a href="build-in.html#identifier-repository"><i class="fa fa-check"></i><b>3.4.4</b> identifier repository</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-query.html"><a href="data-query.html"><i class="fa fa-check"></i><b>4</b> Molecular data query</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-query.html"><a href="data-query.html#tcga-query"><i class="fa fa-check"></i><b>4.1</b> TCGA query</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="data-query.html"><a href="data-query.html#get_pancan_gene_value"><i class="fa fa-check"></i><b>4.1.1</b> get_pancan_gene_value()</a></li>
+<li class="chapter" data-level="4.1.2" data-path="data-query.html"><a href="data-query.html#get_pancan_transcript_value"><i class="fa fa-check"></i><b>4.1.2</b> get_pancan_transcript_value()</a></li>
+<li class="chapter" data-level="4.1.3" data-path="data-query.html"><a href="data-query.html#get_pancan_protein_value"><i class="fa fa-check"></i><b>4.1.3</b> get_pancan_protein_value()</a></li>
+<li class="chapter" data-level="4.1.4" data-path="data-query.html"><a href="data-query.html#get_pancan_mutation_status"><i class="fa fa-check"></i><b>4.1.4</b> get_pancan_mutation_status()</a></li>
+<li class="chapter" data-level="4.1.5" data-path="data-query.html"><a href="data-query.html#get_pancan_cn_value"><i class="fa fa-check"></i><b>4.1.5</b> get_pancan_cn_value()</a></li>
+<li class="chapter" data-level="4.1.6" data-path="data-query.html"><a href="data-query.html#get_pancan_methylation_value"><i class="fa fa-check"></i><b>4.1.6</b> get_pancan_methylation_value()</a></li>
+<li class="chapter" data-level="4.1.7" data-path="data-query.html"><a href="data-query.html#get_pancan_mirna_value"><i class="fa fa-check"></i><b>4.1.7</b> get_pancan_miRNA_value()</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-query.html"><a href="data-query.html#pcawg-query"><i class="fa fa-check"></i><b>4.2</b> PCAWG query</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="data-query.html"><a href="data-query.html#get_pcawg_gene_value"><i class="fa fa-check"></i><b>4.2.1</b> get_pcawg_gene_value()</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-query.html"><a href="data-query.html#get_pcawg_fusion_value"><i class="fa fa-check"></i><b>4.2.2</b> get_pcawg_fusion_value()</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data-query.html"><a href="data-query.html#get_pcawg_mirna_value"><i class="fa fa-check"></i><b>4.2.3</b> get_pcawg_miRNA_value()</a></li>
+<li class="chapter" data-level="4.2.4" data-path="data-query.html"><a href="data-query.html#get_pcawg_promoter_value"><i class="fa fa-check"></i><b>4.2.4</b> get_pcawg_promoter_value()</a></li>
+<li class="chapter" data-level="4.2.5" data-path="data-query.html"><a href="data-query.html#get_pcawg_apobec_mutagenesis_value"><i class="fa fa-check"></i><b>4.2.5</b> get_pcawg_APOBEC_mutagenesis_value()</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-query.html"><a href="data-query.html#ccle-query"><i class="fa fa-check"></i><b>4.3</b> CCLE query</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value"><i class="fa fa-check"></i><b>4.3.1</b> get_ccle_gene_value()</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value-1"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_gene_value()</a></li>
+<li class="chapter" data-level="4.3.3" data-path="data-query.html"><a href="data-query.html#get_ccle_mutation_status"><i class="fa fa-check"></i><b>4.3.3</b> get_ccle_mutation_status()</a></li>
+<li class="chapter" data-level="4.3.4" data-path="data-query.html"><a href="data-query.html#get_ccle_cn_value"><i class="fa fa-check"></i><b>4.3.4</b> get_ccle_cn_value()</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-query.html"><a href="data-query.html#general-query"><i class="fa fa-check"></i><b>4.4</b> General query</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="data-query.html"><a href="data-query.html#query_pancan_value"><i class="fa fa-check"></i><b>4.4.1</b> query_pancan_value()</a></li>
+<li class="chapter" data-level="4.4.2" data-path="data-query.html"><a href="data-query.html#query_molecule_value"><i class="fa fa-check"></i><b>4.4.2</b> query_molecule_value()</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-analysis.html"><a href="data-analysis.html"><i class="fa fa-check"></i><b>5</b> Molecular data analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-analysis.html"><a href="data-analysis.html#tcga-analysis"><i class="fa fa-check"></i><b>5.1</b> TCGA analysis</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="data-analysis.html"><a href="data-analysis.html#comparison-analysis"><i class="fa fa-check"></i><b>5.1.1</b> Comparison analysis</a></li>
+<li class="chapter" data-level="5.1.2" data-path="data-analysis.html"><a href="data-analysis.html#correlation-analysis"><i class="fa fa-check"></i><b>5.1.2</b> Correlation analysis</a></li>
+<li class="chapter" data-level="5.1.3" data-path="data-analysis.html"><a href="data-analysis.html#survival-analysis"><i class="fa fa-check"></i><b>5.1.3</b> Survival analysis</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-analysis.html"><a href="data-analysis.html#dimension-reduction"><i class="fa fa-check"></i><b>5.1.4</b> Dimension reduction</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="data-analysis.html"><a href="data-analysis.html#pcawg-analysis"><i class="fa fa-check"></i><b>5.2</b> PCAWG analysis</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="data-analysis.html"><a href="data-analysis.html#comparsion-analysis"><i class="fa fa-check"></i><b>5.2.1</b> Comparsion analysis</a></li>
+<li class="chapter" data-level="5.2.2" data-path="data-analysis.html"><a href="data-analysis.html#correlation-analysis-1"><i class="fa fa-check"></i><b>5.2.2</b> Correlation analysis</a></li>
+<li class="chapter" data-level="5.2.3" data-path="data-analysis.html"><a href="data-analysis.html#survival-analysis-1"><i class="fa fa-check"></i><b>5.2.3</b> Survival analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="data-analysis.html"><a href="data-analysis.html#ccle-analysis"><i class="fa fa-check"></i><b>5.3</b> CCLE analysis</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="data-analysis.html"><a href="data-analysis.html#comparsion-analysis-1"><i class="fa fa-check"></i><b>5.3.1</b> Comparsion analysis</a></li>
+<li class="chapter" data-level="5.3.2" data-path="data-analysis.html"><a href="data-analysis.html#correlation-analysis-2"><i class="fa fa-check"></i><b>5.3.2</b> Correlation analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="data-analysis.html"><a href="data-analysis.html#general-analysis"><i class="fa fa-check"></i><b>5.4</b> General analysis</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="data-analysis.html"><a href="data-analysis.html#comparison-analysis-1"><i class="fa fa-check"></i><b>5.4.1</b> Comparison analysis</a></li>
+<li class="chapter" data-level="5.4.2" data-path="data-analysis.html"><a href="data-analysis.html#correlation-analysis-3"><i class="fa fa-check"></i><b>5.4.2</b> Correlation analysis</a></li>
+<li class="chapter" data-level="5.4.3" data-path="data-analysis.html"><a href="data-analysis.html#survival-analysis-2"><i class="fa fa-check"></i><b>5.4.3</b> Survival analysis</a></li>
+<li class="chapter" data-level="5.4.4" data-path="data-analysis.html"><a href="data-analysis.html#dimension-reduction-1"><i class="fa fa-check"></i><b>5.4.4</b> Dimension reduction</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Shiny App</b></span></li>
+<li class="chapter" data-level="6" data-path="visit.html"><a href="visit.html"><i class="fa fa-check"></i><b>6</b> Visit</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="visit.html"><a href="visit.html#server-deployments"><i class="fa fa-check"></i><b>6.1</b> Server deployments</a></li>
+<li class="chapter" data-level="6.2" data-path="visit.html"><a href="visit.html#local-deployment"><i class="fa fa-check"></i><b>6.2</b> Local deployment</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="home.html"><a href="home.html"><i class="fa fa-check"></i><b>7</b> Homepage</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="home.html"><a href="home.html#quick-molecule-exploration"><i class="fa fa-check"></i><b>7.1</b> Quick Molecule Exploration</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="home.html"><a href="home.html#daily-gene"><i class="fa fa-check"></i><b>7.1.1</b> Daily Gene</a></li>
+<li class="chapter" data-level="7.1.2" data-path="home.html"><a href="home.html#pan-cancer-query"><i class="fa fa-check"></i><b>7.1.2</b> Pan-cancer Query</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="home.html"><a href="home.html#slick-gallery"><i class="fa fa-check"></i><b>7.2</b> Slick Gallery</a></li>
+<li class="chapter" data-level="7.3" data-path="home.html"><a href="home.html#tcga-analysis-guide"><i class="fa fa-check"></i><b>7.3</b> TCGA Analysis Guide</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="repo.html"><a href="repo.html"><i class="fa fa-check"></i><b>8</b> Repository</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="repo.html"><a href="repo.html#show-metadata"><i class="fa fa-check"></i><b>8.1</b> Show Metadata</a></li>
+<li class="chapter" data-level="8.2" data-path="repo.html"><a href="repo.html#request-data"><i class="fa fa-check"></i><b>8.2</b> Request Data</a></li>
+<li class="chapter" data-level="8.3" data-path="repo.html"><a href="repo.html#analyze-data"><i class="fa fa-check"></i><b>8.3</b> Analyze Data</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="general-da.html"><a href="general-da.html"><i class="fa fa-check"></i><b>9</b> General Dataset Analysis</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="general-da.html"><a href="general-da.html#m-vis-identifier-cor"><i class="fa fa-check"></i><b>9.1</b> Scatter-Correlation</a></li>
+<li class="chapter" data-level="9.2" data-path="general-da.html"><a href="general-da.html#m-vis-identifier-multi-cor"><i class="fa fa-check"></i><b>9.2</b> Matrix-Correlation</a></li>
+<li class="chapter" data-level="9.3" data-path="general-da.html"><a href="general-da.html#m-vis-identifier-grp-comparison"><i class="fa fa-check"></i><b>9.3</b> Group-Comparison</a></li>
+<li class="chapter" data-level="9.4" data-path="general-da.html"><a href="general-da.html#m-vis-identifier-grp-surv"><i class="fa fa-check"></i><b>9.4</b> Survival-Analysis</a></li>
+<li class="chapter" data-level="9.5" data-path="general-da.html"><a href="general-da.html#m-vis-identifier-dim-dist"><i class="fa fa-check"></i><b>9.5</b> Dimension-Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="custom-tpc.html"><a href="custom-tpc.html"><i class="fa fa-check"></i><b>10</b> Custom TPC modules</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="custom-tpc.html"><a href="custom-tpc.html#tcga-1"><i class="fa fa-check"></i><b>10.1</b> TCGA</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="custom-tpc.html"><a href="custom-tpc.html#comparison"><i class="fa fa-check"></i><b>10.1.1</b> Comparison</a></li>
+<li class="chapter" data-level="10.1.2" data-path="custom-tpc.html"><a href="custom-tpc.html#correlation"><i class="fa fa-check"></i><b>10.1.2</b> Correlation</a></li>
+<li class="chapter" data-level="10.1.3" data-path="custom-tpc.html"><a href="custom-tpc.html#survival-analysis-3"><i class="fa fa-check"></i><b>10.1.3</b> Survival analysis</a></li>
+<li class="chapter" data-level="10.1.4" data-path="custom-tpc.html"><a href="custom-tpc.html#dimension-reduction-2"><i class="fa fa-check"></i><b>10.1.4</b> Dimension Reduction</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="custom-tpc.html"><a href="custom-tpc.html#pcawg-1"><i class="fa fa-check"></i><b>10.2</b> PCAWG</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="custom-tpc.html"><a href="custom-tpc.html#comparison-analysis-2"><i class="fa fa-check"></i><b>10.2.1</b> Comparison analysis</a></li>
+<li class="chapter" data-level="10.2.2" data-path="custom-tpc.html"><a href="custom-tpc.html#correlation-analysis-4"><i class="fa fa-check"></i><b>10.2.2</b> Correlation analysis</a></li>
+<li class="chapter" data-level="10.2.3" data-path="custom-tpc.html"><a href="custom-tpc.html#survival-analysis-4"><i class="fa fa-check"></i><b>10.2.3</b> Survival analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="custom-tpc.html"><a href="custom-tpc.html#ccle-1"><i class="fa fa-check"></i><b>10.3</b> CCLE</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="custom-tpc.html"><a href="custom-tpc.html#comparison-analysis-3"><i class="fa fa-check"></i><b>10.3.1</b> Comparison analysis</a></li>
+<li class="chapter" data-level="10.3.2" data-path="custom-tpc.html"><a href="custom-tpc.html#correlation-analysis-5"><i class="fa fa-check"></i><b>10.3.2</b> Correlation analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="per-tpc-1.html"><a href="per-tpc-1.html"><i class="fa fa-check"></i><b>11</b> Personalized TPC pipelines(1)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="per-tpc-1.html"><a href="per-tpc-1.html#extensive-tumor-data"><i class="fa fa-check"></i><b>11.1</b> Extensive tumor data</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="per-tpc-1.html"><a href="per-tpc-1.html#compiling-types-of-identifiers"><i class="fa fa-check"></i><b>11.1.1</b> Compiling types of identifiers</a></li>
+<li class="chapter" data-level="11.1.2" data-path="per-tpc-1.html"><a href="per-tpc-1.html#reference-of-full-identifiers"><i class="fa fa-check"></i><b>11.1.2</b> Reference of full identifiers</a></li>
+<li class="chapter" data-level="11.1.3" data-path="per-tpc-1.html"><a href="per-tpc-1.html#user-defined-identifiers"><i class="fa fa-check"></i><b>11.1.3</b> User-defined identifiers</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="per-tpc-1.html"><a href="per-tpc-1.html#sample-processing"><i class="fa fa-check"></i><b>11.2</b> Sample processing</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="per-tpc-1.html"><a href="per-tpc-1.html#sample-filtering"><i class="fa fa-check"></i><b>11.2.1</b> Sample filtering</a></li>
+<li class="chapter" data-level="11.2.2" data-path="per-tpc-1.html"><a href="per-tpc-1.html#sample-grouping"><i class="fa fa-check"></i><b>11.2.2</b> Sample grouping</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="per-tpc-1.html"><a href="per-tpc-1.html#data-fetch"><i class="fa fa-check"></i><b>11.3</b> Data fetch</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="per-tpc-1.html"><a href="per-tpc-1.html#single-data"><i class="fa fa-check"></i><b>11.3.1</b> Single data</a></li>
+<li class="chapter" data-level="11.3.2" data-path="per-tpc-1.html"><a href="per-tpc-1.html#multiple-data"><i class="fa fa-check"></i><b>11.3.2</b> Multiple data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="per-tpc-2.html"><a href="per-tpc-2.html"><i class="fa fa-check"></i><b>12</b> Personalized TPC pipelines(2)</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="per-tpc-2.html"><a href="per-tpc-2.html#general-steps"><i class="fa fa-check"></i><b>12.1</b> General steps</a></li>
+<li class="chapter" data-level="12.2" data-path="per-tpc-2.html"><a href="per-tpc-2.html#correlation-analysis-6"><i class="fa fa-check"></i><b>12.2</b> Correlation analysis</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="per-tpc-2.html"><a href="per-tpc-2.html#individual-mode"><i class="fa fa-check"></i><b>12.2.1</b> Individual Mode</a></li>
+<li class="chapter" data-level="12.2.2" data-path="per-tpc-2.html"><a href="per-tpc-2.html#pan-cancer-mode"><i class="fa fa-check"></i><b>12.2.2</b> Pan-cancer Mode</a></li>
+<li class="chapter" data-level="12.2.3" data-path="per-tpc-2.html"><a href="per-tpc-2.html#batch-screen-mode"><i class="fa fa-check"></i><b>12.2.3</b> Batch Screen Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="per-tpc-2.html"><a href="per-tpc-2.html#comparison-analysis-4"><i class="fa fa-check"></i><b>12.3</b> Comparison analysis</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="per-tpc-2.html"><a href="per-tpc-2.html#individual-mode-1"><i class="fa fa-check"></i><b>12.3.1</b> Individual Mode</a></li>
+<li class="chapter" data-level="12.3.2" data-path="per-tpc-2.html"><a href="per-tpc-2.html#pan-cancer-mode-1"><i class="fa fa-check"></i><b>12.3.2</b> Pan-cancer Mode</a></li>
+<li class="chapter" data-level="12.3.3" data-path="per-tpc-2.html"><a href="per-tpc-2.html#batch-screen-mode-1"><i class="fa fa-check"></i><b>12.3.3</b> Batch Screen Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="per-tpc-2.html"><a href="per-tpc-2.html#survival-analysis-5"><i class="fa fa-check"></i><b>12.4</b> Survival analysis</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="per-tpc-2.html"><a href="per-tpc-2.html#individual-mode-2"><i class="fa fa-check"></i><b>12.4.1</b> Individual Mode</a></li>
+<li class="chapter" data-level="12.4.2" data-path="per-tpc-2.html"><a href="per-tpc-2.html#pan-cancer-mode-2"><i class="fa fa-check"></i><b>12.4.2</b> Pan-cancer Mode</a></li>
+<li class="chapter" data-level="12.4.3" data-path="per-tpc-2.html"><a href="per-tpc-2.html#batch-screen-mode-2"><i class="fa fa-check"></i><b>12.4.3</b> Batch Screen Mode</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="download.html"><a href="download.html"><i class="fa fa-check"></i><b>13</b> Download modules</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="download.html"><a href="download.html#download-tpc-datasets"><i class="fa fa-check"></i><b>13.1</b> Download TPC datasets</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="download.html"><a href="download.html#omics-molecular-data"><i class="fa fa-check"></i><b>13.1.1</b> Omics molecular data</a></li>
+<li class="chapter" data-level="13.1.2" data-path="download.html"><a href="download.html#non-omics-annotation-data"><i class="fa fa-check"></i><b>13.1.2</b> Non-omics annotation data</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="download.html"><a href="download.html#download-ucsc-xena-datasets"><i class="fa fa-check"></i><b>13.2</b> Download UCSC Xena datasets</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/openbiox/UCSCXenaShiny" target="blank">UCSCXenaShiny Github</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">UCSCXenaShiny v2 Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-query" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Molecular data query<a href="data-query.html#data-query" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="tcga-query" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> TCGA query<a href="data-query.html#tcga-query" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Search molecular identifiers for TCGA samples via list <code>pancan_identifier_help</code> referring to Figure <a href="build-in.html#fig:tcga-ids">3.2</a></li>
+</ul>
+<table>
+<caption><span id="tab:query-tcga-func">Table 4.1: </span>Specilized functions to query TCGA molecular data</caption>
+<thead>
+<tr class="header">
+<th align="left">Database</th>
+<th align="left">Type</th>
+<th align="left">Datasets</th>
+<th align="left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">TCGA</td>
+<td align="left">mRNA</td>
+<td align="left">3</td>
+<td align="left">get_pancan_gene_value()</td>
+</tr>
+<tr class="even">
+<td align="left">TCGA</td>
+<td align="left">transcript</td>
+<td align="left">3</td>
+<td align="left">get_pancan_transcript_value()</td>
+</tr>
+<tr class="odd">
+<td align="left">TCGA</td>
+<td align="left">protein</td>
+<td align="left">1</td>
+<td align="left">get_pancan_protein_value()</td>
+</tr>
+<tr class="even">
+<td align="left">TCGA</td>
+<td align="left">mutation</td>
+<td align="left">1</td>
+<td align="left">get_pancan_mutation_status()</td>
+</tr>
+<tr class="odd">
+<td align="left">TCGA</td>
+<td align="left">cnv</td>
+<td align="left">3</td>
+<td align="left">get_pancan_cn_value()</td>
+</tr>
+<tr class="even">
+<td align="left">TCGA</td>
+<td align="left">methylation</td>
+<td align="left">2</td>
+<td align="left">get_pancan_methylation_value()</td>
+</tr>
+<tr class="odd">
+<td align="left">TCGA</td>
+<td align="left">miRNA</td>
+<td align="left">1</td>
+<td align="left">get_pancan_miRNA_value()</td>
+</tr>
+</tbody>
+</table>
+<div id="get_pancan_gene_value" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> get_pancan_gene_value()<a href="data-query.html#get_pancan_gene_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_pancan_gene_value(identifier, norm = c("tpm", "fpkm", "nc"))</code></li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="data-query.html#cb47-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_gene_value</span>(<span class="st">&quot;TP53&quot;</span>, <span class="at">norm =</span> <span class="st">&quot;tpm&quot;</span>)</span>
+<span id="cb47-2"><a href="data-query.html#cb47-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb47-3"><a href="data-query.html#cb47-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##                         value
+## GTEX-S4Q7-0003-SM-3NM8M 4.785
+## TCGA-19-1787-01         5.887
+## TCGA-S9-A7J2-01         5.517
+## GTEX-QV31-1626-SM-2S1QC 4.431
+## TCGA-G3-A3CH-11         2.382
+## TCGA-B5-A5OE-01         5.765</code></pre>
+<p>Information of available datasets:</p>
+<table>
+<colgroup>
+<col width="28%" />
+<col width="48%" />
+<col width="8%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://toil.xenahubs.net">toilHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=TcgaTargetGtex_rsem_gene_tpm&amp;host=https://toil.xenahubs.net">TcgaTargetGtex_rsem_gene_tpm</a></td>
+<td align="center">19131</td>
+<td align="center">log2(tpm+0.001)</td>
+</tr>
+<tr class="even">
+<td align="center"><a href="https://toil.xenahubs.net">toilHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=TcgaTargetGtex_rsem_gene_fpkm&amp;host=https://toil.xenahubs.net">TcgaTargetGtex_rsem_gene_fpkm</a></td>
+<td align="center">19131</td>
+<td align="center">log2(fpkm+0.001)</td>
+</tr>
+<tr class="odd">
+<td align="center"><a href="https://toil.xenahubs.net">toilHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=TcgaTargetGtex_RSEM_Hugo_norm_count&amp;host=https://toil.xenahubs.net">TcgaTargetGtex_RSEM_Hugo_norm_count</a></td>
+<td align="center">19120</td>
+<td align="center">log2(norm_count+1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get_pancan_transcript_value" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> get_pancan_transcript_value()<a href="data-query.html#get_pancan_transcript_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_pancan_transcript_value(identifier, norm = c("tpm", "fpkm", "nc"))</code></li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data-query.html#cb49-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_transcript_value</span>(<span class="st">&quot;ENST00000456328&quot;</span>, <span class="at">norm =</span> <span class="st">&quot;tpm&quot;</span>)</span>
+<span id="cb49-2"><a href="data-query.html#cb49-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb49-3"><a href="data-query.html#cb49-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##                           value
+## GTEX-S4Q7-0003-SM-3NM8M  -5.012
+## TCGA-19-1787-01          -9.966
+## TCGA-S9-A7J2-01          -4.035
+## GTEX-QV31-1626-SM-2S1QC  -9.966
+## TCGA-G3-A3CH-11          -9.966
+## GTEX-13OVI-1026-SM-5L3EM -9.966</code></pre>
+<p>Information of available datasets:</p>
+<table>
+<colgroup>
+<col width="29%" />
+<col width="48%" />
+<col width="8%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://toil.xenahubs.net">toilHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=TcgaTargetGtex_rsem_isoform_tpm&amp;host=https://toil.xenahubs.net">TcgaTargetGtex_rsem_isoform_tpm</a></td>
+<td align="center">19131</td>
+<td align="center">log2(tpm+0.001)</td>
+</tr>
+<tr class="even">
+<td align="center"><a href="https://toil.xenahubs.net">toilHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=TcgaTargetGtex_RSEM_isoform_fpkm&amp;host=https://toil.xenahubs.net">TcgaTargetGtex_RSEM_isoform_fpkm</a></td>
+<td align="center">19129</td>
+<td align="center">log2(fpkm+0.001)</td>
+</tr>
+<tr class="odd">
+<td align="center"><a href="https://toil.xenahubs.net">toilHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=TcgaTargetGtex_rsem_isopct&amp;host=https://toil.xenahubs.net">TcgaTargetGtex_rsem_isopct</a></td>
+<td align="center">19131</td>
+<td align="center">IsoPct</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get_pancan_protein_value" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> get_pancan_protein_value()<a href="data-query.html#get_pancan_protein_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_pancan_protein_value(identifier)</code></li>
+</ul>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-query.html#cb51-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_protein_value</span>(<span class="st">&quot;ACC_pS79&quot;</span>)</span>
+<span id="cb51-2"><a href="data-query.html#cb51-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb51-3"><a href="data-query.html#cb51-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##                   value
+## TCGA-FI-A2EY-01  2.2170
+## TCGA-DF-A2KS-01  0.4139
+## TCGA-A5-A1OH-01  0.0000
+## TCGA-AX-A2H7-01  0.3248
+## TCGA-AX-A2HA-01 -1.2410
+## TCGA-A5-A2K4-01 -0.2814</code></pre>
+<p>Information of available datasets:</p>
+<table>
+<colgroup>
+<col width="38%" />
+<col width="45%" />
+<col width="8%" />
+<col width="7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://pancanatlas.xenahubs.net">pancanAtlasHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=TCGA-RPPA-pancan-clean.xena&amp;host=https://pancanatlas.xenahubs.net">TCGA-RPPA-pancan-clean.xena</a></td>
+<td align="center">7744</td>
+<td align="center">norm_value</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get_pancan_mutation_status" class="section level3 hasAnchor" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> get_pancan_mutation_status()<a href="data-query.html#get_pancan_mutation_status" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_pancan_mutation_status(identifier)</code></li>
+</ul>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-query.html#cb53-1" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">get_pancan_mutation_status</span>(<span class="st">&quot;TP53&quot;</span>)</span>
+<span id="cb53-2"><a href="data-query.html#cb53-2" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##                 value
+## TCGA-02-0003-01     1
+## TCGA-02-0033-01     1
+## TCGA-02-0047-01     0
+## TCGA-02-0055-01     1
+## TCGA-02-2470-01     0
+## TCGA-02-2483-01     1</code></pre>
+<p>Information of available datasets:</p>
+<table>
+<colgroup>
+<col width="40%" />
+<col width="48%" />
+<col width="8%" />
+<col width="3%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://pancanatlas.xenahubs.net">pancanAtlasHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=mc3.v0.2.8.PUBLIC.nonsilentGene.xena&amp;host=https://pancanatlas.xenahubs.net">mc3.v0.2.8.PUBLIC.nonsilentGene.xena</a></td>
+<td align="center">9104</td>
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get_pancan_cn_value" class="section level3 hasAnchor" number="4.1.5">
+<h3><span class="header-section-number">4.1.5</span> get_pancan_cn_value()<a href="data-query.html#get_pancan_cn_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_pancan_cn_value(identifier, gistic2 = TRUE, use_thresholded_data = FALSE)</code></li>
+</ul>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data-query.html#cb55-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_cn_value</span>(<span class="st">&quot;TP53&quot;</span>)</span>
+<span id="cb55-2"><a href="data-query.html#cb55-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb55-3"><a href="data-query.html#cb55-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##                  value
+## TCGA-A5-A0GI-01  0.014
+## TCGA-S9-A7J2-01  0.068
+## TCGA-06-0150-01  0.015
+## TCGA-AR-A1AH-01 -0.761
+## TCGA-EK-A2RE-01 -0.024
+## TCGA-44-6778-01 -0.317</code></pre>
+<p>Information of available datasets:</p>
+<table>
+<colgroup>
+<col width="27%" />
+<col width="33%" />
+<col width="6%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://tcga.xenahubs.net">tcgaHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=TCGA.PANCAN.sampleMap/Gistic2_CopyNumber_Gistic2_all_data_by_genes&amp;host=https://tcga.xenahubs.net">…_Gistic2_all_data_by_genes</a></td>
+<td align="center">10845</td>
+<td align="center">Gistic2 copy number</td>
+</tr>
+<tr class="even">
+<td align="center"><a href="https://tcga.xenahubs.net">tcgaHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=TCGA.PANCAN.sampleMap/Gistic2_CopyNumber_Gistic2_all_thresholded.by_genes&amp;host=https://tcga.xenahubs.net">…_Gistic2_all_thresholded.by_genes</a></td>
+<td align="center">10845</td>
+<td align="center">-2,-1,0,1,2: 2 copy del,1 copy del,no change,amplification,high-amplification</td>
+</tr>
+<tr class="odd">
+<td align="center"><a href="https://pancanatlas.xenahubs.net">pancanAtlasHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=broad.mit.edu_PANCAN_Genome_Wide_SNP_6_whitelisted.gene.xena&amp;host=https://pancanatlas.xenahubs.net">…_SNP_6_whitelisted.gene.xena</a></td>
+<td align="center">10873</td>
+<td align="center">log(tumor/normal)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get_pancan_methylation_value" class="section level3 hasAnchor" number="4.1.6">
+<h3><span class="header-section-number">4.1.6</span> get_pancan_methylation_value()<a href="data-query.html#get_pancan_methylation_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-query.html#cb57-1" tabindex="-1"></a><span class="fu">get_pancan_methylation_value</span>(</span>
+<span id="cb57-2"><a href="data-query.html#cb57-2" tabindex="-1"></a>  identifier,</span>
+<span id="cb57-3"><a href="data-query.html#cb57-3" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">&quot;450K&quot;</span>, <span class="st">&quot;27K&quot;</span>),</span>
+<span id="cb57-4"><a href="data-query.html#cb57-4" tabindex="-1"></a>  <span class="at">rule_out =</span> <span class="cn">NULL</span>,</span>
+<span id="cb57-5"><a href="data-query.html#cb57-5" tabindex="-1"></a>  <span class="at">aggr =</span> <span class="fu">c</span>(<span class="st">&quot;NA&quot;</span>, <span class="st">&quot;mean&quot;</span>, <span class="st">&quot;Q0&quot;</span>, <span class="st">&quot;Q25&quot;</span>, <span class="st">&quot;Q50&quot;</span>, <span class="st">&quot;Q75&quot;</span>, <span class="st">&quot;Q100&quot;</span>)</span>
+<span id="cb57-6"><a href="data-query.html#cb57-6" tabindex="-1"></a>)</span></code></pre></div>
+<ul>
+<li><code>rule_out</code>: exclude some CpG site(s) under one gene;</li>
+<li><code>aggr</code>: select one aggregation method to calculate gene-level methylation (Default: “NA”(mean)).</li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-query.html#cb58-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_methylation_value</span>(<span class="st">&quot;TP53&quot;</span>)</span>
+<span id="cb58-2"><a href="data-query.html#cb58-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb58-3"><a href="data-query.html#cb58-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##                   value
+## TCGA-S6-A8JX-01 0.07085
+## TCGA-SO-A8JP-01 0.08410
+## TCGA-YU-A90Q-01 0.08465
+## TCGA-2G-AAH8-01 0.09373
+## TCGA-2G-AAGY-05 0.09546
+## TCGA-XE-AAOL-01 0.09774</code></pre>
+<p>Information of available datasets:</p>
+<table>
+<colgroup>
+<col width="29%" />
+<col width="52%" />
+<col width="9%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://gdc.xenahubs.net">gdcHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=GDC-PANCAN.methylation450.tsv&amp;host=https://gdc.xenahubs.net">GDC-PANCAN.methylation450.tsv</a></td>
+<td align="center">9736</td>
+<td align="center">beta value</td>
+</tr>
+<tr class="even">
+<td align="center"><a href="https://gdc.xenahubs.net">gdcHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=GDC-PANCAN.methylation27.tsv&amp;host=https://gdc.xenahubs.net">GDC-PANCAN.methylation27.tsv</a></td>
+<td align="center">2595</td>
+<td align="center">beta value</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get_pancan_mirna_value" class="section level3 hasAnchor" number="4.1.7">
+<h3><span class="header-section-number">4.1.7</span> get_pancan_miRNA_value()<a href="data-query.html#get_pancan_mirna_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_pancan_miRNA_value(identifier, gistic2 = TRUE, use_thresholded_data = FALSE)</code></li>
+</ul>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="data-query.html#cb60-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_miRNA_value</span>(<span class="st">&quot;hsa-let-7a-2-3p&quot;</span>)</span>
+<span id="cb60-2"><a href="data-query.html#cb60-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb60-3"><a href="data-query.html#cb60-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##                 value
+## TCGA-C4-A0F6-01  0.99
+## TCGA-CU-A0YO-01  1.91
+## TCGA-BT-A0S7-01  3.02
+## TCGA-CU-A0YR-01  0.85
+## TCGA-BL-A0C8-01  0.85
+## TCGA-C4-A0F0-01  2.70</code></pre>
+<p>Information of available datasets:</p>
+<table style="width:100%;">
+<colgroup>
+<col width="35%" />
+<col width="43%" />
+<col width="7%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://pancanatlas.xenahubs.net">pancanAtlasHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=pancanMiRs_EBadjOnProtocolPlatformWithoutRepsWithUnCorrectMiRs_08_04_16.xena&amp;host=https://pancanatlas.xenahubs.net">pancanMiRs_EBadjOnProtocolPlatformWithoutRepsWithUnCorrectMiRs_08_04_16.xena</a></td>
+<td align="center">10818</td>
+<td align="center">log2(norm_value+1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="pcawg-query" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> PCAWG query<a href="data-query.html#pcawg-query" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Search molecular identifiers for TCGA samples via list <code>pcawg_identifier</code> referring to Figure <a href="build-in.html#fig:pc-ids">3.3</a></li>
+</ul>
+<table>
+<caption><span id="tab:query-pcawg-func">Table 4.2: </span>Specilized functions to query PCAWG molecular data</caption>
+<thead>
+<tr class="header">
+<th align="left">Database</th>
+<th align="left">Type</th>
+<th align="left">Datasets</th>
+<th align="left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">PCAWG</td>
+<td align="left">mRNA</td>
+<td align="left">1</td>
+<td align="left">get_pcawg_gene_value()</td>
+</tr>
+<tr class="even">
+<td align="left">PCAWG</td>
+<td align="left">fusion</td>
+<td align="left">1</td>
+<td align="left">get_pcawg_fusion_value()</td>
+</tr>
+<tr class="odd">
+<td align="left">PCAWG</td>
+<td align="left">miRNA</td>
+<td align="left">2</td>
+<td align="left">get_pcawg_miRNA_value()</td>
+</tr>
+<tr class="even">
+<td align="left">PCAWG</td>
+<td align="left">promoter</td>
+<td align="left">3</td>
+<td align="left">get_pcawg_promoter_value()</td>
+</tr>
+<tr class="odd">
+<td align="left">PCAWG</td>
+<td align="left">APOBEC</td>
+<td align="left">1</td>
+<td align="left">get_pcawg_APOBEC_mutagenesis_value()</td>
+</tr>
+</tbody>
+</table>
+<div id="get_pcawg_gene_value" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> get_pcawg_gene_value()<a href="data-query.html#get_pcawg_gene_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_pcawg_gene_value(identifier)</code></li>
+</ul>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="data-query.html#cb62-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_gene_value</span>(<span class="st">&quot;TP53&quot;</span>)</span>
+<span id="cb62-2"><a href="data-query.html#cb62-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb62-3"><a href="data-query.html#cb62-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##          value
+## SP89389  1.798
+## SP21193  6.542
+## SP13206  4.690
+## SP103623 4.143
+## SP47089  4.846
+## SP32742  5.010</code></pre>
+<p>Information of available datasets:</p>
+<table>
+<colgroup>
+<col width="29%" />
+<col width="46%" />
+<col width="8%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://pcawg.xenahubs.net">pcawgHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=tophat_star_fpkm_uq.v2_aliquot_gl.sp.log&amp;host=https://pcawg.xenahubs.net">tophat_star_fpkm_uq.v2_aliquot_gl.sp.log</a></td>
+<td align="center">1521</td>
+<td align="center">log2(fpkm-uq+0.001)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get_pcawg_fusion_value" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> get_pcawg_fusion_value()<a href="data-query.html#get_pcawg_fusion_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_pcawg_fusion_value(identifier)</code></li>
+</ul>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="data-query.html#cb64-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_fusion_value</span>(<span class="st">&quot;SAMD11&quot;</span>)</span>
+<span id="cb64-2"><a href="data-query.html#cb64-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb64-3"><a href="data-query.html#cb64-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##         value
+## SP23639     0
+## SP23769     0
+## SP23925     0
+## SP24129     0
+## SP24236     0
+## SP24565     0</code></pre>
+<p>Information of available datasets:</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="39%" />
+<col width="7%" />
+<col width="27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://pcawg.xenahubs.net">pcawgHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=pcawg3_fusions_PKU_EBI.gene_centric.sp.xena&amp;host=https://pcawg.xenahubs.net">pcawg3_fusions_PKU_EBI.gene_centric.sp.xena</a></td>
+<td align="center">1359</td>
+<td align="center">binary fusion call, 1 fusion, 0 otherwise</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get_pcawg_mirna_value" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> get_pcawg_miRNA_value()<a href="data-query.html#get_pcawg_mirna_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_pcawg_miRNA_value(identifier, norm = c("TMM", "UQ"))</code></li>
+</ul>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="data-query.html#cb66-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_miRNA_value</span>(<span class="st">&quot;hsa-let-7a-2-3p&quot;</span>)</span>
+<span id="cb66-2"><a href="data-query.html#cb66-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb66-3"><a href="data-query.html#cb66-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##          value
+## SP1029   2.894
+## SP1588   2.286
+## SP119599 2.484
+## SP1437   1.801
+## SP1347   1.529
+## SP106899 1.788</code></pre>
+<p>Information of available datasets:</p>
+<table style="width:100%;">
+<colgroup>
+<col width="30%" />
+<col width="47%" />
+<col width="8%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://pcawg.xenahubs.net">pcawgHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=x3t2m1.mature.TMM.mirna.matrix.log&amp;host=https://pcawg.xenahubs.net">x3t2m1.mature.TMM.mirna.matrix.log</a></td>
+<td align="center">1524</td>
+<td align="center">log2(cpm-TMM+0.1)</td>
+</tr>
+<tr class="even">
+<td align="center"><a href="https://pcawg.xenahubs.net">pcawgHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=x3t2m1.mature.UQ.mirna.matrix.log&amp;host=https://pcawg.xenahubs.net">x3t2m1.mature.UQ.mirna.matrix.log</a></td>
+<td align="center">1524</td>
+<td align="center">log2(cpm-uq+0.1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get_pcawg_promoter_value" class="section level3 hasAnchor" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> get_pcawg_promoter_value()<a href="data-query.html#get_pcawg_promoter_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_pcawg_promoter_value(identifier, type = c("raw", "relative", "outlier"))</code></li>
+</ul>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="data-query.html#cb68-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_promoter_value</span>(<span class="st">&quot;prmtr.1&quot;</span>)</span>
+<span id="cb68-2"><a href="data-query.html#cb68-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb68-3"><a href="data-query.html#cb68-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##          value
+## SP23639  34.51
+## SP23769  35.16
+## SP23925  24.63
+## SP24129  44.71
+## SP24236 172.40
+## SP24565  15.51</code></pre>
+<p>Information of available datasets:</p>
+<table>
+<colgroup>
+<col width="22%" />
+<col width="35%" />
+<col width="6%" />
+<col width="35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://pcawg.xenahubs.net">pcawgHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=rawPromoterActivity.sp&amp;host=https://pcawg.xenahubs.net">rawPromoterActivity.sp</a></td>
+<td align="center">1359</td>
+<td align="center">raw promoter activity</td>
+</tr>
+<tr class="even">
+<td align="center"><a href="https://pcawg.xenahubs.net">pcawgHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=promoterCentricTable_0.2_1.0.sp&amp;host=https://pcawg.xenahubs.net">promoterCentricTable_0.2_1.0.sp</a></td>
+<td align="center">1359</td>
+<td align="center">-1 (low expression), 0 (normal), 1 (high expression)</td>
+</tr>
+<tr class="odd">
+<td align="center"><a href="https://pcawg.xenahubs.net">pcawgHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=relativePromoterActivity.sp&amp;host=https://pcawg.xenahubs.net">relativePromoterActivity.sp</a></td>
+<td align="center">1359</td>
+<td align="center">portion of transcription activity of the gene driven by the promoter</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get_pcawg_apobec_mutagenesis_value" class="section level3 hasAnchor" number="4.2.5">
+<h3><span class="header-section-number">4.2.5</span> get_pcawg_APOBEC_mutagenesis_value()<a href="data-query.html#get_pcawg_apobec_mutagenesis_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_pcawg_APOBEC_mutagenesis_value(identifier)</code></li>
+</ul>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="data-query.html#cb70-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_APOBEC_mutagenesis_value</span>(<span class="st">&quot;A3A_or_A3B&quot;</span>)</span>
+<span id="cb70-2"><a href="data-query.html#cb70-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb70-3"><a href="data-query.html#cb70-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##          value
+## SP117425     0
+## SP117332     0
+## SP117655     1
+## SP99293      1
+## SP99329      1
+## SP99309      1</code></pre>
+<p>Information of available datasets:</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="53%" />
+<col width="9%" />
+<col width="3%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://pcawg.xenahubs.net">pcawgHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=MAF_Aug31_2016_sorted_A3A_A3B_comparePlus.sp&amp;host=https://pcawg.xenahubs.net">MAF_Aug31_2016_sorted_A3A_A3B_comparePlus.sp</a></td>
+<td align="center">2072</td>
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="ccle-query" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> CCLE query<a href="data-query.html#ccle-query" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Search molecular identifiers for TCGA samples via list <code>ccle_identifier</code> referring to Figure <a href="build-in.html#fig:pc-ids">3.3</a></li>
+</ul>
+<table>
+<caption><span id="tab:query-ccle-func">Table 4.3: </span>Specilized functions to query CCLE molecular data</caption>
+<thead>
+<tr class="header">
+<th align="left">Database</th>
+<th align="left">Type</th>
+<th align="left">Datasets</th>
+<th align="left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCLE</td>
+<td align="left">mRNA</td>
+<td align="left">2</td>
+<td align="left">get_ccle_gene_value()</td>
+</tr>
+<tr class="even">
+<td align="left">CCLE</td>
+<td align="left">protein</td>
+<td align="left">1</td>
+<td align="left">get_ccle_protein_value()</td>
+</tr>
+<tr class="odd">
+<td align="left">CCLE</td>
+<td align="left">mutation</td>
+<td align="left">1</td>
+<td align="left">get_ccle_mutation_status()</td>
+</tr>
+<tr class="even">
+<td align="left">CCLE</td>
+<td align="left">cnv</td>
+<td align="left">1</td>
+<td align="left">get_ccle_cn_value()</td>
+</tr>
+</tbody>
+</table>
+<div id="get_ccle_gene_value" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> get_ccle_gene_value()<a href="data-query.html#get_ccle_gene_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_ccle_gene_value(identifier, norm = c("rpkm", "nc"))</code></li>
+</ul>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="data-query.html#cb72-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_ccle_gene_value</span>(<span class="st">&quot;TP53&quot;</span>, <span class="at">norm =</span> <span class="st">&quot;rpkm&quot;</span>)</span>
+<span id="cb72-2"><a href="data-query.html#cb72-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb72-3"><a href="data-query.html#cb72-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##                                value
+## 22RV1_PROSTATE                 7.537
+## 2313287_STOMACH               45.590
+## 253JBV_URINARY_TRACT          28.510
+## 253J_URINARY_TRACT            28.040
+## 42MGBA_CENTRAL_NERVOUS_SYSTEM 13.920
+## 5637_URINARY_TRACT            33.350</code></pre>
+<p>Information of available datasets:</p>
+<table>
+<colgroup>
+<col width="34%" />
+<col width="46%" />
+<col width="8%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://ucscpublic.xenahubs.net">publicHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=ccle/CCLE_DepMap_18Q2_RNAseq_RPKM_20180502&amp;host=https://ucscpublic.xenahubs.net">ccle/CCLE_DepMap_18Q2_RNAseq_RPKM_20180502</a></td>
+<td align="center">1076</td>
+<td align="center">RPKM</td>
+</tr>
+<tr class="even">
+<td align="center"><a href="https://ucscpublic.xenahubs.net">publicHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=ccle/CCLE_DepMap_18Q2_RNAseq_reads_20180502.log2&amp;host=https://ucscpublic.xenahubs.net">ccle/CCLE_DepMap_18Q2_RNAseq_reads_20180502.log2</a></td>
+<td align="center">1076</td>
+<td align="center">log2(count+1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get_ccle_gene_value-1" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> get_ccle_gene_value()<a href="data-query.html#get_ccle_gene_value-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_ccle_protein_value(identifier)</code></li>
+</ul>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="data-query.html#cb74-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_ccle_protein_value</span>(<span class="st">&quot;14-3-3_beta&quot;</span>)</span>
+<span id="cb74-2"><a href="data-query.html#cb74-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb74-3"><a href="data-query.html#cb74-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##                                             value
+## DMS53_LUNG                               -0.10490
+## SW1116_LARGE_INTESTINE                    0.35850
+## NCIH1694_LUNG                             0.02874
+## P3HR1_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE  0.12000
+## HUT78_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE -0.26900
+## UMUC3_URINARY_TRACT                      -0.17120</code></pre>
+<p>Information of available datasets:</p>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="50%" />
+<col width="9%" />
+<col width="3%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://ucscpublic.xenahubs.net">publicHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=ccle/CCLE_RPPA_20180123&amp;host=https://ucscpublic.xenahubs.net">ccle/CCLE_RPPA_20180123</a></td>
+<td align="center">899</td>
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get_ccle_mutation_status" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> get_ccle_mutation_status()<a href="data-query.html#get_ccle_mutation_status" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_ccle_mutation_status(identifier)</code></li>
+</ul>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="data-query.html#cb76-1" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">get_ccle_mutation_status</span>(<span class="st">&quot;TP53&quot;</span>)</span>
+<span id="cb76-2"><a href="data-query.html#cb76-2" tabindex="-1"></a>data <span class="ot">=</span> data[data<span class="sc">$</span>genes<span class="sc">==</span><span class="st">&quot;TP53&quot;</span>,<span class="fu">c</span>(<span class="st">&quot;sampleID&quot;</span>, <span class="st">&quot;genes&quot;</span>)]</span>
+<span id="cb76-3"><a href="data-query.html#cb76-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">na.omit</span>(data))</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   sampleID                                 genes
+##   &lt;chr&gt;                                    &lt;chr&gt;
+## 1 22RV1_PROSTATE                           TP53 
+## 2 22RV1_PROSTATE                           TP53 
+## 3 A253_SALIVARY_GLAND                      TP53 
+## 4 A431_SKIN                                TP53 
+## 5 A4FUK_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE TP53 
+## 6 A673_BONE                                TP53</code></pre>
+<p>Information of available datasets:</p>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="50%" />
+<col width="9%" />
+<col width="3%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://ucscpublic.xenahubs.net">publicHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=ccle/CCLE_DepMap_18Q2_maf_20180502&amp;host=https://ucscpublic.xenahubs.net">ccle/CCLE_DepMap_18Q2_maf_20180502</a></td>
+<td align="center">1549</td>
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get_ccle_cn_value" class="section level3 hasAnchor" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> get_ccle_cn_value()<a href="data-query.html#get_ccle_cn_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>get_ccle_cn_value(identifier)</code></li>
+</ul>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="data-query.html#cb78-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_ccle_cn_value</span>(<span class="st">&quot;TP53&quot;</span>)</span>
+<span id="cb78-2"><a href="data-query.html#cb78-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb78-3"><a href="data-query.html#cb78-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##                                               value
+## LOUNH91_LUNG                                -0.0709
+## T98G_CENTRAL_NERVOUS_SYSTEM                  0.2473
+## IPC298_SKIN                                 -0.7917
+## RPMI8226_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE -0.5341
+## MIAPACA2_PANCREAS                            0.1259
+## HS695T_SKIN                                  0.2196</code></pre>
+<p>Information of available datasets:</p>
+<table style="width:100%;">
+<colgroup>
+<col width="33%" />
+<col width="45%" />
+<col width="8%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Xena Hub</th>
+<th align="center">Xena Datasets</th>
+<th align="center">Sample Size</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="https://ucscpublic.xenahubs.net">publicHub</a></td>
+<td align="center"><a href="https://xenabrowser.net/datapages/?dataset=ccle/CCLE_copynumber_byGene_2013-12-03&amp;host=https://ucscpublic.xenahubs.net">ccle/CCLE_copynumber_byGene_2013-12-03</a></td>
+<td align="center">1043</td>
+<td align="center">log(copy number/2)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="general-query" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> General query<a href="data-query.html#general-query" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="query_pancan_value" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> query_pancan_value()<a href="data-query.html#query_pancan_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A function that integrates all above functions for quick query of TPC molecular data</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="data-query.html#cb80-1" tabindex="-1"></a><span class="fu">query_pancan_value</span>(</span>
+<span id="cb80-2"><a href="data-query.html#cb80-2" tabindex="-1"></a>  molecule,</span>
+<span id="cb80-3"><a href="data-query.html#cb80-3" tabindex="-1"></a>  <span class="at">data_type =</span> <span class="fu">c</span>(<span class="st">&quot;mRNA&quot;</span>, <span class="st">&quot;transcript&quot;</span>, <span class="st">&quot;protein&quot;</span>, <span class="st">&quot;mutation&quot;</span>, <span class="st">&quot;cnv&quot;</span>, <span class="st">&quot;methylation&quot;</span>,</span>
+<span id="cb80-4"><a href="data-query.html#cb80-4" tabindex="-1"></a>    <span class="st">&quot;miRNA&quot;</span>, <span class="st">&quot;fusion&quot;</span>, <span class="st">&quot;promoter&quot;</span>, <span class="st">&quot;APOBEC&quot;</span>),</span>
+<span id="cb80-5"><a href="data-query.html#cb80-5" tabindex="-1"></a>  <span class="at">database =</span> <span class="fu">c</span>(<span class="st">&quot;toil&quot;</span>, <span class="st">&quot;ccle&quot;</span>, <span class="st">&quot;pcawg&quot;</span>),</span>
+<span id="cb80-6"><a href="data-query.html#cb80-6" tabindex="-1"></a>  <span class="at">reset_id =</span> <span class="cn">NULL</span>,</span>
+<span id="cb80-7"><a href="data-query.html#cb80-7" tabindex="-1"></a>  <span class="at">opt_pancan =</span> .opt_pancan</span>
+<span id="cb80-8"><a href="data-query.html#cb80-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="data-query.html#cb81-1" tabindex="-1"></a>.opt_pancan</span></code></pre></div>
+<pre><code>## $toil_mRNA
+## $toil_mRNA$norm
+## [1] &quot;tpm&quot;
+## 
+## 
+## $toil_transcript
+## list()
+## 
+## $toil_protein
+## list()
+## 
+## $toil_mutation
+## list()
+## 
+## $toil_cnv
+## $toil_cnv$gistic2
+## [1] TRUE
+## 
+## $toil_cnv$use_thresholded_data
+## [1] FALSE
+## 
+## 
+## $toil_methylation
+## $toil_methylation$type
+## [1] &quot;450K&quot;
+## 
+## $toil_methylation$rule_out
+## NULL
+## 
+## $toil_methylation$aggr
+## [1] &quot;NA&quot;
+## 
+## 
+## $toil_miRNA
+## list()
+## 
+## $pcawg_mRNA
+## list()
+## 
+## $pcawg_fusion
+## list()
+## 
+## $pcawg_miRNA
+## $pcawg_miRNA$norm
+## [1] &quot;TMM&quot;
+## 
+## 
+## $pcawg_promoter
+## $pcawg_promoter$type
+## [1] &quot;relative&quot;
+## 
+## 
+## $pcawg_APOBEC
+## list()
+## 
+## $ccle_mRNA
+## $ccle_mRNA$norm
+## [1] &quot;rpkm&quot;
+## 
+## 
+## $ccle_protein
+## list()
+## 
+## $ccle_mutation
+## list()
+## 
+## $ccle_cnv
+## list()</code></pre>
+<ul>
+<li>Single molecule query with modified opt_pancan</li>
+</ul>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="data-query.html#cb83-1" tabindex="-1"></a>opt_pancan <span class="ot">=</span> .opt_pancan</span>
+<span id="cb83-2"><a href="data-query.html#cb83-2" tabindex="-1"></a>opt_pancan<span class="sc">$</span>toil_mRNA<span class="sc">$</span>norm <span class="ot">=</span> <span class="st">&quot;nc&quot;</span></span>
+<span id="cb83-3"><a href="data-query.html#cb83-3" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">query_pancan_value</span>(</span>
+<span id="cb83-4"><a href="data-query.html#cb83-4" tabindex="-1"></a>  <span class="at">molecule =</span> <span class="st">&quot;TP53&quot;</span>,</span>
+<span id="cb83-5"><a href="data-query.html#cb83-5" tabindex="-1"></a>  <span class="at">data_type =</span> <span class="st">&quot;mRNA&quot;</span>,</span>
+<span id="cb83-6"><a href="data-query.html#cb83-6" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;toil&quot;</span>,</span>
+<span id="cb83-7"><a href="data-query.html#cb83-7" tabindex="-1"></a>  <span class="at">opt_pancan =</span> opt_pancan</span>
+<span id="cb83-8"><a href="data-query.html#cb83-8" tabindex="-1"></a>)</span>
+<span id="cb83-9"><a href="data-query.html#cb83-9" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb83-10"><a href="data-query.html#cb83-10" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##                           value
+## GTEX-S4Q7-0003-SM-3NM8M  11.130
+## TCGA-S9-A7J2-01          11.350
+## GTEX-QV31-1626-SM-2S1QC  10.160
+## TCGA-G3-A3CH-11           9.632
+## GTEX-13OVI-1026-SM-5L3EM  9.761
+## GTEX-13OW5-0626-SM-5J2N2  9.609</code></pre>
+<ul>
+<li>Molecular signature query</li>
+</ul>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="data-query.html#cb85-1" tabindex="-1"></a><span class="co"># a space must exist in the signature string</span></span>
+<span id="cb85-2"><a href="data-query.html#cb85-2" tabindex="-1"></a>signature <span class="ot">&lt;-</span> <span class="st">&quot;TP53 + 2*KRAS - 1.3*PTEN&quot;</span> </span>
+<span id="cb85-3"><a href="data-query.html#cb85-3" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">query_pancan_value</span>(</span>
+<span id="cb85-4"><a href="data-query.html#cb85-4" tabindex="-1"></a>  <span class="at">molecule =</span> signature,</span>
+<span id="cb85-5"><a href="data-query.html#cb85-5" tabindex="-1"></a>  <span class="at">data_type =</span> <span class="st">&quot;mRNA&quot;</span>,</span>
+<span id="cb85-6"><a href="data-query.html#cb85-6" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;toil&quot;</span>,</span>
+<span id="cb85-7"><a href="data-query.html#cb85-7" tabindex="-1"></a>  <span class="at">opt_pancan =</span> opt_pancan</span>
+<span id="cb85-8"><a href="data-query.html#cb85-8" tabindex="-1"></a>)</span>
+<span id="cb85-9"><a href="data-query.html#cb85-9" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>value</span>
+<span id="cb85-10"><a href="data-query.html#cb85-10" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##                           value
+## GTEX-S4Q7-0003-SM-3NM8M  15.756
+## TCGA-S9-A7J2-01          18.465
+## GTEX-QV31-1626-SM-2S1QC  15.402
+## TCGA-G3-A3CH-11          13.944
+## GTEX-13OVI-1026-SM-5L3EM 13.439
+## GTEX-13OW5-0626-SM-5J2N2 13.699</code></pre>
+</div>
+<div id="query_molecule_value" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> query_molecule_value()<a href="data-query.html#query_molecule_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A function to query general molecular data of most matrix datasets of UCSC Xena repository</p>
+<ul>
+<li>Genomic matrix repository</li>
+</ul>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="data-query.html#cb87-1" tabindex="-1"></a>data_meta <span class="ot">=</span> UCSCXenaTools<span class="sc">::</span>XenaData</span>
+<span id="cb87-2"><a href="data-query.html#cb87-2" tabindex="-1"></a>data_meta_gm <span class="ot">=</span> <span class="fu">subset</span>(data_meta, Type<span class="sc">==</span><span class="st">&quot;genomicMatrix&quot;</span>)</span>
+<span id="cb87-3"><a href="data-query.html#cb87-3" tabindex="-1"></a><span class="co"># see the &#39;XenaDatasets&#39; column</span></span>
+<span id="cb87-4"><a href="data-query.html#cb87-4" tabindex="-1"></a><span class="fu">head</span>(data_meta_gm[,<span class="fu">c</span>(<span class="st">&quot;XenaHostNames&quot;</span>,<span class="st">&quot;XenaCohorts&quot;</span>,<span class="st">&quot;XenaDatasets&quot;</span>,<span class="st">&quot;DataSubtype&quot;</span>)])</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 4
+##   XenaHostNames XenaCohorts                            XenaDatasets  DataSubtype
+##   &lt;chr&gt;         &lt;chr&gt;                                  &lt;chr&gt;         &lt;chr&gt;      
+## 1 publicHub     Breast Cancer Cell Lines (Neve 2006)   ucsfNeve_pub… gene expre…
+## 2 publicHub     Glioma (Kotliarov 2006)                kotliarov200… copy number
+## 3 publicHub     Lung Cancer CGH (Weir 2007)            weir2007_pub… copy number
+## 4 publicHub     Cancer Cell Line Encyclopedia (Breast) ccle/CCLE_co… copy number
+## 5 publicHub     Breast Cancer (Chin 2006)              chin2006_pub… gene expre…
+## 6 publicHub     Breast Cancer (Chin 2006)              chin2006_pub… copy number</code></pre>
+<ul>
+<li><code>query_molecule_value(dataset, molecule)</code></li>
+</ul>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="data-query.html#cb89-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="st">&quot;TCGA-BRCA.htseq_fpkm.tsv&quot;</span></span>
+<span id="cb89-2"><a href="data-query.html#cb89-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">query_molecule_value</span>(dataset, <span class="st">&quot;TP53&quot;</span>) <span class="co"># also support signature </span></span>
+<span id="cb89-3"><a href="data-query.html#cb89-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<pre><code>##                  value
+## TCGA-E9-A1NI-01A 4.854
+## TCGA-A1-A0SP-01A 2.554
+## TCGA-BH-A1EU-11A 4.515
+## TCGA-A8-A06X-01A 3.844
+## TCGA-E2-A14T-01A 4.255
+## TCGA-AC-A8OS-01A 3.655</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="build-in.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-pkg-3-query.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

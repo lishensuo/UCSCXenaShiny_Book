@@ -1,5 +1,21 @@
-h1:background Background
-h2:ucsc-xena UCSC Xena
-h2:tcgapcawgccle TCGA/PCAWG/CCLE
-h2:other-integrated-data Other integrated data
+h1:intro Introduction
+h2:ucsc-xena-datasets UCSC Xena Datasets
+fig:p0201 The hierarchy of datasets in UCSC Xena
+fig:p0202 The main types and subtypes of datasets
+fig:p0203 The statitics for cohorts and datasets of each data hub
+h4:tcgahub-tcga-hub (1) 
+h4:gdchub-gdc-hub (2) 
+h4:pancanatlashub-pan-cancer-atlas-hub (3) 
+h4:toilhub-ucsc-toil-rna-seq-recompute (4) 
+h4:publichub-ucsc-public-hub (5) 
+h4:icgchub-icgc-xena-hub (6) 
+h4:pcawghub-pcawg-hub (7) 
+h4:atacseqhubatac-seq-hub (8) 
+h4:kidfirsthubkids-first-xena-hub (9) 
+h4:treehousehub (10) 
+h4:singlecellhub (11) 
+h2:tcga-abbreviations TCGA abbreviations
+tab:tb04-1 TCGA abbreviations
+h2:pcawg-abbreviations PCAWG abbreviations
+tab:tb04-2 PCAWG abbreviations
 

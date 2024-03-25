@@ -1,54 +1,52 @@
-# General Dataset Analysis
+# General Dataset Analysis {#general-da}
 
-1. In this page, users can explore the most Genomics matrix datasets from UCSC Xena repository with common analysis methods.
-2. As chapter 8.3 describes, the initial step involves the selection of interesting datasets from **Repository** page. 
-3. In the following, we will take the "*TCGA-BLCA.htseq_fpkm.tsv*" dataset as an example to demonstrate how to operate various methods
+1. In this page, users can explore the most genomics matrix datasets of UCSC Xena repository with common analysis methods.
+2. As Chapter \@ref(analyze-data) describes, the initial step involves the selection of interesting datasets from **Repository** page. 
+3. In the following, we will take the "*TCGA-BLCA.htseq_fpkm.tsv*" dataset as an example to demonstrate how to perform various analyses.
 
-```{r p1001, fig.cap='The selection of TCGA-BLCA.htseq_fpkm.tsv dataset',  fig.align='center', echo = FALSE, out.width="80%"}
+```{r p1001, fig.cap='The selection of TCGA-BLCA.htseq_fpkm.tsv dataset',  fig.align='center', echo = FALSE, out.width="100%"}
 knitr::include_graphics('images/p1001.png')
 ```
 
-## Scatter-Correlation
+## Scatter-Correlation {#m-vis-identifier-cor}
 
-Compute and visualize the correlation between two molecules based on `vis_identifier_cor()` function.
+Compute and visualize the correlation between two molecules based on [`vis_identifier_cor()`](#vis-identifier-cor) function.
 
-
-
-1. Firstly, select two molecules from candidate dataset;
+1. Firstly, select two molecules from candidate dataset(s);
 2. Click the "Submit" button to perform analysis and the visualization result along with raw data will be display in the middle.
 3. Finally, the plot can be saved with size and format options.
 
-```{r p1002, fig.cap='The steps of Scatter-Correlation analysis',  fig.align='center', echo = FALSE,out.width="80%"}
+```{r p1002, fig.cap='The steps of Scatter-Correlation analysis',  fig.align='center', echo = FALSE,out.width="100%"}
 knitr::include_graphics('images/p1002.png')
 ```
 
-> Notably, Two molecules can come from different datasets, but there must be intersecting samples.
+> Notably, two molecules can come from different datasets, but there must be intersecting samples.
 
 
 
-### Matrix-Correlation
+## Matrix-Correlation {#m-vis-identifier-multi-cor}
 
-Compute and visualize the pair-wise correlation among multiple molecules based on `vis_identifier_multi_cor()` function.
+Compute and visualize the pair-wise correlation among multiple molecules based on [`vis_identifier_multi_cor()`](#vis-identifier-multi-cor) function.
 
 1. Firstly, select multiple molecules from one candidate dataset;
 2. Modify several analysis and visualization parameters;
 3. Click the "Submit" button to perform analysis and the visualization result along with analyzed data will be display in the middle.
 4. Finally, the plot can be saved with size and format options.
 
-```{r p1003, fig.cap='The steps of Matrix-Correlation analysis',  fig.align='center', echo = FALSE,out.width="80%"}
+```{r p1003, fig.cap='The steps of Matrix-Correlation analysis',  fig.align='center', echo = FALSE,out.width="100%"}
 knitr::include_graphics('images/p1003.png')
 ```
 
 
 
-## Group-Comparison
+## Group-Comparison {#m-vis-identifier-grp-comparison}
 
-Compare the differences in the distribution of values for one molecule under a specified phenotypic grouping based on `vis_identifier_grp_comparison()` function. 
+Compare the differences in the distribution of values for one molecule under a specified phenotypic grouping based on [`vis_identifier_grp_comparison()`](#vis-identifier-grp-comparison) function. 
 
 1. Select a dataset and use one of its columns as the basis for grouping. **(dataset 1)**
-2. Select a dataset and use one of its numeric columns as the values to compare. **(dataset 2)**.
+2. Select a dataset and use one of its numeric columns as the values to compare. **(dataset 2)**
 
-```{r p1004, fig.cap='The steps of Group-Comparison analysis',  fig.align='center', echo = FALSE,out.width="80%"}
+```{r p1004, fig.cap='The steps of Group-Comparison analysis',  fig.align='center', echo = FALSE,out.width="100%"}
 knitr::include_graphics('images/p1004.png')
 ```
 
@@ -61,10 +59,9 @@ knitr::include_graphics('images/p1004.png')
 >
 >
 
-```{r p1005, fig.cap='The Group-Comparison grouping via the Preprocess button',  fig.align='center', echo = FALSE,out.width="80%"}
+```{r p1005, fig.cap='The Group-Comparison grouping via the Preprocess button',  fig.align='center', echo = FALSE,out.width="100%"}
 knitr::include_graphics('images/p1005.png')
 ```
-
 
 
 3. Modify several analysis parameters;
@@ -73,14 +70,14 @@ knitr::include_graphics('images/p1005.png')
 
 
 
-## Survival-Analysis
+## Survival-Analysis {#m-vis-identifier-grp-surv}
 
-Perform the grouping log-rank survival analysis, especially for TCGA related datasets based on `vis_identifier_grp_surv()` function. 
+Perform the grouping log-rank survival analysis, especially for TCGA related datasets based on [`vis_identifier_grp_surv()`](#vis-identifier-grp-surv) function. 
 
 1. Select a dataset and use one of its columns as the basis for grouping. **(dataset 1)**
-2. Select one survival dataset with event time and status columns. **(dataset 2)**.
+2. Select one survival dataset with event time and status columns. **(dataset 2)**
 
-```{r p1006, fig.cap='The steps of Survival-Analysis',  fig.align='center', echo = FALSE,out.width="80%"}
+```{r p1006, fig.cap='The steps of Survival-Analysis',  fig.align='center', echo = FALSE,out.width="100%"}
 knitr::include_graphics('images/p1006.png')
 ```
 
@@ -90,7 +87,7 @@ knitr::include_graphics('images/p1006.png')
 > - Step2: From the columns  of dataset 2, select the sample id column (`Sample column`) and two survival related column (`Time column`, `Status column`).
 > - Step3: Click the "Click to joint the data" button to finally generate grouping result. If there are no problems, exit this interface.
 
-```{r p1007, fig.cap='The Survival-Analysis grouping via the Preprocess button',  fig.align='center', echo = FALSE,out.width="80%"}
+```{r p1007, fig.cap='The Survival-Analysis grouping via the Preprocess button',  fig.align='center', echo = FALSE,out.width="100%"}
 knitr::include_graphics('images/p1007.png')
 ```
 
@@ -99,13 +96,9 @@ knitr::include_graphics('images/p1007.png')
 
 
 
+## Dimension-Distribution {#m-vis-identifier-dim-dist}
 
-
-
-
-## Dimension-Distribution
-
-Perform the dimension reduction analysis based on multiple molecules of one genomics matrix datasets based on `vis_identifier_dim_dist()` function. 
+Perform the dimension reduction analysis based on multiple molecules of one genomics matrix datasets based on [`vis_identifier_dim_dist()`](#vis-identifier-dim-dist) function. 
 
 1. Select a dataset and use one of its columns as the basis for grouping. **(dataset 1)**
 2. Select a genomics matrix dataset and further multiple molecular columns via three ways. **(dataset 2)**.
@@ -113,7 +106,7 @@ Perform the dimension reduction analysis based on multiple molecules of one geno
    - "Pathway": batch selection under one pathway;
    - "File": Upload of identifier file.
 
-```{r p1008, fig.cap='The steps of Dimension-Distribution',  fig.align='center', echo = FALSE,out.width="80%"}
+```{r p1008, fig.cap='The steps of Dimension-Distribution',  fig.align='center', echo = FALSE,out.width="100%"}
 knitr::include_graphics('images/p1008.png')
 ```
 
@@ -125,11 +118,11 @@ knitr::include_graphics('images/p1008.png')
 > - Step2: From the columns  of dataset 2, select the sample id column (`Sample column`) and molecule columns (`Value column`).
 > - Step3: Click the "Click to joint the data" button to finally generate grouping result. If there are no problems, exit this interface.
 
-```{r p1009, fig.cap='The Dimension-Distribution grouping via the Preprocess button',  fig.align='center', echo = FALSE,out.width="80%"}
+```{r p1009, fig.cap='The Dimension-Distribution grouping via the Preprocess button',  fig.align='center', echo = FALSE,out.width="100%"}
 knitr::include_graphics('images/p1009.png')
 ```
 
 3. Modify several analysis and visualization parameters;
-   - 3 DR methods (PCA/UMAP/TSNE) are supported.
+   - three DR methods (PCA/UMAP/TSNE) are supported.
 4. Click the "Submit" button to perform analysis and the visualization result along with analyzed data will be display in the middle.
 5. Finally, the plot can be saved with size and format options.
