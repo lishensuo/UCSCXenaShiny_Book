@@ -286,3 +286,97 @@ The following is a simple example. (The steps not mentioned in above figure impl
 knitr::include_graphics('images/p1312.png')
 ```
 
+
+## Cross-Omics analysis
+Recently, we have added one pipeline for TCGA cross-omics analysis to simultaneously explore the molecular features of multiple omics across pan-cancers.
+
+### Gene Cross-Omics Analysis
+Perform the cross-omics analysis at the gene level, involving Gene expression, Gene Mutation, Gene CNV, Transcript expression, DNA methylation.
+
+The following is a simple example. (The steps not mentioned in above figure imply default operations.)
+
+**S1: Preset** 
+
+- "**S1.2 Choose cancer**":  choose the all TCGA cancer types
+- "**S1.3 Filter samples**":  By default, select all normal samples and tumor samples.
+
+**S2: Get data** 
+
+- "**S2.1 Select one gene**": Select gene TP53
+- "**S2.2 Load mRNA/Mutation/CNV data**": Preload the mRNA/Mutation/CNV data of gene to save time in S3 step.
+- "**S2.3 Load transcript data**": Select and load several transcript of gene, filter invalid transcripts with null value.
+- "**S2.4 Load methylation data**": Select several CpG sits of gene and load methyaltion data. 
+
+**S3: Analyze & Visualize** : Analyze multi-omics data and visualize by `funkyheatmap` package.
+
+```{r p1313, fig.cap='Example of Gene Cross-Omics Analysis',  fig.align='center', echo = FALSE, out.width="100%"}
+knitr::include_graphics('images/p1313.png')
+```
+
+**Column-1**: TCGA Names;
+
+**Column-2[Expression Profile]**: 0-1 normalized median expression of gene in normal samples (include GTEx);
+
+**Column-3[Expression Profile]**: 0-1 normalized median expression of gene in tumor samples;
+
+**Column-4[Expression Profile]**: The significance symbol of gene comparison between tumor and normal samples via *Wilcoxon* test (P<0.001, “\*\*\*”; P<0.01, “\*\*”; P<0.05, “*”; P>0.05, “-”).
+
+**Column-5[Mutation Profile]**: The distribution of gene mutation or wild status in tumor samples.
+
+**Column-6[Mutation Profile]**: The percentage of gene mutation status in tumor samples.
+
+**Column-7[CNV Profile]**: The distribution of gene copy number variation status in tumor samples (-2, homozygous deletion; -1, single copy deletion; 0, diploid normal copy; 1: low-level copy number amplification; 2: high-level copy number amplification).
+
+**Column-8[CNV Profile]**: The percentage of gene copy number amplification (1,2) in tumor samples.
+
+**Column-9[CNV Profile]**: The percentage of gene copy number deletion (-1, -2) in tumor samples.
+
+**Column-Selected transcript(s) of one gene[CNV Profile]**: The median transcript expression in tumor samples.
+
+**Column-Selected CpG sites of one gene[Methylation Profile]**: The median beta value of CpG sites in tumor samples.
+
+
+
+
+
+
+### Pathway Cross-Omics Analysis
+Perform the cross-omics analysis at the pathway level, involving Gene expression, Gene Mutation, Gene CNV.
+
+The following is a simple example. (The steps not mentioned in above figure imply default operations.)
+
+**S1: Preset** 
+
+- "**S1.2 Choose cancer**":  choose the all TCGA cancer types
+- "**S1.3 Filter samples**":  By default, select all normal samples and tumor samples.
+
+**S2: Get data** 
+
+- "**S2.1 one pathway**": Select pathway HALLMARK_ADIPOGENESIS
+
+**S3: Analyze & Visualize** : Analyze multi-omics data and visualize by `funkyheatmap` package.
+
+
+```{r p1314, fig.cap='Example of Pathway Cross-Omics Analysis',  fig.align='center', echo = FALSE, out.width="100%"}
+knitr::include_graphics('images/p1314.png')
+```
+
+**Column-1**: TCGA Names;
+
+**Column-2[Expression Profile]**: 0-1 normalized median ssGSEA score of pathway in normal samples (include GTEx);
+
+**Column-3[Expression Profile]**: 0-1 normalized median ssGSEA score of gene in tumor samples;
+
+**Column-4[Expression Profile]**: The significance symbol of gene comparison between tumor and normal samples via *Wilcoxon* test (P<0.001, “\*\*\*”; P<0.01, “\*\*”; P<0.05, “*”; P>0.05, “-”).
+
+**Column-5[Mutation Profile]**: The distribution of mutation or wild pathway gene status in tumor samples. If one of pathway genes is mutated, it is considered as mutation.
+
+**Column-6[Mutation Profile]**: The percentage of pathway mutation status in tumor samples.
+
+**Column-7[Mutation Profile]**: The mean counts of mutated pathway genes in tumor samples.
+
+**Column-8[CNV Profile]**: The distribution of pathway gene copy number variation status in tumor samples. (Amp, homozygous deletion or single copy deletion; Non, diploid normal copy; Del, Copy number amplification.)
+
+**Column-9[CNV Profile]**:  The copy number amplification percentage of pathway genes  in tumor samples.
+
+**Column-10[CNV Profile]**: The copy number deletion percentage of pathway gene in tumor samples.

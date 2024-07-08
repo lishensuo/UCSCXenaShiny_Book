@@ -101,6 +101,8 @@ fig:p1309
 fig:p1310
 fig:p1311
 fig:p1312
+fig:p1313
+fig:p1314
 fig:p1401
 fig:p1402
 fig:p1403
@@ -270,6 +272,9 @@ survival-analysis-5
 individual-mode-2
 pan-cancer-mode-2
 batch-screen-mode-2
+cross-omics-analysis
+gene-cross-omics-analysis
+pathway-cross-omics-analysis
 download
 download-tpc-datasets
 omics-molecular-data

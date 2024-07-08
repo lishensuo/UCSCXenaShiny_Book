@@ -323,6 +323,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.4.2" data-path="per-tpc-2.html"><a href="per-tpc-2.html#pan-cancer-mode-2"><i class="fa fa-check"></i><b>12.4.2</b> Pan-cancer Mode</a></li>
 <li class="chapter" data-level="12.4.3" data-path="per-tpc-2.html"><a href="per-tpc-2.html#batch-screen-mode-2"><i class="fa fa-check"></i><b>12.4.3</b> Batch Screen Mode</a></li>
 </ul></li>
+<li class="chapter" data-level="12.5" data-path="per-tpc-2.html"><a href="per-tpc-2.html#cross-omics-analysis"><i class="fa fa-check"></i><b>12.5</b> Cross-Omics analysis</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="per-tpc-2.html"><a href="per-tpc-2.html#gene-cross-omics-analysis"><i class="fa fa-check"></i><b>12.5.1</b> Gene Cross-Omics Analysis</a></li>
+<li class="chapter" data-level="12.5.2" data-path="per-tpc-2.html"><a href="per-tpc-2.html#pathway-cross-omics-analysis"><i class="fa fa-check"></i><b>12.5.2</b> Pathway Cross-Omics Analysis</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="download.html"><a href="download.html"><i class="fa fa-check"></i><b>13</b> Download modules</a>
 <ul>
@@ -644,6 +649,76 @@ Figure 12.11: Example of survival analysis in pan-cancer mode
 Figure 12.12: Example of survival analysis in batch screen mode
 </p>
 </div>
+</div>
+</div>
+<div id="cross-omics-analysis" class="section level2 hasAnchor" number="12.5">
+<h2><span class="header-section-number">12.5</span> Cross-Omics analysis<a href="per-tpc-2.html#cross-omics-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Recently, we have added one pipeline for TCGA cross-omics analysis to simultaneously explore the molecular features of multiple omics across pan-cancers.</p>
+<div id="gene-cross-omics-analysis" class="section level3 hasAnchor" number="12.5.1">
+<h3><span class="header-section-number">12.5.1</span> Gene Cross-Omics Analysis<a href="per-tpc-2.html#gene-cross-omics-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Perform the cross-omics analysis at the gene level, involving Gene expression, Gene Mutation, Gene CNV, Transcript expression, DNA methylation.</p>
+<p>The following is a simple example. (The steps not mentioned in above figure imply default operations.)</p>
+<p><strong>S1: Preset</strong></p>
+<ul>
+<li>“<strong>S1.2 Choose cancer</strong>”: choose the all TCGA cancer types</li>
+<li>“<strong>S1.3 Filter samples</strong>”: By default, select all normal samples and tumor samples.</li>
+</ul>
+<p><strong>S2: Get data</strong></p>
+<ul>
+<li>“<strong>S2.1 Select one gene</strong>”: Select gene TP53</li>
+<li>“<strong>S2.2 Load mRNA/Mutation/CNV data</strong>”: Preload the mRNA/Mutation/CNV data of gene to save time in S3 step.</li>
+<li>“<strong>S2.3 Load transcript data</strong>”: Select and load several transcript of gene, filter invalid transcripts with null value.</li>
+<li>“<strong>S2.4 Load methylation data</strong>”: Select several CpG sits of gene and load methyaltion data.</li>
+</ul>
+<p><strong>S3: Analyze &amp; Visualize</strong> : Analyze multi-omics data and visualize by <code>funkyheatmap</code> package.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1313"></span>
+<img src="images/p1313.png" alt="Example of Gene Cross-Omics Analysis" width="100%" />
+<p class="caption">
+Figure 12.13: Example of Gene Cross-Omics Analysis
+</p>
+</div>
+<p><strong>Column-1</strong>: TCGA Names;</p>
+<p><strong>Column-2[Expression Profile]</strong>: 0-1 normalized median expression of gene in normal samples (include GTEx);</p>
+<p><strong>Column-3[Expression Profile]</strong>: 0-1 normalized median expression of gene in tumor samples;</p>
+<p><strong>Column-4[Expression Profile]</strong>: The significance symbol of gene comparison between tumor and normal samples via <em>Wilcoxon</em> test (P&lt;0.001, “***”; P&lt;0.01, “**”; P&lt;0.05, “*”; P&gt;0.05, “-”).</p>
+<p><strong>Column-5[Mutation Profile]</strong>: The distribution of gene mutation or wild status in tumor samples.</p>
+<p><strong>Column-6[Mutation Profile]</strong>: The percentage of gene mutation status in tumor samples.</p>
+<p><strong>Column-7[CNV Profile]</strong>: The distribution of gene copy number variation status in tumor samples (-2, homozygous deletion; -1, single copy deletion; 0, diploid normal copy; 1: low-level copy number amplification; 2: high-level copy number amplification).</p>
+<p><strong>Column-8[CNV Profile]</strong>: The percentage of gene copy number amplification (1,2) in tumor samples.</p>
+<p><strong>Column-9[CNV Profile]</strong>: The percentage of gene copy number deletion (-1, -2) in tumor samples.</p>
+<p><strong>Column-Selected transcript(s) of one gene[CNV Profile]</strong>: The median transcript expression in tumor samples.</p>
+<p><strong>Column-Selected CpG sites of one gene[Methylation Profile]</strong>: The median beta value of CpG sites in tumor samples.</p>
+</div>
+<div id="pathway-cross-omics-analysis" class="section level3 hasAnchor" number="12.5.2">
+<h3><span class="header-section-number">12.5.2</span> Pathway Cross-Omics Analysis<a href="per-tpc-2.html#pathway-cross-omics-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Perform the cross-omics analysis at the pathway level, involving Gene expression, Gene Mutation, Gene CNV.</p>
+<p>The following is a simple example. (The steps not mentioned in above figure imply default operations.)</p>
+<p><strong>S1: Preset</strong></p>
+<ul>
+<li>“<strong>S1.2 Choose cancer</strong>”: choose the all TCGA cancer types</li>
+<li>“<strong>S1.3 Filter samples</strong>”: By default, select all normal samples and tumor samples.</li>
+</ul>
+<p><strong>S2: Get data</strong></p>
+<ul>
+<li>“<strong>S2.1 one pathway</strong>”: Select pathway HALLMARK_ADIPOGENESIS</li>
+</ul>
+<p><strong>S3: Analyze &amp; Visualize</strong> : Analyze multi-omics data and visualize by <code>funkyheatmap</code> package.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1314"></span>
+<img src="images/p1314.png" alt="Example of Pathway Cross-Omics Analysis" width="100%" />
+<p class="caption">
+Figure 12.14: Example of Pathway Cross-Omics Analysis
+</p>
+</div>
+<p><strong>Column-1</strong>: TCGA Names;</p>
+<p><strong>Column-2[Expression Profile]</strong>: 0-1 normalized median ssGSEA score of pathway in normal samples (include GTEx);</p>
+<p><strong>Column-3[Expression Profile]</strong>: 0-1 normalized median ssGSEA score of gene in tumor samples;</p>
+<p><strong>Column-4[Expression Profile]</strong>: The significance symbol of gene comparison between tumor and normal samples via <em>Wilcoxon</em> test (P&lt;0.001, “***”; P&lt;0.01, “**”; P&lt;0.05, “*”; P&gt;0.05, “-”).</p>
+<p><strong>Column-5[Mutation Profile]</strong>: The distribution of mutation or wild pathway gene status in tumor samples. If one of pathway genes is mutated, it is considered as mutation.</p>
+<p><strong>Column-6[Mutation Profile]</strong>: The percentage of pathway mutation status in tumor samples.</p>
+<p><strong>Column-7[Mutation Profile]</strong>: The mean counts of mutated pathway genes in tumor samples.</p>
+<p><strong>Column-8[CNV Profile]</strong>: The distribution of pathway gene copy number variation status in tumor samples. (Amp, homozygous deletion or single copy deletion; Non, diploid normal copy; Del, Copy number amplification.)</p>
+<p><strong>Column-9[CNV Profile]</strong>: The copy number amplification percentage of pathway genes in tumor samples.</p>
+<p><strong>Column-10[CNV Profile]</strong>: The copy number deletion percentage of pathway gene in tumor samples.</p>
 
 </div>
 </div>
