@@ -71,13 +71,10 @@ knitr::include_graphics('images/p0801.png')
 
 ## TCGA Analysis Guide
 
-- Based on UCSC Xena datasets, we have designed versatile analyses for TCGA as well as other databases, like PCAWG and CCLE.
-- In the homepage, two series of TCGA analyses, including 12 custom modules (Figure) and 3 personalized pipelines, are displayed as quick interface for users.
+- Based on UCSC Xena datasets, we have designed versatile analyses for TCGA as well as other databases (PCAWG and CCLE).
+- In the homepage, examples of TCGA analyses, including 3 custom modules and 3 personalized pipelines, are displayed as quick interface for users.
 
-```{r tcga-modules, fig.cap='12 TCGA analytical modules',  fig.align='center', echo = FALSE,out.width="100%"}
+```{r tcga-modules, fig.cap='Example TCGA analysis',  fig.align='center', echo = FALSE,out.width="100%"}
 knitr::include_graphics('images/p0802.png')
 ```
 
-```{r tcga-pipelines, fig.cap='3 TCGA analytical pipelines',  fig.align='center', echo = FALSE,out.width="100%"}
-knitr::include_graphics('images/p0803.png')
-```

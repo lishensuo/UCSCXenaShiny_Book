@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Shensuo Li, Shixiang Wang" />
 
 
-<meta name="date" content="2024-03-25" />
+<meta name="date" content="2024-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -156,6 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#cran"><i class="fa fa-check"></i><b>2.1</b> CRAN</a></li>
 <li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#github"><i class="fa fa-check"></i><b>2.2</b> Github</a></li>
 <li class="chapter" data-level="2.3" data-path="install.html"><a href="install.html#conda"><i class="fa fa-check"></i><b>2.3</b> Conda</a></li>
+<li class="chapter" data-level="2.4" data-path="install.html"><a href="install.html#docker"><i class="fa fa-check"></i><b>2.4</b> Docker</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="build-in.html"><a href="build-in.html"><i class="fa fa-check"></i><b>3</b> Built-in datasets</a>
 <ul>
@@ -193,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="data-query.html"><a href="data-query.html#ccle-query"><i class="fa fa-check"></i><b>4.3</b> CCLE query</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value"><i class="fa fa-check"></i><b>4.3.1</b> get_ccle_gene_value()</a></li>
-<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value-1"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_gene_value()</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_protein_value"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_protein_value()</a></li>
 <li class="chapter" data-level="4.3.3" data-path="data-query.html"><a href="data-query.html#get_ccle_mutation_status"><i class="fa fa-check"></i><b>4.3.3</b> get_ccle_mutation_status()</a></li>
 <li class="chapter" data-level="4.3.4" data-path="data-query.html"><a href="data-query.html#get_ccle_cn_value"><i class="fa fa-check"></i><b>4.3.4</b> get_ccle_cn_value()</a></li>
 </ul></li>
@@ -419,9 +420,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_pancan_gene_value(identifier, norm = c("tpm", "fpkm", "nc"))</code></li>
 </ul>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="data-query.html#cb47-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_gene_value</span>(<span class="st">&quot;TP53&quot;</span>, <span class="at">norm =</span> <span class="st">&quot;tpm&quot;</span>)</span>
-<span id="cb47-2"><a href="data-query.html#cb47-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
-<span id="cb47-3"><a href="data-query.html#cb47-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="data-query.html#cb48-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_gene_value</span>(<span class="st">&quot;TP53&quot;</span>, <span class="at">norm =</span> <span class="st">&quot;tpm&quot;</span>)</span>
+<span id="cb48-2"><a href="data-query.html#cb48-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb48-3"><a href="data-query.html#cb48-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##                         value
 ## GTEX-S4Q7-0003-SM-3NM8M 4.785
 ## TCGA-19-1787-01         5.887
@@ -472,9 +473,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_pancan_transcript_value(identifier, norm = c("tpm", "fpkm", "nc"))</code></li>
 </ul>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data-query.html#cb49-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_transcript_value</span>(<span class="st">&quot;ENST00000456328&quot;</span>, <span class="at">norm =</span> <span class="st">&quot;tpm&quot;</span>)</span>
-<span id="cb49-2"><a href="data-query.html#cb49-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
-<span id="cb49-3"><a href="data-query.html#cb49-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="data-query.html#cb50-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_transcript_value</span>(<span class="st">&quot;ENST00000456328&quot;</span>, <span class="at">norm =</span> <span class="st">&quot;tpm&quot;</span>)</span>
+<span id="cb50-2"><a href="data-query.html#cb50-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb50-3"><a href="data-query.html#cb50-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##                           value
 ## GTEX-S4Q7-0003-SM-3NM8M  -5.012
 ## TCGA-19-1787-01          -9.966
@@ -525,9 +526,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_pancan_protein_value(identifier)</code></li>
 </ul>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-query.html#cb51-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_protein_value</span>(<span class="st">&quot;ACC_pS79&quot;</span>)</span>
-<span id="cb51-2"><a href="data-query.html#cb51-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
-<span id="cb51-3"><a href="data-query.html#cb51-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data-query.html#cb52-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_protein_value</span>(<span class="st">&quot;ACC_pS79&quot;</span>)</span>
+<span id="cb52-2"><a href="data-query.html#cb52-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb52-3"><a href="data-query.html#cb52-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##                   value
 ## TCGA-FI-A2EY-01  2.2170
 ## TCGA-DF-A2KS-01  0.4139
@@ -566,8 +567,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_pancan_mutation_status(identifier)</code></li>
 </ul>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-query.html#cb53-1" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">get_pancan_mutation_status</span>(<span class="st">&quot;TP53&quot;</span>)</span>
-<span id="cb53-2"><a href="data-query.html#cb53-2" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="data-query.html#cb54-1" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">get_pancan_mutation_status</span>(<span class="st">&quot;TP53&quot;</span>)</span>
+<span id="cb54-2"><a href="data-query.html#cb54-2" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##                 value
 ## TCGA-02-0003-01     1
 ## TCGA-02-0033-01     1
@@ -606,9 +607,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_pancan_cn_value(identifier, gistic2 = TRUE, use_thresholded_data = FALSE)</code></li>
 </ul>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data-query.html#cb55-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_cn_value</span>(<span class="st">&quot;TP53&quot;</span>)</span>
-<span id="cb55-2"><a href="data-query.html#cb55-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
-<span id="cb55-3"><a href="data-query.html#cb55-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data-query.html#cb56-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_cn_value</span>(<span class="st">&quot;TP53&quot;</span>)</span>
+<span id="cb56-2"><a href="data-query.html#cb56-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb56-3"><a href="data-query.html#cb56-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##                  value
 ## TCGA-A5-A0GI-01  0.014
 ## TCGA-S9-A7J2-01  0.068
@@ -656,19 +657,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="get_pancan_methylation_value" class="section level3 hasAnchor" number="4.1.6">
 <h3><span class="header-section-number">4.1.6</span> get_pancan_methylation_value()<a href="data-query.html#get_pancan_methylation_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-query.html#cb57-1" tabindex="-1"></a><span class="fu">get_pancan_methylation_value</span>(</span>
-<span id="cb57-2"><a href="data-query.html#cb57-2" tabindex="-1"></a>  identifier,</span>
-<span id="cb57-3"><a href="data-query.html#cb57-3" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">&quot;450K&quot;</span>, <span class="st">&quot;27K&quot;</span>),</span>
-<span id="cb57-4"><a href="data-query.html#cb57-4" tabindex="-1"></a>  <span class="at">rule_out =</span> <span class="cn">NULL</span>,</span>
-<span id="cb57-5"><a href="data-query.html#cb57-5" tabindex="-1"></a>  <span class="at">aggr =</span> <span class="fu">c</span>(<span class="st">&quot;NA&quot;</span>, <span class="st">&quot;mean&quot;</span>, <span class="st">&quot;Q0&quot;</span>, <span class="st">&quot;Q25&quot;</span>, <span class="st">&quot;Q50&quot;</span>, <span class="st">&quot;Q75&quot;</span>, <span class="st">&quot;Q100&quot;</span>)</span>
-<span id="cb57-6"><a href="data-query.html#cb57-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-query.html#cb58-1" tabindex="-1"></a><span class="fu">get_pancan_methylation_value</span>(</span>
+<span id="cb58-2"><a href="data-query.html#cb58-2" tabindex="-1"></a>  identifier,</span>
+<span id="cb58-3"><a href="data-query.html#cb58-3" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">&quot;450K&quot;</span>, <span class="st">&quot;27K&quot;</span>),</span>
+<span id="cb58-4"><a href="data-query.html#cb58-4" tabindex="-1"></a>  <span class="at">rule_out =</span> <span class="cn">NULL</span>,</span>
+<span id="cb58-5"><a href="data-query.html#cb58-5" tabindex="-1"></a>  <span class="at">aggr =</span> <span class="fu">c</span>(<span class="st">&quot;NA&quot;</span>, <span class="st">&quot;mean&quot;</span>, <span class="st">&quot;Q0&quot;</span>, <span class="st">&quot;Q25&quot;</span>, <span class="st">&quot;Q50&quot;</span>, <span class="st">&quot;Q75&quot;</span>, <span class="st">&quot;Q100&quot;</span>)</span>
+<span id="cb58-6"><a href="data-query.html#cb58-6" tabindex="-1"></a>)</span></code></pre></div>
 <ul>
 <li><code>rule_out</code>: exclude some CpG site(s) under one gene;</li>
 <li><code>aggr</code>: select one aggregation method to calculate gene-level methylation (Default: “NA”(mean)).</li>
 </ul>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-query.html#cb58-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_methylation_value</span>(<span class="st">&quot;TP53&quot;</span>)</span>
-<span id="cb58-2"><a href="data-query.html#cb58-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
-<span id="cb58-3"><a href="data-query.html#cb58-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-query.html#cb59-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_methylation_value</span>(<span class="st">&quot;TP53&quot;</span>)</span>
+<span id="cb59-2"><a href="data-query.html#cb59-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb59-3"><a href="data-query.html#cb59-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##                   value
 ## TCGA-S6-A8JX-01 0.07085
 ## TCGA-SO-A8JP-01 0.08410
@@ -713,9 +714,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_pancan_miRNA_value(identifier, gistic2 = TRUE, use_thresholded_data = FALSE)</code></li>
 </ul>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="data-query.html#cb60-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_miRNA_value</span>(<span class="st">&quot;hsa-let-7a-2-3p&quot;</span>)</span>
-<span id="cb60-2"><a href="data-query.html#cb60-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
-<span id="cb60-3"><a href="data-query.html#cb60-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-query.html#cb61-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pancan_miRNA_value</span>(<span class="st">&quot;hsa-let-7a-2-3p&quot;</span>)</span>
+<span id="cb61-2"><a href="data-query.html#cb61-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb61-3"><a href="data-query.html#cb61-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##                 value
 ## TCGA-C4-A0F6-01  0.99
 ## TCGA-CU-A0YO-01  1.91
@@ -803,9 +804,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_pcawg_gene_value(identifier)</code></li>
 </ul>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="data-query.html#cb62-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_gene_value</span>(<span class="st">&quot;TP53&quot;</span>)</span>
-<span id="cb62-2"><a href="data-query.html#cb62-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
-<span id="cb62-3"><a href="data-query.html#cb62-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-query.html#cb63-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_gene_value</span>(<span class="st">&quot;TP53&quot;</span>)</span>
+<span id="cb63-2"><a href="data-query.html#cb63-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb63-3"><a href="data-query.html#cb63-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##          value
 ## SP89389  1.798
 ## SP21193  6.542
@@ -844,9 +845,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_pcawg_fusion_value(identifier)</code></li>
 </ul>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="data-query.html#cb64-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_fusion_value</span>(<span class="st">&quot;SAMD11&quot;</span>)</span>
-<span id="cb64-2"><a href="data-query.html#cb64-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
-<span id="cb64-3"><a href="data-query.html#cb64-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="data-query.html#cb65-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_fusion_value</span>(<span class="st">&quot;SAMD11&quot;</span>)</span>
+<span id="cb65-2"><a href="data-query.html#cb65-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb65-3"><a href="data-query.html#cb65-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##         value
 ## SP23639     0
 ## SP23769     0
@@ -885,9 +886,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_pcawg_miRNA_value(identifier, norm = c("TMM", "UQ"))</code></li>
 </ul>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="data-query.html#cb66-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_miRNA_value</span>(<span class="st">&quot;hsa-let-7a-2-3p&quot;</span>)</span>
-<span id="cb66-2"><a href="data-query.html#cb66-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
-<span id="cb66-3"><a href="data-query.html#cb66-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="data-query.html#cb67-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_miRNA_value</span>(<span class="st">&quot;hsa-let-7a-2-3p&quot;</span>)</span>
+<span id="cb67-2"><a href="data-query.html#cb67-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb67-3"><a href="data-query.html#cb67-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##          value
 ## SP1029   2.894
 ## SP1588   2.286
@@ -932,9 +933,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_pcawg_promoter_value(identifier, type = c("raw", "relative", "outlier"))</code></li>
 </ul>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="data-query.html#cb68-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_promoter_value</span>(<span class="st">&quot;prmtr.1&quot;</span>)</span>
-<span id="cb68-2"><a href="data-query.html#cb68-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
-<span id="cb68-3"><a href="data-query.html#cb68-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data-query.html#cb69-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_promoter_value</span>(<span class="st">&quot;prmtr.1&quot;</span>)</span>
+<span id="cb69-2"><a href="data-query.html#cb69-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb69-3"><a href="data-query.html#cb69-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##          value
 ## SP23639  34.51
 ## SP23769  35.16
@@ -985,9 +986,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_pcawg_APOBEC_mutagenesis_value(identifier)</code></li>
 </ul>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="data-query.html#cb70-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_APOBEC_mutagenesis_value</span>(<span class="st">&quot;A3A_or_A3B&quot;</span>)</span>
-<span id="cb70-2"><a href="data-query.html#cb70-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
-<span id="cb70-3"><a href="data-query.html#cb70-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="data-query.html#cb71-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_pcawg_APOBEC_mutagenesis_value</span>(<span class="st">&quot;A3A_or_A3B&quot;</span>)</span>
+<span id="cb71-2"><a href="data-query.html#cb71-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb71-3"><a href="data-query.html#cb71-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##          value
 ## SP117425     0
 ## SP117332     0
@@ -1069,9 +1070,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_ccle_gene_value(identifier, norm = c("rpkm", "nc"))</code></li>
 </ul>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="data-query.html#cb72-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_ccle_gene_value</span>(<span class="st">&quot;TP53&quot;</span>, <span class="at">norm =</span> <span class="st">&quot;rpkm&quot;</span>)</span>
-<span id="cb72-2"><a href="data-query.html#cb72-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
-<span id="cb72-3"><a href="data-query.html#cb72-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="data-query.html#cb73-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_ccle_gene_value</span>(<span class="st">&quot;TP53&quot;</span>, <span class="at">norm =</span> <span class="st">&quot;rpkm&quot;</span>)</span>
+<span id="cb73-2"><a href="data-query.html#cb73-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb73-3"><a href="data-query.html#cb73-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##                                value
 ## 22RV1_PROSTATE                 7.537
 ## 2313287_STOMACH               45.590
@@ -1111,14 +1112,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="get_ccle_gene_value-1" class="section level3 hasAnchor" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> get_ccle_gene_value()<a href="data-query.html#get_ccle_gene_value-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="get_ccle_protein_value" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> get_ccle_protein_value()<a href="data-query.html#get_ccle_protein_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>get_ccle_protein_value(identifier)</code></li>
 </ul>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="data-query.html#cb74-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_ccle_protein_value</span>(<span class="st">&quot;14-3-3_beta&quot;</span>)</span>
-<span id="cb74-2"><a href="data-query.html#cb74-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
-<span id="cb74-3"><a href="data-query.html#cb74-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="data-query.html#cb75-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_ccle_protein_value</span>(<span class="st">&quot;14-3-3_beta&quot;</span>)</span>
+<span id="cb75-2"><a href="data-query.html#cb75-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb75-3"><a href="data-query.html#cb75-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##                                             value
 ## DMS53_LUNG                               -0.10490
 ## SW1116_LARGE_INTESTINE                    0.35850
@@ -1157,9 +1158,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_ccle_mutation_status(identifier)</code></li>
 </ul>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="data-query.html#cb76-1" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">get_ccle_mutation_status</span>(<span class="st">&quot;TP53&quot;</span>)</span>
-<span id="cb76-2"><a href="data-query.html#cb76-2" tabindex="-1"></a>data <span class="ot">=</span> data[data<span class="sc">$</span>genes<span class="sc">==</span><span class="st">&quot;TP53&quot;</span>,<span class="fu">c</span>(<span class="st">&quot;sampleID&quot;</span>, <span class="st">&quot;genes&quot;</span>)]</span>
-<span id="cb76-3"><a href="data-query.html#cb76-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">na.omit</span>(data))</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="data-query.html#cb77-1" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">get_ccle_mutation_status</span>(<span class="st">&quot;TP53&quot;</span>)</span>
+<span id="cb77-2"><a href="data-query.html#cb77-2" tabindex="-1"></a>data <span class="ot">=</span> data[data<span class="sc">$</span>genes<span class="sc">==</span><span class="st">&quot;TP53&quot;</span>,<span class="fu">c</span>(<span class="st">&quot;sampleID&quot;</span>, <span class="st">&quot;genes&quot;</span>)]</span>
+<span id="cb77-3"><a href="data-query.html#cb77-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">na.omit</span>(data))</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 2
 ##   sampleID                                 genes
 ##   &lt;chr&gt;                                    &lt;chr&gt;
@@ -1200,9 +1201,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>get_ccle_cn_value(identifier)</code></li>
 </ul>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="data-query.html#cb78-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_ccle_cn_value</span>(<span class="st">&quot;TP53&quot;</span>)</span>
-<span id="cb78-2"><a href="data-query.html#cb78-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
-<span id="cb78-3"><a href="data-query.html#cb78-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="data-query.html#cb79-1" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">get_ccle_cn_value</span>(<span class="st">&quot;TP53&quot;</span>)</span>
+<span id="cb79-2"><a href="data-query.html#cb79-2" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>data</span>
+<span id="cb79-3"><a href="data-query.html#cb79-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##                                               value
 ## LOUNH91_LUNG                                -0.0709
 ## T98G_CENTRAL_NERVOUS_SYSTEM                  0.2473
@@ -1242,15 +1243,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="query_pancan_value" class="section level3 hasAnchor" number="4.4.1">
 <h3><span class="header-section-number">4.4.1</span> query_pancan_value()<a href="data-query.html#query_pancan_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A function that integrates all above functions for quick query of TPC molecular data</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="data-query.html#cb80-1" tabindex="-1"></a><span class="fu">query_pancan_value</span>(</span>
-<span id="cb80-2"><a href="data-query.html#cb80-2" tabindex="-1"></a>  molecule,</span>
-<span id="cb80-3"><a href="data-query.html#cb80-3" tabindex="-1"></a>  <span class="at">data_type =</span> <span class="fu">c</span>(<span class="st">&quot;mRNA&quot;</span>, <span class="st">&quot;transcript&quot;</span>, <span class="st">&quot;protein&quot;</span>, <span class="st">&quot;mutation&quot;</span>, <span class="st">&quot;cnv&quot;</span>, <span class="st">&quot;methylation&quot;</span>,</span>
-<span id="cb80-4"><a href="data-query.html#cb80-4" tabindex="-1"></a>    <span class="st">&quot;miRNA&quot;</span>, <span class="st">&quot;fusion&quot;</span>, <span class="st">&quot;promoter&quot;</span>, <span class="st">&quot;APOBEC&quot;</span>),</span>
-<span id="cb80-5"><a href="data-query.html#cb80-5" tabindex="-1"></a>  <span class="at">database =</span> <span class="fu">c</span>(<span class="st">&quot;toil&quot;</span>, <span class="st">&quot;ccle&quot;</span>, <span class="st">&quot;pcawg&quot;</span>),</span>
-<span id="cb80-6"><a href="data-query.html#cb80-6" tabindex="-1"></a>  <span class="at">reset_id =</span> <span class="cn">NULL</span>,</span>
-<span id="cb80-7"><a href="data-query.html#cb80-7" tabindex="-1"></a>  <span class="at">opt_pancan =</span> .opt_pancan</span>
-<span id="cb80-8"><a href="data-query.html#cb80-8" tabindex="-1"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="data-query.html#cb81-1" tabindex="-1"></a>.opt_pancan</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="data-query.html#cb81-1" tabindex="-1"></a><span class="fu">query_pancan_value</span>(</span>
+<span id="cb81-2"><a href="data-query.html#cb81-2" tabindex="-1"></a>  molecule,</span>
+<span id="cb81-3"><a href="data-query.html#cb81-3" tabindex="-1"></a>  <span class="at">data_type =</span> <span class="fu">c</span>(<span class="st">&quot;mRNA&quot;</span>, <span class="st">&quot;transcript&quot;</span>, <span class="st">&quot;protein&quot;</span>, <span class="st">&quot;mutation&quot;</span>, <span class="st">&quot;cnv&quot;</span>, <span class="st">&quot;methylation&quot;</span>,</span>
+<span id="cb81-4"><a href="data-query.html#cb81-4" tabindex="-1"></a>    <span class="st">&quot;miRNA&quot;</span>, <span class="st">&quot;fusion&quot;</span>, <span class="st">&quot;promoter&quot;</span>, <span class="st">&quot;APOBEC&quot;</span>),</span>
+<span id="cb81-5"><a href="data-query.html#cb81-5" tabindex="-1"></a>  <span class="at">database =</span> <span class="fu">c</span>(<span class="st">&quot;toil&quot;</span>, <span class="st">&quot;ccle&quot;</span>, <span class="st">&quot;pcawg&quot;</span>),</span>
+<span id="cb81-6"><a href="data-query.html#cb81-6" tabindex="-1"></a>  <span class="at">reset_id =</span> <span class="cn">NULL</span>,</span>
+<span id="cb81-7"><a href="data-query.html#cb81-7" tabindex="-1"></a>  <span class="at">opt_pancan =</span> .opt_pancan</span>
+<span id="cb81-8"><a href="data-query.html#cb81-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="data-query.html#cb82-1" tabindex="-1"></a>.opt_pancan</span></code></pre></div>
 <pre><code>## $toil_mRNA
 ## $toil_mRNA$norm
 ## [1] &quot;tpm&quot;
@@ -1322,16 +1323,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Single molecule query with modified opt_pancan</li>
 </ul>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="data-query.html#cb83-1" tabindex="-1"></a>opt_pancan <span class="ot">=</span> .opt_pancan</span>
-<span id="cb83-2"><a href="data-query.html#cb83-2" tabindex="-1"></a>opt_pancan<span class="sc">$</span>toil_mRNA<span class="sc">$</span>norm <span class="ot">=</span> <span class="st">&quot;nc&quot;</span></span>
-<span id="cb83-3"><a href="data-query.html#cb83-3" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">query_pancan_value</span>(</span>
-<span id="cb83-4"><a href="data-query.html#cb83-4" tabindex="-1"></a>  <span class="at">molecule =</span> <span class="st">&quot;TP53&quot;</span>,</span>
-<span id="cb83-5"><a href="data-query.html#cb83-5" tabindex="-1"></a>  <span class="at">data_type =</span> <span class="st">&quot;mRNA&quot;</span>,</span>
-<span id="cb83-6"><a href="data-query.html#cb83-6" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;toil&quot;</span>,</span>
-<span id="cb83-7"><a href="data-query.html#cb83-7" tabindex="-1"></a>  <span class="at">opt_pancan =</span> opt_pancan</span>
-<span id="cb83-8"><a href="data-query.html#cb83-8" tabindex="-1"></a>)</span>
-<span id="cb83-9"><a href="data-query.html#cb83-9" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
-<span id="cb83-10"><a href="data-query.html#cb83-10" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="data-query.html#cb84-1" tabindex="-1"></a>opt_pancan <span class="ot">=</span> .opt_pancan</span>
+<span id="cb84-2"><a href="data-query.html#cb84-2" tabindex="-1"></a>opt_pancan<span class="sc">$</span>toil_mRNA<span class="sc">$</span>norm <span class="ot">=</span> <span class="st">&quot;nc&quot;</span></span>
+<span id="cb84-3"><a href="data-query.html#cb84-3" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">query_pancan_value</span>(</span>
+<span id="cb84-4"><a href="data-query.html#cb84-4" tabindex="-1"></a>  <span class="at">molecule =</span> <span class="st">&quot;TP53&quot;</span>,</span>
+<span id="cb84-5"><a href="data-query.html#cb84-5" tabindex="-1"></a>  <span class="at">data_type =</span> <span class="st">&quot;mRNA&quot;</span>,</span>
+<span id="cb84-6"><a href="data-query.html#cb84-6" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;toil&quot;</span>,</span>
+<span id="cb84-7"><a href="data-query.html#cb84-7" tabindex="-1"></a>  <span class="at">opt_pancan =</span> opt_pancan</span>
+<span id="cb84-8"><a href="data-query.html#cb84-8" tabindex="-1"></a>)</span>
+<span id="cb84-9"><a href="data-query.html#cb84-9" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>expression</span>
+<span id="cb84-10"><a href="data-query.html#cb84-10" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##                           value
 ## GTEX-S4Q7-0003-SM-3NM8M  11.130
 ## TCGA-S9-A7J2-01          11.350
@@ -1342,16 +1343,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Molecular signature query</li>
 </ul>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="data-query.html#cb85-1" tabindex="-1"></a><span class="co"># a space must exist in the signature string</span></span>
-<span id="cb85-2"><a href="data-query.html#cb85-2" tabindex="-1"></a>signature <span class="ot">&lt;-</span> <span class="st">&quot;TP53 + 2*KRAS - 1.3*PTEN&quot;</span> </span>
-<span id="cb85-3"><a href="data-query.html#cb85-3" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">query_pancan_value</span>(</span>
-<span id="cb85-4"><a href="data-query.html#cb85-4" tabindex="-1"></a>  <span class="at">molecule =</span> signature,</span>
-<span id="cb85-5"><a href="data-query.html#cb85-5" tabindex="-1"></a>  <span class="at">data_type =</span> <span class="st">&quot;mRNA&quot;</span>,</span>
-<span id="cb85-6"><a href="data-query.html#cb85-6" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;toil&quot;</span>,</span>
-<span id="cb85-7"><a href="data-query.html#cb85-7" tabindex="-1"></a>  <span class="at">opt_pancan =</span> opt_pancan</span>
-<span id="cb85-8"><a href="data-query.html#cb85-8" tabindex="-1"></a>)</span>
-<span id="cb85-9"><a href="data-query.html#cb85-9" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>value</span>
-<span id="cb85-10"><a href="data-query.html#cb85-10" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="data-query.html#cb86-1" tabindex="-1"></a><span class="co"># a space must exist in the signature string</span></span>
+<span id="cb86-2"><a href="data-query.html#cb86-2" tabindex="-1"></a>signature <span class="ot">&lt;-</span> <span class="st">&quot;TP53 + 2*KRAS - 1.3*PTEN&quot;</span> </span>
+<span id="cb86-3"><a href="data-query.html#cb86-3" tabindex="-1"></a>data.list <span class="ot">=</span> <span class="fu">query_pancan_value</span>(</span>
+<span id="cb86-4"><a href="data-query.html#cb86-4" tabindex="-1"></a>  <span class="at">molecule =</span> signature,</span>
+<span id="cb86-5"><a href="data-query.html#cb86-5" tabindex="-1"></a>  <span class="at">data_type =</span> <span class="st">&quot;mRNA&quot;</span>,</span>
+<span id="cb86-6"><a href="data-query.html#cb86-6" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;toil&quot;</span>,</span>
+<span id="cb86-7"><a href="data-query.html#cb86-7" tabindex="-1"></a>  <span class="at">opt_pancan =</span> opt_pancan</span>
+<span id="cb86-8"><a href="data-query.html#cb86-8" tabindex="-1"></a>)</span>
+<span id="cb86-9"><a href="data-query.html#cb86-9" tabindex="-1"></a>data <span class="ot">=</span> data.list<span class="sc">$</span>value</span>
+<span id="cb86-10"><a href="data-query.html#cb86-10" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##                           value
 ## GTEX-S4Q7-0003-SM-3NM8M  15.756
 ## TCGA-S9-A7J2-01          18.465
@@ -1366,10 +1367,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Genomic matrix repository</li>
 </ul>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="data-query.html#cb87-1" tabindex="-1"></a>data_meta <span class="ot">=</span> UCSCXenaTools<span class="sc">::</span>XenaData</span>
-<span id="cb87-2"><a href="data-query.html#cb87-2" tabindex="-1"></a>data_meta_gm <span class="ot">=</span> <span class="fu">subset</span>(data_meta, Type<span class="sc">==</span><span class="st">&quot;genomicMatrix&quot;</span>)</span>
-<span id="cb87-3"><a href="data-query.html#cb87-3" tabindex="-1"></a><span class="co"># see the &#39;XenaDatasets&#39; column</span></span>
-<span id="cb87-4"><a href="data-query.html#cb87-4" tabindex="-1"></a><span class="fu">head</span>(data_meta_gm[,<span class="fu">c</span>(<span class="st">&quot;XenaHostNames&quot;</span>,<span class="st">&quot;XenaCohorts&quot;</span>,<span class="st">&quot;XenaDatasets&quot;</span>,<span class="st">&quot;DataSubtype&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="data-query.html#cb88-1" tabindex="-1"></a>data_meta <span class="ot">=</span> UCSCXenaTools<span class="sc">::</span>XenaData</span>
+<span id="cb88-2"><a href="data-query.html#cb88-2" tabindex="-1"></a>data_meta_gm <span class="ot">=</span> <span class="fu">subset</span>(data_meta, Type<span class="sc">==</span><span class="st">&quot;genomicMatrix&quot;</span>)</span>
+<span id="cb88-3"><a href="data-query.html#cb88-3" tabindex="-1"></a><span class="co"># see the &#39;XenaDatasets&#39; column</span></span>
+<span id="cb88-4"><a href="data-query.html#cb88-4" tabindex="-1"></a><span class="fu">head</span>(data_meta_gm[,<span class="fu">c</span>(<span class="st">&quot;XenaHostNames&quot;</span>,<span class="st">&quot;XenaCohorts&quot;</span>,<span class="st">&quot;XenaDatasets&quot;</span>,<span class="st">&quot;DataSubtype&quot;</span>)])</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 4
 ##   XenaHostNames XenaCohorts                            XenaDatasets  DataSubtype
 ##   &lt;chr&gt;         &lt;chr&gt;                                  &lt;chr&gt;         &lt;chr&gt;      
@@ -1382,9 +1383,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>query_molecule_value(dataset, molecule)</code></li>
 </ul>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="data-query.html#cb89-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="st">&quot;TCGA-BRCA.htseq_fpkm.tsv&quot;</span></span>
-<span id="cb89-2"><a href="data-query.html#cb89-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">query_molecule_value</span>(dataset, <span class="st">&quot;TP53&quot;</span>) <span class="co"># also support signature </span></span>
-<span id="cb89-3"><a href="data-query.html#cb89-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="data-query.html#cb90-1" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="st">&quot;TCGA-BRCA.htseq_fpkm.tsv&quot;</span></span>
+<span id="cb90-2"><a href="data-query.html#cb90-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">query_molecule_value</span>(dataset, <span class="st">&quot;TP53&quot;</span>) <span class="co"># also support signature </span></span>
+<span id="cb90-3"><a href="data-query.html#cb90-3" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">value=</span>data))</span></code></pre></div>
 <pre><code>##                  value
 ## TCGA-E9-A1NI-01A 4.854
 ## TCGA-A1-A0SP-01A 2.554

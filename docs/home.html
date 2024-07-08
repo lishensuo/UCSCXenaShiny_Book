@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Shensuo Li, Shixiang Wang" />
 
 
-<meta name="date" content="2024-03-25" />
+<meta name="date" content="2024-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -156,6 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#cran"><i class="fa fa-check"></i><b>2.1</b> CRAN</a></li>
 <li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#github"><i class="fa fa-check"></i><b>2.2</b> Github</a></li>
 <li class="chapter" data-level="2.3" data-path="install.html"><a href="install.html#conda"><i class="fa fa-check"></i><b>2.3</b> Conda</a></li>
+<li class="chapter" data-level="2.4" data-path="install.html"><a href="install.html#docker"><i class="fa fa-check"></i><b>2.4</b> Docker</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="build-in.html"><a href="build-in.html"><i class="fa fa-check"></i><b>3</b> Built-in datasets</a>
 <ul>
@@ -193,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="data-query.html"><a href="data-query.html#ccle-query"><i class="fa fa-check"></i><b>4.3</b> CCLE query</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value"><i class="fa fa-check"></i><b>4.3.1</b> get_ccle_gene_value()</a></li>
-<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value-1"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_gene_value()</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_protein_value"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_protein_value()</a></li>
 <li class="chapter" data-level="4.3.3" data-path="data-query.html"><a href="data-query.html#get_ccle_mutation_status"><i class="fa fa-check"></i><b>4.3.3</b> get_ccle_mutation_status()</a></li>
 <li class="chapter" data-level="4.3.4" data-path="data-query.html"><a href="data-query.html#get_ccle_cn_value"><i class="fa fa-check"></i><b>4.3.4</b> get_ccle_cn_value()</a></li>
 </ul></li>
@@ -435,19 +436,13 @@ Figure 7.6: Shiny Slick Gallery
 <div id="tcga-analysis-guide" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> TCGA Analysis Guide<a href="home.html#tcga-analysis-guide" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>Based on UCSC Xena datasets, we have designed versatile analyses for TCGA as well as other databases, like PCAWG and CCLE.</li>
-<li>In the homepage, two series of TCGA analyses, including 12 custom modules (Figure) and 3 personalized pipelines, are displayed as quick interface for users.</li>
+<li>Based on UCSC Xena datasets, we have designed versatile analyses for TCGA as well as other databases (PCAWG and CCLE).</li>
+<li>In the homepage, examples of TCGA analyses, including 3 custom modules and 3 personalized pipelines, are displayed as quick interface for users.</li>
 </ul>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:tcga-modules"></span>
-<img src="images/p0802.png" alt="12 TCGA analytical modules" width="100%" />
+<img src="images/p0802.png" alt="Example TCGA analysis" width="100%" />
 <p class="caption">
-Figure 7.7: 12 TCGA analytical modules
-</p>
-</div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tcga-pipelines"></span>
-<img src="images/p0803.png" alt="3 TCGA analytical pipelines" width="100%" />
-<p class="caption">
-Figure 7.8: 3 TCGA analytical pipelines
+Figure 7.7: Example TCGA analysis
 </p>
 </div>
 

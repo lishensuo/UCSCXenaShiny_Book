@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Shensuo Li, Shixiang Wang" />
 
 
-<meta name="date" content="2024-03-25" />
+<meta name="date" content="2024-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -156,6 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#cran"><i class="fa fa-check"></i><b>2.1</b> CRAN</a></li>
 <li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#github"><i class="fa fa-check"></i><b>2.2</b> Github</a></li>
 <li class="chapter" data-level="2.3" data-path="install.html"><a href="install.html#conda"><i class="fa fa-check"></i><b>2.3</b> Conda</a></li>
+<li class="chapter" data-level="2.4" data-path="install.html"><a href="install.html#docker"><i class="fa fa-check"></i><b>2.4</b> Docker</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="build-in.html"><a href="build-in.html"><i class="fa fa-check"></i><b>3</b> Built-in datasets</a>
 <ul>
@@ -193,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="data-query.html"><a href="data-query.html#ccle-query"><i class="fa fa-check"></i><b>4.3</b> CCLE query</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value"><i class="fa fa-check"></i><b>4.3.1</b> get_ccle_gene_value()</a></li>
-<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value-1"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_gene_value()</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_protein_value"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_protein_value()</a></li>
 <li class="chapter" data-level="4.3.3" data-path="data-query.html"><a href="data-query.html#get_ccle_mutation_status"><i class="fa fa-check"></i><b>4.3.3</b> get_ccle_mutation_status()</a></li>
 <li class="chapter" data-level="4.3.4" data-path="data-query.html"><a href="data-query.html#get_ccle_cn_value"><i class="fa fa-check"></i><b>4.3.4</b> get_ccle_cn_value()</a></li>
 </ul></li>
@@ -354,10 +355,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="install" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Install<a href="install.html#install" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Here, we have provided several ways to install UCSCXenaShiny R package. You can see the detailed instruction and troubleshooting information from the README file of our <a href="https://github.com/openbiox/UCSCXenaShiny">Github project</a>.</p>
 <div id="cran" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> CRAN<a href="install.html#cran" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><a href="https://cran.r-project.org/web/packages/UCSCXenaShiny/index.html" class="uri">https://cran.r-project.org/web/packages/UCSCXenaShiny/index.html</a></li>
+<li><a href="https://cran.r-project.org/package=UCSCXenaShiny" class="uri">https://cran.r-project.org/package=UCSCXenaShiny</a></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="install.html#cb1-1" tabindex="-1"></a><span class="co"># Online</span></span>
 <span id="cb1-2"><a href="install.html#cb1-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;UCSCXenaShiny&quot;</span>)</span>
@@ -367,11 +369,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-6"><a href="install.html#cb1-6" tabindex="-1"></a><span class="co"># Local</span></span>
 <span id="cb1-7"><a href="install.html#cb1-7" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;UCSCXenaShiny_2.0.0.tar.gz&quot;</span>, <span class="at">repos =</span> <span class="cn">NULL</span>, <span class="at">type=</span><span class="st">&quot;source&quot;</span>)</span></code></pre></div>
 <ul>
-<li>Once the package has been installed successfully, your can check its version:</li>
+<li>Once the package has been installed successfully, your can load it and check its version:</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="install.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(UCSCXenaShiny)</span></code></pre></div>
 <pre><code>## =========================================================================================
-## UCSCXenaShiny version 2.0.0
+## UCSCXenaShiny version 2.2.0
 ## Project URL: https://github.com/openbiox/UCSCXenaShiny
 ## Usages: https://openbiox.github.io/UCSCXenaShiny/
 ## 
@@ -383,7 +385,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## =========================================================================================
 ##                               --Enjoy it--</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="install.html#cb4-1" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;UCSCXenaShiny&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &#39;2.0.0&#39;</code></pre>
+<pre><code>## [1] &#39;2.2.0&#39;</code></pre>
 </div>
 <div id="github" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Github<a href="install.html#github" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -400,9 +402,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>list all of the versions of r-ucscxenashiny available on your platform:</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="install.html#cb8-1" tabindex="-1"></a><span class="ex">conda</span> search r-ucscxenashiny <span class="at">--channel</span> conda-forge</span></code></pre></div>
-<blockquote>
-<p>Note: See other ways of other installations (e.g. Docker, Linux system) from the README interface of <a href="https://github.com/openbiox/UCSCXenaShiny">Github project</a>.</p>
-</blockquote>
+</div>
+<div id="docker" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Docker<a href="install.html#docker" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="install.html#cb9-1" tabindex="-1"></a><span class="co"># install image</span></span>
+<span id="cb9-2"><a href="install.html#cb9-2" tabindex="-1"></a><span class="ex">docker</span> pull shixiangwang/ucscxenashiny</span>
+<span id="cb9-3"><a href="install.html#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="install.html#cb9-4" tabindex="-1"></a><span class="co"># run image</span></span>
+<span id="cb9-5"><a href="install.html#cb9-5" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">--name</span> xenashiny <span class="at">-p</span> 3838:3838 shixiangwang/ucscxenashiny</span></code></pre></div>
 
 </div>
 </div>

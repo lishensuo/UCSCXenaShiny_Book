@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Shensuo Li, Shixiang Wang" />
 
 
-<meta name="date" content="2024-03-25" />
+<meta name="date" content="2024-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -156,6 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#cran"><i class="fa fa-check"></i><b>2.1</b> CRAN</a></li>
 <li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#github"><i class="fa fa-check"></i><b>2.2</b> Github</a></li>
 <li class="chapter" data-level="2.3" data-path="install.html"><a href="install.html#conda"><i class="fa fa-check"></i><b>2.3</b> Conda</a></li>
+<li class="chapter" data-level="2.4" data-path="install.html"><a href="install.html#docker"><i class="fa fa-check"></i><b>2.4</b> Docker</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="build-in.html"><a href="build-in.html"><i class="fa fa-check"></i><b>3</b> Built-in datasets</a>
 <ul>
@@ -193,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="data-query.html"><a href="data-query.html#ccle-query"><i class="fa fa-check"></i><b>4.3</b> CCLE query</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value"><i class="fa fa-check"></i><b>4.3.1</b> get_ccle_gene_value()</a></li>
-<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value-1"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_gene_value()</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_protein_value"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_protein_value()</a></li>
 <li class="chapter" data-level="4.3.3" data-path="data-query.html"><a href="data-query.html#get_ccle_mutation_status"><i class="fa fa-check"></i><b>4.3.3</b> get_ccle_mutation_status()</a></li>
 <li class="chapter" data-level="4.3.4" data-path="data-query.html"><a href="data-query.html#get_ccle_cn_value"><i class="fa fa-check"></i><b>4.3.4</b> get_ccle_cn_value()</a></li>
 </ul></li>
@@ -371,7 +372,7 @@ Figure 6.1: The welcome page of shiny application
 <div id="local-deployment" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Local deployment<a href="visit.html#local-deployment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If the R package has been installed on your computer, it is easy to run the application in the local environment.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="visit.html#cb136-1" tabindex="-1"></a><span class="fu">app_run</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="visit.html#cb138-1" tabindex="-1"></a><span class="fu">app_run</span>()</span></code></pre></div>
 <p>Notably, the application is also dependent on some supplementary datasets (not in UCSC Xena) for extensive analysis. Considering the store limitation of R package and GitHub project, parts of them are deposited in <a href="https://zenodo.org/record/10778172">Zenodo repository</a>. When you first initiate the app, it could take some time to fetch these data. If it failed due to network, you can directly download them from Zenodo and then place on the <code>inst/extdata</code> directory.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p0702"></span>
 <img src="images/p0702.png" alt="The supplementary data in the inst/extdata directory" width="100%" />

@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Shensuo Li, Shixiang Wang" />
 
 
-<meta name="date" content="2024-03-25" />
+<meta name="date" content="2024-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -156,6 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#cran"><i class="fa fa-check"></i><b>2.1</b> CRAN</a></li>
 <li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#github"><i class="fa fa-check"></i><b>2.2</b> Github</a></li>
 <li class="chapter" data-level="2.3" data-path="install.html"><a href="install.html#conda"><i class="fa fa-check"></i><b>2.3</b> Conda</a></li>
+<li class="chapter" data-level="2.4" data-path="install.html"><a href="install.html#docker"><i class="fa fa-check"></i><b>2.4</b> Docker</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="build-in.html"><a href="build-in.html"><i class="fa fa-check"></i><b>3</b> Built-in datasets</a>
 <ul>
@@ -193,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="data-query.html"><a href="data-query.html#ccle-query"><i class="fa fa-check"></i><b>4.3</b> CCLE query</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value"><i class="fa fa-check"></i><b>4.3.1</b> get_ccle_gene_value()</a></li>
-<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value-1"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_gene_value()</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_protein_value"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_protein_value()</a></li>
 <li class="chapter" data-level="4.3.3" data-path="data-query.html"><a href="data-query.html#get_ccle_mutation_status"><i class="fa fa-check"></i><b>4.3.3</b> get_ccle_mutation_status()</a></li>
 <li class="chapter" data-level="4.3.4" data-path="data-query.html"><a href="data-query.html#get_ccle_cn_value"><i class="fa fa-check"></i><b>4.3.4</b> get_ccle_cn_value()</a></li>
 </ul></li>
@@ -377,6 +378,29 @@ Figure 11.1: Hierarchical types of TCGA Identifiers
 Figure 11.2: Hierarchical types of PCAWG and CCLE Identifiers
 </p>
 </div>
+<p>About the core data type —— <strong>Molecular profile</strong>, the initial step of all analysis pipelines involves the check and modification of molecular datasets through the <code>Modify datasets[opt]</code> widget. For some molecular types of TPC databases, there are alternative datasets for users to select, which greatly enriches the analytical possibilities</p>
+<ul>
+<li>Among the 7 types of TCGA molecules, 4 of them have the alternative datasets.</li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1102"></span>
+<img src="images/p1102.png" alt="Alternative datasets of TCGA molecules" width="100%" />
+<p class="caption">
+Figure 11.3: Alternative datasets of TCGA molecules
+</p>
+</div>
+<blockquote>
+<p>Tips: For DNA Methylation, mean value of all CpG sites under one gene will be calculated for the gene by default. In the <code>Modify datasets[opt]</code> widget, users can furtherly limit its CpG sites and modify the aggregation method (e.g. median).</p>
+</blockquote>
+<ul>
+<li><p>Among the 5 types of PCAWG molecules, 2 of them have the alternative datasets.</p></li>
+<li><p>Among the 4 types of CCLE molecules, 1 of them has the alternative datasets.</p></li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1103"></span>
+<img src="images/p1103.png" alt="Alternative datasets of PCAWG and CCLE molecules" width="100%" />
+<p class="caption">
+Figure 11.4: Alternative datasets of PCAWG and CCLE molecules
+</p>
+</div>
 </div>
 <div id="reference-of-full-identifiers" class="section level3 hasAnchor" number="11.1.2">
 <h3><span class="header-section-number">11.1.2</span> Reference of full identifiers<a href="per-tpc-1.html#reference-of-full-identifiers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -387,7 +411,7 @@ Figure 11.2: Hierarchical types of PCAWG and CCLE Identifiers
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1203"></span>
 <img src="images/p1203.png" alt="TPC Identifiers Query Page" width="100%" />
 <p class="caption">
-Figure 11.3: TPC Identifiers Query Page
+Figure 11.5: TPC Identifiers Query Page
 </p>
 </div>
 </div>
@@ -408,7 +432,7 @@ Figure 11.3: TPC Identifiers Query Page
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1204"></span>
 <img src="images/p1204.png" alt="Upload of random identifiers" width="80%" />
 <p class="caption">
-Figure 11.4: Upload of random identifiers
+Figure 11.6: Upload of random identifiers
 </p>
 </div>
 </div>
@@ -421,7 +445,7 @@ Figure 11.4: Upload of random identifiers
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1205"></span>
 <img src="images/p1205.png" alt="Design of custom signature" width="80%" />
 <p class="caption">
-Figure 11.5: Design of custom signature
+Figure 11.7: Design of custom signature
 </p>
 </div>
 <ol start="3" style="list-style-type: decimal">
@@ -440,7 +464,7 @@ Figure 11.5: Design of custom signature
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1206"></span>
 <img src="images/p1206.png" alt="3 steps of signature design" width="100%" />
 <p class="caption">
-Figure 11.6: 3 steps of signature design
+Figure 11.8: 3 steps of signature design
 </p>
 </div>
 </div>
@@ -451,7 +475,7 @@ Figure 11.6: 3 steps of signature design
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1207"></span>
 <img src="images/p1207.png" alt="Sample filtering and grouping modules" width="80%" />
 <p class="caption">
-Figure 11.7: Sample filtering and grouping modules
+Figure 11.9: Sample filtering and grouping modules
 </p>
 </div>
 <div id="sample-filtering" class="section level3 hasAnchor" number="11.2.1">
@@ -460,7 +484,7 @@ Figure 11.7: Sample filtering and grouping modules
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1208"></span>
 <img src="images/p1208.png" alt="Sample filtering module" width="80%" />
 <p class="caption">
-Figure 11.8: Sample filtering module
+Figure 11.10: Sample filtering module
 </p>
 </div>
 <div id="quick-filter" class="section level4 hasAnchor" number="11.2.1.1">
@@ -544,7 +568,7 @@ Figure 11.8: Sample filtering module
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1209"></span>
 <img src="images/p1209.png" alt="3 steps of sample filtering" width="100%" />
 <p class="caption">
-Figure 11.9: 3 steps of sample filtering
+Figure 11.11: 3 steps of sample filtering
 </p>
 </div>
 <blockquote>
@@ -576,7 +600,7 @@ Figure 11.9: 3 steps of sample filtering
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1210"></span>
 <img src="images/p1210.png" alt="Sample grouping module" width="100%" />
 <p class="caption">
-Figure 11.10: Sample grouping module
+Figure 11.12: Sample grouping module
 </p>
 </div>
 <blockquote>
@@ -593,7 +617,7 @@ Figure 11.10: Sample grouping module
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1211"></span>
 <img src="images/p1211.png" alt="Fetch single data" width="80%" />
 <p class="caption">
-Figure 11.11: Fetch single data
+Figure 11.13: Fetch single data
 </p>
 </div>
 </div>
@@ -620,7 +644,7 @@ Figure 11.11: Fetch single data
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1212"></span>
 <img src="images/p1212.png" alt="Fetch multiple data" width="100%" />
 <p class="caption">
-Figure 11.12: Fetch multiple data
+Figure 11.14: Fetch multiple data
 </p>
 </div>
 <hr />

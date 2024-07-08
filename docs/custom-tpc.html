@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Shensuo Li, Shixiang Wang" />
 
 
-<meta name="date" content="2024-03-25" />
+<meta name="date" content="2024-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -156,6 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#cran"><i class="fa fa-check"></i><b>2.1</b> CRAN</a></li>
 <li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#github"><i class="fa fa-check"></i><b>2.2</b> Github</a></li>
 <li class="chapter" data-level="2.3" data-path="install.html"><a href="install.html#conda"><i class="fa fa-check"></i><b>2.3</b> Conda</a></li>
+<li class="chapter" data-level="2.4" data-path="install.html"><a href="install.html#docker"><i class="fa fa-check"></i><b>2.4</b> Docker</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="build-in.html"><a href="build-in.html"><i class="fa fa-check"></i><b>3</b> Built-in datasets</a>
 <ul>
@@ -193,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="data-query.html"><a href="data-query.html#ccle-query"><i class="fa fa-check"></i><b>4.3</b> CCLE query</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value"><i class="fa fa-check"></i><b>4.3.1</b> get_ccle_gene_value()</a></li>
-<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_gene_value-1"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_gene_value()</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-query.html"><a href="data-query.html#get_ccle_protein_value"><i class="fa fa-check"></i><b>4.3.2</b> get_ccle_protein_value()</a></li>
 <li class="chapter" data-level="4.3.3" data-path="data-query.html"><a href="data-query.html#get_ccle_mutation_status"><i class="fa fa-check"></i><b>4.3.3</b> get_ccle_mutation_status()</a></li>
 <li class="chapter" data-level="4.3.4" data-path="data-query.html"><a href="data-query.html#get_ccle_cn_value"><i class="fa fa-check"></i><b>4.3.4</b> get_ccle_cn_value()</a></li>
 </ul></li>
@@ -354,45 +355,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="custom-tpc" class="section level1 hasAnchor" number="10">
 <h1><span class="header-section-number">Chapter 10</span> Custom TPC modules<a href="custom-tpc.html#custom-tpc" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Here, each custom module can perform one specific TPC (<strong>T</strong>CGA, <strong>P</strong>CAWG, <strong>C</strong>CLE) analysis based on the functions introduced in Chapter <a href="data-analysis.html#data-analysis">5</a>.</p>
+<p>In the “Custom TPC modules” page, there are totally 10 series of modules to quickly explore TPC (<strong>T</strong>CGA, <strong>P</strong>CAWG, <strong>C</strong>CLE) datasets with easy steps, based on the functions introduced in Chapter <a href="data-analysis.html#data-analysis">5</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1101"></span>
 <img src="images/p1101.png" alt="All Custom TPC modules in shiny app" width="80%" />
 <p class="caption">
 Figure 10.1: All Custom TPC modules in shiny app
 </p>
 </div>
-<p>Usually, the initial step of most modules involves the check and modification of molecular datasets through the <code>Modify datasets[opt]</code> widget. For some molecular types of TPC databases, there are alternative datasets for users to select, which greatly enriches the analytical possibilities</p>
-<ul>
-<li>Among the 7 types of TCGA molecules, 4 of them have the alternative datasets.</li>
-</ul>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1102"></span>
-<img src="images/p1102.png" alt="Alternative datasets of TCGA molecules" width="100%" />
-<p class="caption">
-Figure 10.2: Alternative datasets of TCGA molecules
-</p>
-</div>
-<blockquote>
-<p>Tips: For DNA Methylation, mean value of all CpG sites under one gene will be calculated for the gene by default. In the <code>Modify datasets[opt]</code> widget, users can furtherly limit its CpG sites and modify the aggregation method (e.g. median).</p>
-</blockquote>
-<ul>
-<li><p>Among the 5 types of PCAWG molecules, 2 of them have the alternative datasets.</p></li>
-<li><p>Among the 4 types of CCLE molecules, 1 of them has the alternative datasets.</p></li>
-</ul>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1103"></span>
-<img src="images/p1103.png" alt="Alternative datasets of PCAWG and CCLE molecules" width="100%" />
-<p class="caption">
-Figure 10.3: Alternative datasets of PCAWG and CCLE molecules
-</p>
-</div>
 <div id="tcga-1" class="section level2 hasAnchor" number="10.1">
 <h2><span class="header-section-number">10.1</span> TCGA<a href="custom-tpc.html#tcga-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <caption><span id="tab:custom-tcga-mod">Table 10.1: </span>Custom modules for TCGA analysis</caption>
-<colgroup>
-<col width="8%" />
-<col width="18%" />
-<col width="72%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Database</th>
@@ -404,87 +377,138 @@ Figure 10.3: Alternative datasets of PCAWG and CCLE molecules
 <tr class="odd">
 <td align="left">TCGA</td>
 <td align="left">Comparison</td>
-<td align="left">TCGA+GTEx: Molecular Profile Distribution (Tumor VS Normal)</td>
+<td align="left">Tumor VS Normal (Box plot)</td>
 </tr>
 <tr class="even">
 <td align="left">TCGA</td>
 <td align="left">Comparison</td>
-<td align="left">TCGA: Association Between Molecular Profile and Gene Mutation</td>
+<td align="left">Tumor VS Normal (Anatomy plot)</td>
 </tr>
 <tr class="odd">
 <td align="left">TCGA</td>
-<td align="left">Correlation</td>
-<td align="left">TCGA: Molecule-Molecule Correlation</td>
+<td align="left">Comparison</td>
+<td align="left">Mutation VS Wild</td>
 </tr>
 <tr class="even">
 <td align="left">TCGA</td>
 <td align="left">Correlation</td>
-<td align="left">TCGA: Association Between Molecular Profile and Tumor Immune Infiltration</td>
+<td align="left">Molecule-Molecule</td>
 </tr>
 <tr class="odd">
 <td align="left">TCGA</td>
 <td align="left">Correlation</td>
-<td align="left">TCGA: Association Between Molecular Profile and Immune Signature</td>
+<td align="left">Molecule-Tumor Immune Infiltration</td>
 </tr>
 <tr class="even">
 <td align="left">TCGA</td>
 <td align="left">Correlation</td>
-<td align="left">TCGA: Association Between Molecular Profile and TMB/Stemness/MSI (Radar Show)</td>
+<td align="left">Molecule-Immune Signature</td>
 </tr>
 <tr class="odd">
 <td align="left">TCGA</td>
 <td align="left">Correlation</td>
-<td align="left">TCGA: Association Between Molecular Profile and Pathway Score</td>
+<td align="left">Molecule-TMB/Stemness/MSI</td>
+</tr>
+<tr class="even">
+<td align="left">TCGA</td>
+<td align="left">Correlation</td>
+<td align="left">Molecule-Pathway</td>
+</tr>
+<tr class="odd">
+<td align="left">TCGA</td>
+<td align="left">Survival</td>
+<td align="left">Kaplan-Meier</td>
 </tr>
 <tr class="even">
 <td align="left">TCGA</td>
 <td align="left">Survival</td>
-<td align="left">TCGA: Molecular Profile Log-rank Analysis</td>
+<td align="left">Cox regression</td>
 </tr>
 <tr class="odd">
-<td align="left">TCGA</td>
-<td align="left">Survival</td>
-<td align="left">TCGA: Molecular Profile Cox Analysis</td>
-</tr>
-<tr class="even">
 <td align="left">TCGA</td>
 <td align="left">Dimension Reduction</td>
-<td align="left">TCGA: Dimension Reduction Distribution</td>
+<td align="left">Dimension reduction</td>
 </tr>
 </tbody>
 </table>
 <div id="comparison" class="section level3 hasAnchor" number="10.1.1">
 <h3><span class="header-section-number">10.1.1</span> Comparison<a href="custom-tpc.html#comparison" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="m-vis_toil_TvsN" class="section level4 hasAnchor" number="10.1.1.1">
-<h4><span class="header-section-number">10.1.1.1</span> TCGA+GTEx: Molecular Profile Distribution (Tumor VS Normal)<a href="custom-tpc.html#m-vis_toil_TvsN" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="tcga-tumor-vs-normal-box-plot" class="section level4 hasAnchor" number="10.1.1.1">
+<h4><span class="header-section-number">10.1.1.1</span> TCGA Tumor VS Normal (Box plot)<a href="custom-tpc.html#tcga-tumor-vs-normal-box-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Compare molecular values between tumor and normal samples combing TCGA and GTEx datasets based on <a href="data-analysis.html#vis-toil-TvsN"><code>vis_toil_TvsN()</code></a> and <a href="data-analysis.html#vis-toil-TvsN-cancer"><code>vis_toil_TvsN_cancer()</code></a> functions.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li><p>Select one molecular type and identifier. The mode for single cancer or pan-cancer comparison can be decided here.</p></li>
-<li><p>Adjust the visualization parameters. “TCGA Dataset only” means whether to add GTEx datasets as normal samples or not.</p></li>
-<li><p>Click the “Go!” button to perform analysis and display the plot in the right. The raw data will be also showed in right-bottom area and can be saved as CSV file.</p></li>
-<li><p>Download the plot with size and format options.</p></li>
+<li>Select one of supported multi-omics types;</li>
+<li>Select an identifier or define a signature;</li>
+<li>Select the mode: Pan-cancer or Single-Cancer (For the latter, one tumor type needs to be specified);</li>
+<li>Decide that Whether to include normal samples from GTEx;</li>
+<li>Click the “Go!” button</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the visualization plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1104"></span>
-<img src="images/p1104.png" alt="The steps of module &quot;TCGA+GTEx: Molecular Profile Distribution (Tumor VS Normal)&quot;" width="100%" />
+<img src="images/p1104.png" alt="The layout of module &quot;Tumor VS Normal (Box plot)&quot;" width="100%" />
 <p class="caption">
-Figure 10.4: The steps of module “TCGA+GTEx: Molecular Profile Distribution (Tumor VS Normal)”
+Figure 10.2: The layout of module “Tumor VS Normal (Box plot)”
 </p>
 </div>
 </div>
-<div id="m-vis-toil-Mut" class="section level4 hasAnchor" number="10.1.1.2">
-<h4><span class="header-section-number">10.1.1.2</span> TCGA: Association Between Molecular Profile and Gene Mutation<a href="custom-tpc.html#m-vis-toil-Mut" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Compare molecular values between gene-mutant and gene-wild tumor samples for TCGA datasets based on <a href="data-analysis.html#vis-toil-Mut"><code>vis_toil_Mut()</code></a> and <a href="data-analysis.html#vis-toil-Mut-cancer"><code>vis_toil_Mut_cancer()</code></a> functions.</p>
+<div id="tcga-tumor-vs-normal-anatomy-plot" class="section level4 hasAnchor" number="10.1.1.2">
+<h4><span class="header-section-number">10.1.1.2</span> TCGA Tumor VS Normal (Anatomy plot)<a href="custom-tpc.html#tcga-tumor-vs-normal-anatomy-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Observe the difference of molecular values between pan-cancer tumor and normal samples based on <a href="data-analysis.html#vis-pancan-anatomy"><code>vis_pancan_anatomy()</code></a> functions.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select one gene to decide the sample grouping based on its mutation status. It is necessary to click the bottom “Check” button to see if there are enough mutated samples.</li>
-<li>Select one molecular type and identifier. The mode for single cancer or pan-cancer comparison can be decided here.</li>
-<li>Adjust the visualization parameters.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The raw data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<li>Select one of supported multi-omics types;</li>
+<li>Select an identifier or define a signature;</li>
+<li>Click the “Go!” button</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the anatomy plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
+</ol>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1104n"></span>
+<img src="images/p1104n.png" alt="The layout of module &quot;Tumor VS Normal (Anatomy plot)&quot;" width="100%" />
+<p class="caption">
+Figure 10.3: The layout of module “Tumor VS Normal (Anatomy plot)”
+</p>
+</div>
+</div>
+<div id="m-vis-toil-Mut" class="section level4 hasAnchor" number="10.1.1.3">
+<h4><span class="header-section-number">10.1.1.3</span> TCGA Mutation VS Wild<a href="custom-tpc.html#m-vis-toil-Mut" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Compare molecular values between gene-mutant and gene-wild tumor samples based on <a href="data-analysis.html#vis-toil-Mut"><code>vis_toil_Mut()</code></a> and <a href="data-analysis.html#vis-toil-Mut-cancer"><code>vis_toil_Mut_cancer()</code></a> functions.</p>
+<ul>
+<li>Left panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Select one of supported multi-omics types;</li>
+<li>Select an identifier or define a signature to be compared;</li>
+<li>Select one gene and group according to its mutation status;</li>
+<li>Select the mode: Pan-cancer or Single-Cancer (For the latter, one tumor type needs to be specified);</li>
+<li>Click the “Go!” button</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the visualization plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1105"></span>
-<img src="images/p1105.png" alt="The steps of module &quot;TCGA: Association Between Molecular Profile and Gene Mutation&quot;" width="100%" />
+<img src="images/p1105.png" alt="The steps of module &quot;Mutation VS Wild&quot;" width="100%" />
 <p class="caption">
-Figure 10.5: The steps of module “TCGA: Association Between Molecular Profile and Gene Mutation”
+Figure 10.4: The steps of module “Mutation VS Wild”
 </p>
 </div>
 </div>
@@ -492,82 +516,138 @@ Figure 10.5: The steps of module “TCGA: Association Between Molecular Profile 
 <div id="correlation" class="section level3 hasAnchor" number="10.1.2">
 <h3><span class="header-section-number">10.1.2</span> Correlation<a href="custom-tpc.html#correlation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="m-vis-gene-cor" class="section level4 hasAnchor" number="10.1.2.1">
-<h4><span class="header-section-number">10.1.2.1</span> TCGA: Molecule-Molecule Correlation<a href="custom-tpc.html#m-vis-gene-cor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Compute and visualize the correlation between two molecules of TCGA databases based on <a href="data-analysis.html#vis-gene-cor"><code>vis_gene_cor()</code></a> and <a href="#m-vis-gene-cor-cancer"><code>vis_gene_cor_cancer()</code></a> functions.</p>
+<h4><span class="header-section-number">10.1.2.1</span> TCGA Molecule-Molecule<a href="custom-tpc.html#m-vis-gene-cor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Compute and visualize the correlation between two molecules of tumor samples based on <a href="data-analysis.html#vis-gene-cor"><code>vis_gene_cor()</code></a> and <a href="#m-vis-gene-cor-cancer"><code>vis_gene_cor_cancer()</code></a> functions.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select two molecules. They can come from different molecular types.</li>
-<li>Adjust the visualization and analysis parameters. “Use All Cancer Types” means whether to directly use all TCGA tumor samples.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The raw data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<li>Select two respective omics types;</li>
+<li>Select two specific identifiers as X-axis and Y-axis;</li>
+<li>Select one or more TCGA types;</li>
+<li>Select correlation method;</li>
+<li>Decide that whether the correlation is corrected based on tumor purity;</li>
+<li>Click the “Go!” button.</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the scatter plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1106"></span>
-<img src="images/p1106.png" alt="The steps of module &quot;TCGA: Molecule-Molecule Correlation&quot;" width="100%" />
+<img src="images/p1106.png" alt="The steps of module &quot;Molecule-Molecule&quot;" width="100%" />
 <p class="caption">
-Figure 10.6: The steps of module “TCGA: Molecule-Molecule Correlation”
+Figure 10.5: The steps of module “Molecule-Molecule”
 </p>
 </div>
 </div>
 <div id="m-vis-gene-TIL-cor" class="section level4 hasAnchor" number="10.1.2.2">
-<h4><span class="header-section-number">10.1.2.2</span> TCGA: Association Between Molecular Profile and Tumor Immune Infiltration<a href="custom-tpc.html#m-vis-gene-TIL-cor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Compute the correlation of pan-cancers between one molecule and tumor Immune Infiltration based on <a href="data-analysis.html#vis-gene-TIL-cor"><code>vis_gene_TIL_cor()</code></a> function.</p>
+<h4><span class="header-section-number">10.1.2.2</span> TCGA Molecule-Tumor Immune Infiltration<a href="custom-tpc.html#m-vis-gene-TIL-cor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Compute the correlation of pan-cancers between one molecule and tumor immune infiltration of pan-cancer samples based on <a href="data-analysis.html#vis-gene-TIL-cor"><code>vis_gene_TIL_cor()</code></a> function.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select one molecule and interesting immune infiltration estimations.</li>
-<li>Adjust the analysis parameter.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The analyzed data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<li>Select one of supported multi-omics types;</li>
+<li>Select an identifier or define a signature;</li>
+<li>Select multiple TIL estimation;</li>
+<li>Select correlation method;</li>
+<li>Click the “Go!” button.</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the heatmap plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1107"></span>
-<img src="images/p1107.png" alt="The steps of module &quot;TCGA: Association Between Molecular Profile and Tumor Immune Infiltration&quot;" width="100%" />
+<img src="images/p1107.png" alt="The steps of module &quot;Molecule-Tumor Immune Infiltration&quot;" width="100%" />
 <p class="caption">
-Figure 10.7: The steps of module “TCGA: Association Between Molecular Profile and Tumor Immune Infiltration”
+Figure 10.6: The steps of module “Molecule-Tumor Immune Infiltration”
 </p>
 </div>
 </div>
 <div id="m-vis-gene-immune-cor" class="section level4 hasAnchor" number="10.1.2.3">
-<h4><span class="header-section-number">10.1.2.3</span> TCGA: Association Between Molecular Profile and Immune Signature<a href="custom-tpc.html#m-vis-gene-immune-cor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">10.1.2.3</span> TCGA Molecule-Immune Signature<a href="custom-tpc.html#m-vis-gene-immune-cor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Compute the correlation of pan-cancers between one molecule and tumor Immune Signature based on <a href="data-analysis.html#vis-gene-immune-cor"><code>vis_gene_immune_cor()</code></a> function.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select one molecule and one source of immune signatures.</li>
-<li>Adjust the analysis parameter.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The analyzed data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<li>Select one of supported multi-omics types;</li>
+<li>Select an identifier or define a signature;</li>
+<li>Select one category of immune cell type scores;</li>
+<li>Select correlation method;</li>
+<li>Click the “Go!” button.</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the heatmap plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1108"></span>
-<img src="images/p1108.png" alt="The steps of module &quot;TCGA: Association Between Molecular Profile and Immune Signature&quot;" width="100%" />
+<img src="images/p1108.png" alt="The steps of module &quot;Molecule-Immune Signature&quot;" width="100%" />
 <p class="caption">
-Figure 10.8: The steps of module “TCGA: Association Between Molecular Profile and Immune Signature”
+Figure 10.7: The steps of module “Molecule-Immune Signature”
 </p>
 </div>
 </div>
 <div id="m-vis-gene-index" class="section level4 hasAnchor" number="10.1.2.4">
-<h4><span class="header-section-number">10.1.2.4</span> TCGA: Association Between Molecular Profile and TMB/Stemness/MSI (Radar Show)<a href="custom-tpc.html#m-vis-gene-index" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">10.1.2.4</span> TCGA Molecule-TMB/Stemness/MSI<a href="custom-tpc.html#m-vis-gene-index" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Compute the correlation of pan-cancers between one molecule and TMB/Stemness/MSI index based on <a href="data-analysis.html#vis-gene-tmb-cor"><code>vis_gene_tmb_cor()</code></a>, <a href="data-analysis.html#vis-gene-msi-cor"><code>vis_gene_msi_cor()</code></a> and <a href="data-analysis.html#vis-gene-stemness-cor"><code>vis_gene_stemness_cor()</code></a> functions.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select one molecule and one of TMB/Stemness/MSI index.</li>
-<li>Adjust the analysis parameter.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The analyzed data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<li>Select one of supported multi-omics types;</li>
+<li>Select an identifier or define a signature;</li>
+<li>Select one of collected tumor index;</li>
+<li>Select correlation method;</li>
+<li>Click the “Go!” button.</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the radar plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1109"></span>
-<img src="images/p1109.png" alt="The steps of module &quot;TCGA: Association Between Molecular Profile and TMB/Stemness/MSI (Radar Show)&quot;" width="100%" />
+<img src="images/p1109.png" alt="The steps of module &quot;Molecule-TMB/Stemness/MSI&quot;" width="100%" />
 <p class="caption">
-Figure 10.9: The steps of module “TCGA: Association Between Molecular Profile and TMB/Stemness/MSI (Radar Show)”
+Figure 10.8: The steps of module “Molecule-TMB/Stemness/MSI”
 </p>
 </div>
 </div>
 <div id="m-vis-gene-pw-cor" class="section level4 hasAnchor" number="10.1.2.5">
-<h4><span class="header-section-number">10.1.2.5</span> TCGA: Association Between Molecular Profile and Pathway Score<a href="custom-tpc.html#m-vis-gene-pw-cor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Compute the correlation of pan-cancers between one molecule and Pathway Score based on <a href="data-analysis.html#vis-gene-pw-cor"><code>vis_gene_pw_cor()</code></a> function.</p>
+<h4><span class="header-section-number">10.1.2.5</span> TCGA Molecule-Pathway<a href="custom-tpc.html#m-vis-gene-pw-cor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Compute the correlation of between one molecule and pathway score of tumor samples based on <a href="data-analysis.html#vis-gene-pw-cor"><code>vis_gene_pw_cor()</code></a> function.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select one molecule and one pathway.</li>
-<li>Adjust the visualization and analysis parameter. “Use All Cancer Types” means whether use tumor samples from all TCGA or just one cancer.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The raw data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<li>Select one of supported multi-omics types;</li>
+<li>Select an identifier or define a signature;</li>
+<li>Select one of calculated pathway scores (ssGSEA);</li>
+<li>Select correlation method;</li>
+<li>Click the “Go!” button.</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the scatter plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1110"></span>
-<img src="images/p1110.png" alt="The steps of module &quot;TCGA: Association Between Molecular Profile and Pathway Score&quot;" width="100%" />
+<img src="images/p1110.png" alt="The steps of module &quot;Molecule-Pathway&quot;" width="100%" />
 <p class="caption">
-Figure 10.10: The steps of module “TCGA: Association Between Molecular Profile and Pathway Score”
+Figure 10.9: The steps of module “Molecule-Pathway”
 </p>
 </div>
 </div>
@@ -575,36 +655,56 @@ Figure 10.10: The steps of module “TCGA: Association Between Molecular Profile
 <div id="survival-analysis-3" class="section level3 hasAnchor" number="10.1.3">
 <h3><span class="header-section-number">10.1.3</span> Survival analysis<a href="custom-tpc.html#survival-analysis-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="m-tcga-surv-plot" class="section level4 hasAnchor" number="10.1.3.1">
-<h4><span class="header-section-number">10.1.3.1</span> TCGA: Molecular Profile Log-rank Analysis<a href="custom-tpc.html#m-tcga-surv-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Perform one molecular Log-rank survival analysis in one TCGA cancer based on <a href="data-analysis.html#tcga-surv-plot"><code>tcga_surv_plot()</code></a> function.</p>
+<h4><span class="header-section-number">10.1.3.1</span> TCGA Kaplan-Meier<a href="custom-tpc.html#m-tcga-surv-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Perform one molecular Log-rank survival analysis based on <a href="data-analysis.html#tcga-surv-plot"><code>tcga_surv_plot()</code></a> function.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select one TCGA cancer and one molecule.</li>
-<li>Filter samples according to Age/Sex/Stage.</li>
-<li>Select survival endpoint type and molecular grouping mode.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The raw data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<li>Select one of supported multi-omics types;</li>
+<li>Select an identifier or define a signature;</li>
+<li>Select one TCGA cancer and select one endpoint as survival event;</li>
+<li>Filter samples by Gender, Age, Stage;</li>
+<li>Select the grouping method;</li>
+<li>Click the “Go!” button.</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the survival curves of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1111"></span>
-<img src="images/p1111.png" alt="The steps of module &quot;TCGA: Molecular Profile Log-rank Analysis&quot;" width="100%" />
+<img src="images/p1111.png" alt="The steps of module &quot;Kaplan-Meier&quot;" width="100%" />
 <p class="caption">
-Figure 10.11: The steps of module “TCGA: Molecular Profile Log-rank Analysis”
+Figure 10.10: The steps of module “Kaplan-Meier”
 </p>
 </div>
 </div>
 <div id="m-vis-unicox-tree" class="section level4 hasAnchor" number="10.1.3.2">
-<h4><span class="header-section-number">10.1.3.2</span> TCGA: Molecular Profile Cox Analysis<a href="custom-tpc.html#m-vis-unicox-tree" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Perform one molecular Log-rank survival analysis in TCGA pan-cancers based on <a href="data-analysis.html#vis-unicox-tree"><code>vis_unicox_tree()</code></a> function.</p>
+<h4><span class="header-section-number">10.1.3.2</span> TCGA Cox regression<a href="custom-tpc.html#m-vis-unicox-tree" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Perform one molecular Log-rank survival analysis across pan-cancers based on <a href="data-analysis.html#vis-unicox-tree"><code>vis_unicox_tree()</code></a> function.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select one molecule.</li>
-<li>Select survival endpoint type and molecular grouping threshold.</li>
-<li>Modify visualization parameters.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The analyzed data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<li>Select one of supported multi-omics types;</li>
+<li>Select an identifier or define a signature;</li>
+<li>Select one endpoint as survival event;</li>
+<li>Click the “Go!” button.</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the forest plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1112"></span>
-<img src="images/p1112.png" alt="The steps of module &quot;TCGA: Molecular Profile Cox Analysis&quot;" width="100%" />
+<img src="images/p1112.png" alt="The steps of module &quot;Cox regression&quot;" width="100%" />
 <p class="caption">
-Figure 10.12: The steps of module “TCGA: Molecular Profile Cox Analysis”
+Figure 10.11: The steps of module “Cox regression”
 </p>
 </div>
 </div>
@@ -612,26 +712,38 @@ Figure 10.12: The steps of module “TCGA: Molecular Profile Cox Analysis”
 <div id="dimension-reduction-2" class="section level3 hasAnchor" number="10.1.4">
 <h3><span class="header-section-number">10.1.4</span> Dimension Reduction<a href="custom-tpc.html#dimension-reduction-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="m-vis-dim-dist" class="section level4 hasAnchor" number="10.1.4.1">
-<h4><span class="header-section-number">10.1.4.1</span> TCGA: Dimension Reduction Distribution<a href="custom-tpc.html#m-vis-dim-dist" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Perform molecular dimension reduction analysis in one TCGA cancer based on <a href="data-analysis.html#vis-dim-dist"><code>vis_dim_dist()</code></a> function.</p>
+<h4><span class="header-section-number">10.1.4.1</span> TCGA Dimension reduction<a href="custom-tpc.html#m-vis-dim-dist" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Perform molecular dimension reduction analysis based on <a href="data-analysis.html#vis-dim-dist"><code>vis_dim_dist()</code></a> function.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select multiple molecules and click “Cache data” to load the molecular data. There are 3 ways to select multiple molecules.</li>
-</ol>
+<li>Select one of supported multi-omics types;</li>
+<li>Select multiple identifiers via one of three ways, then click the “Cache data” button;
 <ul>
 <li>“Select”: One-by-one selection;</li>
 <li>“Pathway”: batch selection under one pathway;</li>
 <li>“File”: Upload of identifier file.</li>
+</ul></li>
+<li>Set the sample range and grouping;
+<ul>
+<li>“Preset Group”: select one or more TCGA cancers and one clinical phenotype as grouping criteria.</li>
+<li>“Custom Group”: upload files with custom samples and group columns. See details by downloading example file.</li>
+</ul></li>
+<li>Select the algorithm of dimension reduction;</li>
+<li>Click the “Go!” button.</li>
+</ol>
+<ul>
+<li>Right panel</li>
 </ul>
-<ol start="2" style="list-style-type: decimal">
-<li>Select one cancer (or more cancers) and grouping one phenotype. Notably, user can also upload custom group.</li>
-<li>Modify analysis and visualization parameters. Three DR methods including PCA, UMAP and tSNE are supported.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The analyzed data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<ol style="list-style-type: decimal">
+<li>Observe the scatter plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1113"></span>
-<img src="images/p1113.png" alt="The steps of module &quot;TCGA: Dimension Reduction Distribution&quot;" width="100%" />
+<img src="images/p1113.png" alt="The steps of module &quot;Dimension reduction&quot;" width="100%" />
 <p class="caption">
-Figure 10.13: The steps of module “TCGA: Dimension Reduction Distribution”
+Figure 10.12: The steps of module “Dimension reduction”
 </p>
 </div>
 </div>
@@ -641,11 +753,6 @@ Figure 10.13: The steps of module “TCGA: Dimension Reduction Distribution”
 <h2><span class="header-section-number">10.2</span> PCAWG<a href="custom-tpc.html#pcawg-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <caption><span id="tab:custom-pcawg-mod">Table 10.2: </span>Custom modules for PCAWG analysis</caption>
-<colgroup>
-<col width="9%" />
-<col width="12%" />
-<col width="78%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Database</th>
@@ -657,40 +764,49 @@ Figure 10.13: The steps of module “TCGA: Dimension Reduction Distribution”
 <tr class="odd">
 <td align="left">PCAWG</td>
 <td align="left">Comparison</td>
-<td align="left">PCAWG: Molecular Profile Distribution Across Cancer Types (Tumor VS Normal)</td>
+<td align="left">Tumor VS Normal</td>
 </tr>
 <tr class="even">
 <td align="left">PCAWG</td>
 <td align="left">Correlation</td>
-<td align="left">PCAWG: Molecule-Molecule Correlation</td>
+<td align="left">Molecule-Molecule</td>
 </tr>
 <tr class="odd">
 <td align="left">PCAWG</td>
 <td align="left">Survival</td>
-<td align="left">PCAWG: Molecular Profile Log-rank Analysis</td>
+<td align="left">Kaplan-Meier</td>
 </tr>
 <tr class="even">
 <td align="left">PCAWG</td>
 <td align="left">Survival</td>
-<td align="left">PCAWG: Molecular Profile Cox Analysis</td>
+<td align="left">Cox regression</td>
 </tr>
 </tbody>
 </table>
 <div id="comparison-analysis-2" class="section level3 hasAnchor" number="10.2.1">
 <h3><span class="header-section-number">10.2.1</span> Comparison analysis<a href="custom-tpc.html#comparison-analysis-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="m-vis-pcawg-dist" class="section level4 hasAnchor" number="10.2.1.1">
-<h4><span class="header-section-number">10.2.1.1</span> PCAWG: Molecular Profile Distribution Across Cancer Types (Tumor VS Normal)<a href="custom-tpc.html#m-vis-pcawg-dist" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">10.2.1.1</span> PCAWG Tumor VS Normal<a href="custom-tpc.html#m-vis-pcawg-dist" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Compare molecular values between tumor and normal samples of PCAWG projects based on <a href="data-analysis.html#vis-pcawg-dist"><code>vis_pcawg_dist()</code></a> function.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li><p>Select one molecular type and identifier.</p></li>
-<li><p>Adjust the visualization parameters.</p></li>
-<li><p>Click the “Go!” button to perform analysis and display the plot in the right. The raw data will be also showed in right-bottom area and can be saved as CSV file.</p></li>
-<li><p>Download the plot with size and format options.</p></li>
+<li>Select one of supported multi-omics types;</li>
+<li>Select an identifier or define a signature;</li>
+<li>Click the “Go!” button.</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the visualization plot of analytical result (Some of projects only have tumor samples);</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1114"></span>
-<img src="images/p1114.png" alt="The steps of module &quot;PCAWG: Molecular Profile Distribution Across Cancer Types (Tumor VS Normal)&quot;" width="100%" />
+<img src="images/p1114.png" alt="The steps of module &quot;Tumor VS Normal&quot;" width="100%" />
 <p class="caption">
-Figure 10.14: The steps of module “PCAWG: Molecular Profile Distribution Across Cancer Types (Tumor VS Normal)”
+Figure 10.13: The steps of module “Tumor VS Normal”
 </p>
 </div>
 </div>
@@ -698,20 +814,32 @@ Figure 10.14: The steps of module “PCAWG: Molecular Profile Distribution Acros
 <div id="correlation-analysis-4" class="section level3 hasAnchor" number="10.2.2">
 <h3><span class="header-section-number">10.2.2</span> Correlation analysis<a href="custom-tpc.html#correlation-analysis-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="m-vis-pcawg-gene-cor" class="section level4 hasAnchor" number="10.2.2.1">
-<h4><span class="header-section-number">10.2.2.1</span> PCAWG: Molecule-Molecule Correlation<a href="custom-tpc.html#m-vis-pcawg-gene-cor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Compute and visualize the correlation between two molecules based on PCAWG database based on <a href="data-analysis.html#vis-pcawg-gene-cor"><code>vis_pcawg_gene_cor()</code></a> function.</p>
+<h4><span class="header-section-number">10.2.2.1</span> PCAWG Molecule-Molecule<a href="custom-tpc.html#m-vis-pcawg-gene-cor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Compute and visualize the correlation between two molecules based on <a href="data-analysis.html#vis-pcawg-gene-cor"><code>vis_pcawg_gene_cor()</code></a> function.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select two molecules. They can come from different datasets.</li>
-<li>Adjust the visualization and analysis parameters. “Use All Cancer Types” means whether directly use tumor samples from all PCAWG projects.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The raw data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<li>Select two respective omics types;</li>
+<li>Select two specific identifiers as X-axis and Y-axis;</li>
+<li>Select one or more PCAWG projects;</li>
+<li>Select correlation method;</li>
+<li>Decide that whether the correlation is corrected based on tumor purity;</li>
+<li>Click the “Go!” button.</li>
 </ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the scatter plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1115"></span>
-<img src="images/p1115.png" alt="The steps of module &quot;PCAWG: Molecule-Molecule Correlation&quot;" width="100%" />
+<img src="images/p1115.png" alt="The steps of module &quot;Molecule-Molecule&quot;" width="100%" />
 <p class="caption">
-Figure 10.15: The steps of module “PCAWG: Molecule-Molecule Correlation”
+Figure 10.14: The steps of module “Molecule-Molecule”
 </p>
-</div>
+</div></li>
+</ol>
 </div>
 </div>
 <div id="survival-analysis-4" class="section level3 hasAnchor" number="10.2.3">
@@ -719,37 +847,56 @@ Figure 10.15: The steps of module “PCAWG: Molecule-Molecule Correlation”
 <blockquote>
 <p>Notes: Only OS endpoint for PCAWG samples.</p>
 </blockquote>
-<div id="pcawg-molecular-profile-log-rank-analysis" class="section level4 hasAnchor" number="10.2.3.1">
-<h4><span class="header-section-number">10.2.3.1</span> PCAWG: Molecular Profile Log-rank Analysis<a href="custom-tpc.html#pcawg-molecular-profile-log-rank-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Perform one molecular Log-rank survival analysis in one TCGA cancer.</p>
+<div id="pcawg-kaplan-meier" class="section level4 hasAnchor" number="10.2.3.1">
+<h4><span class="header-section-number">10.2.3.1</span> PCAWG Kaplan-Meier<a href="custom-tpc.html#pcawg-kaplan-meier" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Perform one molecular Log-rank survival analysis in one PCAWG project.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select one PCAWG project and one molecule.</li>
-<li>Filter samples according to Age/Sex.</li>
-<li>Select molecular grouping mode.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The raw data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<li>Select one of supported multi-omics types;</li>
+<li>Select an identifier or define a signature;</li>
+<li>Select one PCAWG project;</li>
+<li>Filter samples by Gender, Age;</li>
+<li>Select the grouping method;</li>
+<li>Click the “Go!” button.</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the survival curves of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1116"></span>
-<img src="images/p1116.png" alt="The steps of module &quot;PCAWG: Molecular Profile Log-rank Analysis&quot;" width="100%" />
+<img src="images/p1116.png" alt="The steps of module &quot;Kaplan-Meier&quot;" width="100%" />
 <p class="caption">
-Figure 10.16: The steps of module “PCAWG: Molecular Profile Log-rank Analysis”
+Figure 10.15: The steps of module “Kaplan-Meier”
 </p>
 </div>
 </div>
 <div id="m-vis-pcawg-unicox-tree" class="section level4 hasAnchor" number="10.2.3.2">
-<h4><span class="header-section-number">10.2.3.2</span> PCAWG: Molecular Profile Cox Analysis<a href="custom-tpc.html#m-vis-pcawg-unicox-tree" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">10.2.3.2</span> PCAWG Cox regression<a href="custom-tpc.html#m-vis-pcawg-unicox-tree" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Perform one molecular Log-rank survival analysis in All PCAWG projects based on <a href="data-analysis.html#vis-pcawg-unicox-tree"><code>vis_pcawg_unicox_tree()</code></a> function.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select one molecule.</li>
-<li>Select molecular grouping threshold.</li>
-<li>Modify visualization parameters.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The analyzed data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<li>Select one of supported multi-omics types;</li>
+<li>Select an identifier or define a signature;</li>
+<li>Click the “Go!” button.</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the forest plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1117"></span>
-<img src="images/p1117.png" alt="The steps of module &quot;PCAWG: Molecular Profile Log-rank Analysis&quot;" width="100%" />
+<img src="images/p1117.png" alt="The steps of module &quot;Cox regression&quot;" width="100%" />
 <p class="caption">
-Figure 10.17: The steps of module “PCAWG: Molecular Profile Log-rank Analysis”
+Figure 10.16: The steps of module “Cox regression”
 </p>
 </div>
 </div>
@@ -759,11 +906,6 @@ Figure 10.17: The steps of module “PCAWG: Molecular Profile Log-rank Analysis�
 <h2><span class="header-section-number">10.3</span> CCLE<a href="custom-tpc.html#ccle-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <caption><span id="tab:custom-ccle-mod">Table 10.3: </span>Custom modules for CCLE analysis</caption>
-<colgroup>
-<col width="10%" />
-<col width="13%" />
-<col width="75%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Database</th>
@@ -775,29 +917,39 @@ Figure 10.17: The steps of module “PCAWG: Molecular Profile Log-rank Analysis�
 <tr class="odd">
 <td align="left">CCLE</td>
 <td align="left">Comparison</td>
-<td align="left">CCLE: Molecular Profile Distribution Across Cancer Primary Sites</td>
+<td align="left">Cancer Primary Sites</td>
 </tr>
 <tr class="even">
 <td align="left">CCLE</td>
 <td align="left">Correlation</td>
-<td align="left">CCLE: Molecule-Molecule Correlation</td>
+<td align="left">Molecule-Molecule</td>
 </tr>
 </tbody>
 </table>
 <div id="comparison-analysis-3" class="section level3 hasAnchor" number="10.3.1">
 <h3><span class="header-section-number">10.3.1</span> Comparison analysis<a href="custom-tpc.html#comparison-analysis-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="m-vis-ccle-tpm" class="section level4 hasAnchor" number="10.3.1.1">
-<h4><span class="header-section-number">10.3.1.1</span> CCLE: Molecular Profile Distribution Across Cancer Primary Sites<a href="custom-tpc.html#m-vis-ccle-tpm" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">10.3.1.1</span> CCLE Cancer Primary Sites<a href="custom-tpc.html#m-vis-ccle-tpm" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Compare molecular values of cancer cell lines from different primary site based on <a href="data-analysis.html#vis-ccle-tpm"><code>vis_ccle_tpm()</code></a> function.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select one molecular type and identifier.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The raw data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<li>Select one of supported multi-omics types;</li>
+<li>Select an identifier or define a signature;</li>
+<li>Click the “Go!” button.</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the visualization plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1118"></span>
-<img src="images/p1118.png" alt="The steps of module &quot;CCLE: Molecular Profile Distribution Across Cancer Primary Sites&quot;" width="100%" />
+<img src="images/p1118.png" alt="The steps of module &quot;Cancer Primary Sites&quot;" width="100%" />
 <p class="caption">
-Figure 10.18: The steps of module “CCLE: Molecular Profile Distribution Across Cancer Primary Sites”
+Figure 10.17: The steps of module “Cancer Primary Sites”
 </p>
 </div>
 </div>
@@ -805,18 +957,29 @@ Figure 10.18: The steps of module “CCLE: Molecular Profile Distribution Across
 <div id="correlation-analysis-5" class="section level3 hasAnchor" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> Correlation analysis<a href="custom-tpc.html#correlation-analysis-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="m-vis-ccle-gene-cor" class="section level4 hasAnchor" number="10.3.2.1">
-<h4><span class="header-section-number">10.3.2.1</span> CCLE: Molecule-Molecule Correlation<a href="custom-tpc.html#m-vis-ccle-gene-cor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">10.3.2.1</span> CCLE Molecule-Molecule<a href="custom-tpc.html#m-vis-ccle-gene-cor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Compute and visualize the correlation between two molecules based on CCLE database based on <a href="data-analysis.html#vis-ccle-gene-cor"><code>vis_ccle_gene_cor()</code></a> function.</p>
+<ul>
+<li>Left panel</li>
+</ul>
 <ol style="list-style-type: decimal">
-<li>Select two molecules. They can come from different datasets.</li>
-<li>Adjust the visualization and analysis parameters. “Use All Primary Sites” means whether directly use cancer cell lines.</li>
-<li>Click the “Go!” button to perform analysis and display the plot in the right. The raw data will be also showed in right-bottom area and can be saved as CSV file.</li>
-<li>Download the plot with size and format options.</li>
+<li>Select two respective omics types;</li>
+<li>Select two specific identifiers as X-axis and Y-axis;</li>
+<li>Select one or more primary sites;</li>
+<li>Select correlation method;</li>
+<li>Click the “Go!” button.</li>
+</ol>
+<ul>
+<li>Right panel</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Observe the scatter plot of analytical result;</li>
+<li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1119"></span>
-<img src="images/p1119.png" alt="The steps of module &quot;CCLE: Molecule-Molecule Correlation&quot;" width="100%" />
+<img src="images/p1119.png" alt="The steps of module &quot;Molecule-Molecule&quot;" width="100%" />
 <p class="caption">
-Figure 10.19: The steps of module “CCLE: Molecule-Molecule Correlation”
+Figure 10.18: The steps of module “Molecule-Molecule”
 </p>
 </div>
 

@@ -20,6 +20,28 @@ knitr::include_graphics('images/p1202.png')
 ```
 
 
+About the core data type —— **Molecular profile**, the initial step of all analysis pipelines involves the check and modification of molecular datasets through the `Modify datasets[opt]` widget. For some molecular types of TPC databases, there are alternative datasets for users to select, which greatly enriches the analytical possibilities
+
+- Among the 7 types of TCGA molecules, 4 of them have the alternative datasets.
+
+```{r p1102, fig.cap='Alternative datasets of TCGA molecules',  fig.align='center', echo = FALSE, out.width="100%"}
+knitr::include_graphics('images/p1102.png')
+```
+
+
+> Tips: For DNA Methylation, mean value of all CpG sites under one gene will be calculated for the gene by default. In the `Modify datasets[opt]` widget, users can furtherly limit its CpG sites and modify the aggregation method (e.g. median).
+
+
+- Among the 5 types of PCAWG molecules, 2 of them have the alternative datasets.
+
+- Among the 4 types of CCLE molecules, 1 of them has the alternative datasets.
+
+
+```{r p1103, fig.cap='Alternative datasets of PCAWG and CCLE molecules',  fig.align='center', echo = FALSE, out.width="100%"}
+knitr::include_graphics('images/p1103.png')
+```
+
+
 
 ###  Reference of full identifiers
 

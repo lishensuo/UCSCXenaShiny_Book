@@ -248,7 +248,7 @@ Information of available datasets:
 | [publicHub](https://ucscpublic.xenahubs.net) | [ccle/CCLE_DepMap_18Q2_RNAseq_RPKM_20180502](https://xenabrowser.net/datapages/?dataset=ccle/CCLE_DepMap_18Q2_RNAseq_RPKM_20180502&host=https://ucscpublic.xenahubs.net) |    1076     |     RPKM      |
 | [publicHub](https://ucscpublic.xenahubs.net) | [ccle/CCLE_DepMap_18Q2_RNAseq_reads_20180502.log2](https://xenabrowser.net/datapages/?dataset=ccle/CCLE_DepMap_18Q2_RNAseq_reads_20180502.log2&host=https://ucscpublic.xenahubs.net) |    1076     | log2(count+1) |
 
-### get_ccle_gene_value()
+### get_ccle_protein_value()
 - `get_ccle_protein_value(identifier)`
 
 ```{r message=FALSE, cache=TRUE}
