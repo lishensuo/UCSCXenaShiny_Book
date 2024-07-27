@@ -21,8 +21,8 @@ github-repo: rstudio/bookdown-demo
 
 **UCSCXenaShiny** is an R package for interactively exploring UCSC Xena datasets. It is mainly designed to provide a web app (built on the top of [`{shiny}`](https://shiny.rstudio.com/) framework and [`{UCSCXenaTools}`](https://github.com/ropensci/UCSCXenaTools/) package) for downloading, analyzing and visualizing datasets from [UCSC Xena](https://xenabrowser.net/datapages/). In the latest version, the application can support both general and personalized  tumor molecular analysis with versatile functional modules and user-friendly interface layouts. Overall, our tool aims to make best use of public omics data from UCSC Xena and assist broad user community with precision oncology research.  
 
-```{r p0000,  fig.align='center', echo = FALSE, out.width="80%"}
-knitr::include_graphics('images/p0000.png')
+```{r p0000_1,  fig.align='center', echo = FALSE, out.width="100%"}
+knitr::include_graphics('images/p0000_1.png')
 ```
 
 Here, we have prepared the tutorial book to introduce the detailed usage of UCSCXenaShiny based on R Markdown and [bookdown](https://github.com/rstudio/bookdown). Firstly, we will start with the basic knowledge of UCSC Xena repository and its data hubs in **Chapter \@ref(intro)**. Then, the following chapters can be generally divided into two parts for the usage of R package and Shiny App:
@@ -47,7 +47,25 @@ Here, we have prepared the tutorial book to introduce the detailed usage of UCSC
 
 
 
+#### Part Ⅲ {-} 
 
+We have recorded a series of tutorial videos with step-by-step instructions:
+
+**1. English version**
+
+- Episode 1-4: https://www.youtube.com/watch?v=VnIlzcVB1Ow&list=PLN1jxcOQONG6pH8zvHr-qhI3MMtvluITf
+
+
+```{r p0000_2,  fig.align='center', echo = FALSE, out.width="90%"}
+knitr::include_graphics('images/p0000_2.png')
+```
+
+**2. Chinese version**
+
+- Episode 1: https://www.bilibili.com/video/BV1rT421k7Zv
+- Episode 2: https://www.bilibili.com/video/BV1E14218779
+- Episode 3: https://www.bilibili.com/video/BV141421t71g
+- Episode 4: https://www.bilibili.com/video/BV1TZ421K7VH
 
 ___
 
