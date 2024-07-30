@@ -1,4 +1,4 @@
-# (PART) R package {-} 
+# (PART) R Package {-} 
 
 # Install {#install}
 

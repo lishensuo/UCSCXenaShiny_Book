@@ -1,4 +1,4 @@
-# Personalized TPC pipelines(2) {#per-tpc-2}
+# TPC Pipelines(2) {#per-tpc-2}
 
 ## General steps
 

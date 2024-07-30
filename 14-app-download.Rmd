@@ -1,4 +1,4 @@
-# Download modules {#download}
+# Download Modules {#download}
 
 Although the full datasets of UCSC Xena can be downloaded in the repository page, it will spend unnecessary time and storage costs if we only want to obtain several molecular data for local analysis.
 

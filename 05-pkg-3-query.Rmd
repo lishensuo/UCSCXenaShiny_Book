@@ -1,4 +1,4 @@
-# Molecular data query {#data-query}
+# Molecular Data Query {#data-query}
 
 ## TCGA query
 - Search molecular identifiers for TCGA samples via list `pancan_identifier_help` referring to Figure \@ref(fig:tcga-ids)

@@ -1,4 +1,4 @@
-# Personalized TPC pipelines(1) {#per-tpc-1}
+# TPC Pipelines(1) {#per-tpc-1}
 
 ## Extensive tumor data
 

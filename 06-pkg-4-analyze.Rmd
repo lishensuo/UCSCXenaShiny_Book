@@ -1,4 +1,4 @@
-# Molecular data analysis {#data-analysis}
+# Molecular Data Analysis {#data-analysis}
 
 1. For each function, we will introduce its basic use and example output. Users can check all analysis or visualization parameters available by clicking the corresponding title link.
 

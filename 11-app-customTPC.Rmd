@@ -1,4 +1,4 @@
-# Custom TPC modules {#custom-tpc}
+# TPC Modules {#custom-tpc}
 
 In the "Custom TPC modules" page, there are totally 10 series of modules to quickly explore TPC (**T**CGA, **P**CAWG, **C**CLE) datasets with easy steps,  based on the functions introduced in Chapter \@ref(data-analysis).
 

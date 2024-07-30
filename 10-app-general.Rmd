@@ -1,4 +1,4 @@
-# General Dataset Analysis {#general-da}
+# General Analysis {#general-da}
 
 1. In this page, users can explore the most genomics matrix datasets of UCSC Xena repository with common analysis methods.
 2. As Chapter \@ref(analyze-data) describes, the initial step involves the selection of interesting datasets from **Repository** page. 
