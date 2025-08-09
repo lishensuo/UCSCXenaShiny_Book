@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Visit | UCSCXenaShiny v2 Book" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Shensuo Li, Shixiang Wang" />
 
 
-<meta name="date" content="2024-10-01" />
+<meta name="date" content="2025-08-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -62,7 +62,7 @@ set in the _output.yml file.</p>" />
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -72,7 +72,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -202,6 +202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="data-query.html"><a href="data-query.html#query_pancan_value"><i class="fa fa-check"></i><b>4.4.1</b> query_pancan_value()</a></li>
 <li class="chapter" data-level="4.4.2" data-path="data-query.html"><a href="data-query.html#query_molecule_value"><i class="fa fa-check"></i><b>4.4.2</b> query_molecule_value()</a></li>
+<li class="chapter" data-level="4.4.3" data-path="data-query.html"><a href="data-query.html#get_nonomics_value"><i class="fa fa-check"></i><b>4.4.3</b> get_nonomics_value()</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-analysis.html"><a href="data-analysis.html"><i class="fa fa-check"></i><b>5</b> Molecular Data Analysis</a>
@@ -377,7 +378,7 @@ Figure 6.1: The welcome page of shiny application
 <div id="local-deployment" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Local deployment<a href="visit.html#local-deployment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If the R package has been installed on your computer, it is easy to run the application in the local environment.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="visit.html#cb138-1" tabindex="-1"></a><span class="fu">app_run</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="visit.html#cb139-1" tabindex="-1"></a><span class="fu">app_run</span>()</span></code></pre></div>
 <p>Notably, the application is also dependent on some supplementary datasets (not in UCSC Xena) for extensive analysis. Considering the store limitation of R package and GitHub project, parts of them are deposited in <a href="https://zenodo.org/record/10778172">Zenodo repository</a>. When you first initiate the app, it could take some time to fetch these data. If it failed due to network, you can directly download them from Zenodo and then place on the <code>inst/extdata</code> directory.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p0702"></span>
 <img src="images/p0702.png" alt="The supplementary data in the inst/extdata directory" width="100%" />
@@ -408,42 +409,42 @@ Figure 6.2: The supplementary data in the inst/extdata directory
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-shiny-web.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-shiny-web.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

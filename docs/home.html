@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Homepage | UCSCXenaShiny v2 Book" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Shensuo Li, Shixiang Wang" />
 
 
-<meta name="date" content="2024-10-01" />
+<meta name="date" content="2025-08-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -62,7 +62,7 @@ set in the _output.yml file.</p>" />
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -72,7 +72,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -202,6 +202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="data-query.html"><a href="data-query.html#query_pancan_value"><i class="fa fa-check"></i><b>4.4.1</b> query_pancan_value()</a></li>
 <li class="chapter" data-level="4.4.2" data-path="data-query.html"><a href="data-query.html#query_molecule_value"><i class="fa fa-check"></i><b>4.4.2</b> query_molecule_value()</a></li>
+<li class="chapter" data-level="4.4.3" data-path="data-query.html"><a href="data-query.html#get_nonomics_value"><i class="fa fa-check"></i><b>4.4.3</b> get_nonomics_value()</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-analysis.html"><a href="data-analysis.html"><i class="fa fa-check"></i><b>5</b> Molecular Data Analysis</a>
@@ -389,7 +390,7 @@ Figure 7.1: Quick molecular exploration in the homepage
 <p>Tips: The analysis is based on <code>vis_toil_TvsN()</code> function referring to <a href="data-analysis.html#fig:vis-toil-TvsN">5.1</a></p>
 </blockquote>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:tumor-normal"></span>
-<img src="images/p0806.png" alt="The interface when clicking &quot;Tumor vs. Normal&quot; button" width="100%" />
+&lt;img src=“images/p0806.png” alt=“The interface when clicking”Tumor vs. Normal” button” width=“100%” /&gt;
 <p class="caption">
 Figure 7.2: The interface when clicking “Tumor vs. Normal” button
 </p>
@@ -402,7 +403,7 @@ Figure 7.2: The interface when clicking “Tumor vs. Normal” button
 <li>As the following figure shows, it firstly run the analyses given the queried molecule, which will take about one minute. Then, you can knit the report in HTML format (figure) or directly download the analyzed results in ZIP format.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:generate-report"></span>
-<img src="images/p0807.png" alt="The interface when clicking &quot;Generate Report&quot; button and result" width="100%" />
+&lt;img src=“images/p0807.png” alt=“The interface when clicking”Generate Report” button and result” width=“100%” /&gt;
 <p class="caption">
 Figure 7.3: The interface when clicking “Generate Report” button and result
 </p>
@@ -473,42 +474,42 @@ Figure 7.7: Example TCGA analysis
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-app-home.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-app-home.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

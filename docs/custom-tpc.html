@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 TPC Modules | UCSCXenaShiny v2 Book" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Shensuo Li, Shixiang Wang" />
 
 
-<meta name="date" content="2024-10-01" />
+<meta name="date" content="2025-08-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -62,7 +62,7 @@ set in the _output.yml file.</p>" />
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -72,7 +72,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -202,6 +202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="data-query.html"><a href="data-query.html#query_pancan_value"><i class="fa fa-check"></i><b>4.4.1</b> query_pancan_value()</a></li>
 <li class="chapter" data-level="4.4.2" data-path="data-query.html"><a href="data-query.html#query_molecule_value"><i class="fa fa-check"></i><b>4.4.2</b> query_molecule_value()</a></li>
+<li class="chapter" data-level="4.4.3" data-path="data-query.html"><a href="data-query.html#get_nonomics_value"><i class="fa fa-check"></i><b>4.4.3</b> get_nonomics_value()</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-analysis.html"><a href="data-analysis.html"><i class="fa fa-check"></i><b>5</b> Molecular Data Analysis</a>
@@ -459,7 +460,7 @@ Figure 10.1: All Custom TPC modules in shiny app
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1104"></span>
-<img src="images/p1104.png" alt="The layout of module &quot;Tumor VS Normal (Box plot)&quot;" width="100%" />
+&lt;img src=“images/p1104.png” alt=“The layout of module”Tumor VS Normal (Box plot)“” width=“100%” /&gt;
 <p class="caption">
 Figure 10.2: The layout of module “Tumor VS Normal (Box plot)”
 </p>
@@ -484,7 +485,7 @@ Figure 10.2: The layout of module “Tumor VS Normal (Box plot)”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1104n"></span>
-<img src="images/p1104n.png" alt="The layout of module &quot;Tumor VS Normal (Anatomy plot)&quot;" width="100%" />
+&lt;img src=“images/p1104n.png” alt=“The layout of module”Tumor VS Normal (Anatomy plot)“” width=“100%” /&gt;
 <p class="caption">
 Figure 10.3: The layout of module “Tumor VS Normal (Anatomy plot)”
 </p>
@@ -511,7 +512,7 @@ Figure 10.3: The layout of module “Tumor VS Normal (Anatomy plot)”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1105"></span>
-<img src="images/p1105.png" alt="The steps of module &quot;Mutation VS Wild&quot;" width="100%" />
+&lt;img src=“images/p1105.png” alt=“The steps of module”Mutation VS Wild”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.4: The steps of module “Mutation VS Wild”
 </p>
@@ -542,7 +543,7 @@ Figure 10.4: The steps of module “Mutation VS Wild”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1106"></span>
-<img src="images/p1106.png" alt="The steps of module &quot;Molecule-Molecule&quot;" width="100%" />
+&lt;img src=“images/p1106.png” alt=“The steps of module”Molecule-Molecule”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.5: The steps of module “Molecule-Molecule”
 </p>
@@ -569,7 +570,7 @@ Figure 10.5: The steps of module “Molecule-Molecule”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1107"></span>
-<img src="images/p1107.png" alt="The steps of module &quot;Molecule-Tumor Immune Infiltration&quot;" width="100%" />
+&lt;img src=“images/p1107.png” alt=“The steps of module”Molecule-Tumor Immune Infiltration”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.6: The steps of module “Molecule-Tumor Immune Infiltration”
 </p>
@@ -596,7 +597,7 @@ Figure 10.6: The steps of module “Molecule-Tumor Immune Infiltration”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1108"></span>
-<img src="images/p1108.png" alt="The steps of module &quot;Molecule-Immune Signature&quot;" width="100%" />
+&lt;img src=“images/p1108.png” alt=“The steps of module”Molecule-Immune Signature”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.7: The steps of module “Molecule-Immune Signature”
 </p>
@@ -623,7 +624,7 @@ Figure 10.7: The steps of module “Molecule-Immune Signature”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1109"></span>
-<img src="images/p1109.png" alt="The steps of module &quot;Molecule-TMB/Stemness/MSI&quot;" width="100%" />
+&lt;img src=“images/p1109.png” alt=“The steps of module”Molecule-TMB/Stemness/MSI”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.8: The steps of module “Molecule-TMB/Stemness/MSI”
 </p>
@@ -650,7 +651,7 @@ Figure 10.8: The steps of module “Molecule-TMB/Stemness/MSI”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1110"></span>
-<img src="images/p1110.png" alt="The steps of module &quot;Molecule-Pathway&quot;" width="100%" />
+&lt;img src=“images/p1110.png” alt=“The steps of module”Molecule-Pathway”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.9: The steps of module “Molecule-Pathway”
 </p>
@@ -681,7 +682,7 @@ Figure 10.9: The steps of module “Molecule-Pathway”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1111"></span>
-<img src="images/p1111.png" alt="The steps of module &quot;Kaplan-Meier&quot;" width="100%" />
+&lt;img src=“images/p1111.png” alt=“The steps of module”Kaplan-Meier”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.10: The steps of module “Kaplan-Meier”
 </p>
@@ -707,7 +708,7 @@ Figure 10.10: The steps of module “Kaplan-Meier”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1112"></span>
-<img src="images/p1112.png" alt="The steps of module &quot;Cox regression&quot;" width="100%" />
+&lt;img src=“images/p1112.png” alt=“The steps of module”Cox regression”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.11: The steps of module “Cox regression”
 </p>
@@ -746,7 +747,7 @@ Figure 10.11: The steps of module “Cox regression”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1113"></span>
-<img src="images/p1113.png" alt="The steps of module &quot;Dimension reduction&quot;" width="100%" />
+&lt;img src=“images/p1113.png” alt=“The steps of module”Dimension reduction”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.12: The steps of module “Dimension reduction”
 </p>
@@ -809,7 +810,7 @@ Figure 10.12: The steps of module “Dimension reduction”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1114"></span>
-<img src="images/p1114.png" alt="The steps of module &quot;Tumor VS Normal&quot;" width="100%" />
+&lt;img src=“images/p1114.png” alt=“The steps of module”Tumor VS Normal”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.13: The steps of module “Tumor VS Normal”
 </p>
@@ -839,7 +840,7 @@ Figure 10.13: The steps of module “Tumor VS Normal”
 <li>Observe the scatter plot of analytical result;</li>
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1115"></span>
-<img src="images/p1115.png" alt="The steps of module &quot;Molecule-Molecule&quot;" width="100%" />
+&lt;img src=“images/p1115.png” alt=“The steps of module”Molecule-Molecule”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.14: The steps of module “Molecule-Molecule”
 </p>
@@ -874,7 +875,7 @@ Figure 10.14: The steps of module “Molecule-Molecule”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1116"></span>
-<img src="images/p1116.png" alt="The steps of module &quot;Kaplan-Meier&quot;" width="100%" />
+&lt;img src=“images/p1116.png” alt=“The steps of module”Kaplan-Meier”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.15: The steps of module “Kaplan-Meier”
 </p>
@@ -899,7 +900,7 @@ Figure 10.15: The steps of module “Kaplan-Meier”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1117"></span>
-<img src="images/p1117.png" alt="The steps of module &quot;Cox regression&quot;" width="100%" />
+&lt;img src=“images/p1117.png” alt=“The steps of module”Cox regression”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.16: The steps of module “Cox regression”
 </p>
@@ -952,7 +953,7 @@ Figure 10.16: The steps of module “Cox regression”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1118"></span>
-<img src="images/p1118.png" alt="The steps of module &quot;Cancer Primary Sites&quot;" width="100%" />
+&lt;img src=“images/p1118.png” alt=“The steps of module”Cancer Primary Sites”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.17: The steps of module “Cancer Primary Sites”
 </p>
@@ -982,7 +983,7 @@ Figure 10.17: The steps of module “Cancer Primary Sites”
 <li>Pull the sidebar to adjust plot parameters or download results through the top-right widget.</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:p1119"></span>
-<img src="images/p1119.png" alt="The steps of module &quot;Molecule-Molecule&quot;" width="100%" />
+&lt;img src=“images/p1119.png” alt=“The steps of module”Molecule-Molecule”” width=“100%” /&gt;
 <p class="caption">
 Figure 10.18: The steps of module “Molecule-Molecule”
 </p>
@@ -1012,42 +1013,42 @@ Figure 10.18: The steps of module “Molecule-Molecule”
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-app-customTPC.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-app-customTPC.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

@@ -148,6 +148,7 @@ get_ccle_cn_value
 general-query
 query_pancan_value
 query_molecule_value
+get_nonomics_value
 data-analysis
 tcga-analysis
 comparison-analysis

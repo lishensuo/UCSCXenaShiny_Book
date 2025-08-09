@@ -48,6 +48,7 @@ vis_toil_TvsN_cancer(Gene="TP53", data_type = "mRNA", Cancer = "BRCA")
 - Basic use: `vis_pancan_anatomy(Gene="TP53", Gender=, data_type="mRNA")`
 
 ```{r vis-pancan-anatomy, message=FALSE, warning=FALSE, fig.cap='The difference of mRNA TP53 in Pan-cancer', out.width='80%', fig.align='center', fig.height=6, fig.width=6, cache=TRUE}
+library(gganatogram)
 vis_pancan_anatomy(Gene = "TP53", Gender = "Male", data_type= "mRNA")
 ```
 
